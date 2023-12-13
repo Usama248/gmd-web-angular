@@ -25,7 +25,7 @@ showResource:boolean = false
   navitem: any[] = [
     {
       icon:``,
-      route:"dashboard",
+      route:"/clinic-dashboard",
       name: "Dashboard",
       subnav:[
 
@@ -33,7 +33,7 @@ showResource:boolean = false
     },
     {
       icon:"pi pi-user-plus",
-      route:"physician",
+      route:"/physicians",
       name: "Physicians",
       subnav:[
 
@@ -41,7 +41,7 @@ showResource:boolean = false
     },
     {
       icon:"pi pi-comments",
-      route:"conversation",
+      route:"/conversation",
       name: "Conversations",
       subnav:[
 
@@ -54,13 +54,13 @@ showResource:boolean = false
       subnav:[
         {
           icon:"pi pi-file-import",
-          route:"review",
+          route:"/chart-review",
           name: "Chart Review",
 
         },
         {
           icon:"pi pi-chart-bar",
-          route:"document",
+          route:"/document",
           name: "Document",
         },
       ]
@@ -68,7 +68,7 @@ showResource:boolean = false
 
     {
       icon:"pi pi-users",
-      route:"users",
+      route:"/users",
       name: "Manage Users",
       subnav:[
 
@@ -81,19 +81,19 @@ showResource:boolean = false
       subnav:[
         {
           icon:"pi pi-chart-pie",
-          route:"billing",
+          route:"/billing",
           name: "Billing Dashboard",
 
         },
         {
           icon:"pi pi-id-card",
-          route:"subscription",
+          route:"/subscription",
           name: "Subscriptions",
 
         },
         {
           icon:"pi-credit-card pi",
-          route:"payment",
+          route:"/payment",
           name: "Payment Due",
 
         },
@@ -102,7 +102,7 @@ showResource:boolean = false
 
     {
       icon:"pi pi-bell ",
-      route:"notification",
+      route:"/notification",
       name: "Notifications",
       subnav:[
 

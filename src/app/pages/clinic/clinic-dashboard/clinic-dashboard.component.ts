@@ -1,26 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppState, selectUserData } from 'src/store/store';
-import { Store, select } from '@ngrx/store';
-import { loadUserData } from 'src/store/actions';
+import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
+
 
 @Component({
   selector: 'app-clinic-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,CardModule,TableModule ],
   templateUrl: './clinic-dashboard.component.html',
   styleUrls: ['./clinic-dashboard.component.scss']
 })
-export class ClinicDashboardComponent implements OnInit {
-
-  constructor(private store: Store<AppState>) {}
-  ngOnInit(): void {
-    this.showUserData();
+export class ClinicDashboardComponent {
+products:any = [
+  {
+    name:'asdfs',
+    code:'dsfasd',
+    category:'safdaf',
+    quantity:"dsfasd"
   }
-
-  showUserData() {
-    this.store.select(selectUserData).subscribe(data => {
-      console.log(data);
-    });
-  }
+]
 }
