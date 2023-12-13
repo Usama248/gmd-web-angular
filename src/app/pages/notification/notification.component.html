@@ -1,0 +1,68 @@
+<div class="">
+
+  <div class="gmd-tab">
+    <ul>
+      <li ng-reflect-ng-class="active" class="active"> Notification</li>
+      <li ng-reflect-ng-class="font-weight-600"> History</li>
+    </ul>
+  </div>
+
+  <div class="card-body p-0" id="notificationTab">
+    <div>
+      <div class="d-flex justify-content-between flex-wrap align-items-start">
+        <div class="ml-3">
+          <h4 class="notification_heading mt-0 font-22">Notifications</h4>
+          <p class="text-muted">Check your all Notifications and read it</p>
+        </div>
+
+
+        <div class="readall">
+          <i class="pi pi-check font-12 mr-2"></i> <a>Mark all as Read</a>
+        </div>
+
+      </div>
+
+      <div class="position-relative">
+        <div class="todays-container" id="today-notification">
+          <h5 class="ml-3 mb-4 notification-heading">Today's Notifications</h5>
+          <div class=" main-notificationRow" id="translate-row">
+            <p class="message-paragraph mb-0 text-center">
+              <b>No Notification Found!</b>
+            </p>
+
+          </div>
+        </div>
+        <div class="previous-notification" id="previous-notification">
+
+          <h5 class="ml-3 mb-4 notification-heading">Previous Notifications</h5>
+          <div class="todays-content">
+            <div
+              class="notification-card mb-2 d-flex align-items-center justify-content-between w-100 flex-wrap flex-md-nowrap">
+              <div class="d-flex align-items-center">
+                <div class="notification-icon mr-2">
+                  <i class="code-tick-f readIcon" title="already read"></i>
+                  <i class=" pi-comments pi"></i>
+                </div>
+                <div class="notification-text">
+                  <a title="Congratulations you are now connected with Virat Kohli" href="#">Congratulations you
+                    are now connected with Virat Kohli</a>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <span class="text-nowrap"> about 7 days ago</span>
+                <p-button  icon="pi pi-ellipsis-v" [rounded]="true" [text]="true" severity="secondary " (click)="menu.toggle($event)"></p-button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+<p-menu #menu [model]="items" [popup]="true"></p-menu>

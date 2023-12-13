@@ -24,6 +24,7 @@ export class SignalrNotificationService {
         transport: signalR.HttpTransportType.WebSockets
       }).withAutomaticReconnect().build();
 
+
     hubConnection
       .start()
       .then(() => {

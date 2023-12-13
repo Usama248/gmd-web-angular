@@ -1,5 +1,19 @@
-<app-header></app-header>
 <p-toast></p-toast>
-<p-progressBar mode="indeterminate"  *ngIf="isLoading" [style]="{'height': '6px'}"></p-progressBar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<section class="panel window surface-ground">
+  <div class="panel-header">
+    <app-header></app-header>
+
+  </div>
+  <div class="panel-body">
+    <div class="panel-side" [ngClass]="showNav?'':'hide-nav'">
+      <app-side-nav></app-side-nav>
+    </div>
+    <div class="panel-content ">
+      <div class="content-body  p-4">
+        <router-outlet></router-outlet>
+      </div>
+
+      <app-footer></app-footer>
+    </div>
+  </div>
+</section>

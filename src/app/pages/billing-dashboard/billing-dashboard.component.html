@@ -1,0 +1,109 @@
+<div class="flex gap-3">
+  <div class="w-100">
+    <p-card>
+      <h3 class="gmd-card-title mb-3">Credits</h3>
+      <div class="border-1 border-solid border-bluegray-200 p-3 border-round-md flex gap-3">
+        <div class="w-100">
+          <div
+            class=" flex justify-content-center flex-column text-center align-items-center bg-cyan-100 h-100 border-round-md">
+            <p>total Credits</p>
+            <h1 class="m-0 text-dark">5</h1>
+          </div>
+        </div>
+        <div class="flex flex-column justify-content-between w-100 gap-3">
+          <p-button severity="success" class="block" [rounded]="true" label="Add Credit" [outlined]="true"></p-button>
+          <div class="d-flex justify-content-between">
+            <div><i class="fa fa-money-bill-alt mr-2"></i>Auto Credits</div>
+            <div>
+              <span>3/Monthly</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div><i class="fa fa-money-bill-alt mr-2"></i>Auto Credits</div>
+            <div>
+              <span>3/Monthly</span>
+            </div>
+          </div>
+          <p-button severity="success" class="block" [rounded]="true" label="View Credit History"
+            [outlined]="true"></p-button>
+        </div>
+      </div>
+    </p-card>
+
+  </div>
+  <div class="w-100">
+    <p-card>
+      <h3 class="gmd-card-title mb-3">Payment Method</h3>
+      <div class="border-1 border-solid border-bluegray-200 gap-3 p-3 border-round-md flex ">
+        <div class="flex w-100">
+          <div class="box paymentCard__wrapper">
+            <div class="circles">
+              <div class="circle circle-1"></div>
+              <div class="circle circle-2"></div>
+            </div>
+            <div class="card" id="paymentCardInfo">
+              <form>
+                <div class="logo">
+                  <img src="https://uat-portal.guardian-md.com/img/debitcardchip1.png">
+                </div>
+                <div class="card-number">
+                  <label>Card Number</label>
+                  <input id="card-number" class="paymentInput" placeholder="**** **** **** 4242" type="text" readonly=""
+                    maxlength="19">
+                  <span class="underline"></span>
+                </div>
+                <br>
+                <div class="group">
+                  <div class="expiration-date">
+                    <label>Exp. Date</label>
+                    <input id="card-exp" class="paymentInput" placeholder="4/2024" type="text" maxlength="5"
+                      readonly="">
+                    <span class="underline"></span>
+                  </div>
+                  <div class="ccv">
+                    <label>CCV</label>
+                    <input id="card-ccv" class="paymentInput" placeholder="***" type="text" maxlength="3" readonly="">
+                    <span class="underline"></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="flex w-100 flex-column gap-3">
+          <p-button severity="success" class="block" [rounded]="true" label="Add   New Card" [outlined]="true"></p-button>
+          <p-button severity="success" class="block" [rounded]="true" label="Add Payment Card" [outlined]="true"></p-button>
+
+        </div>
+      </div>
+    </p-card>
+
+  </div>
+
+</div>
+
+<div class="pt-3">
+  <p-card >
+    <h3 class="gmd-card-title mb-3">Subscription History</h3>
+    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Invoice Number</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr>
+              <td>{{ product.code }}</td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.category }}</td>
+              <td>{{ product.quantity }}</td>
+              <td></td>
+          </tr>
+      </ng-template>
+  </p-table>
+  </p-card>
+</div>

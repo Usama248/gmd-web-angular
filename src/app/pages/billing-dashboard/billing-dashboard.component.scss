@@ -1,0 +1,115 @@
+
+/*======= billing/ Payment method ======= */
+.box.paymentCard__wrapper {
+  background: #001a49;
+  border-radius: 20px;
+  position: relative;
+  /*max-width: 280px;*/
+  width: 100%;
+  margin: 0 auto;
+}
+
+  .box.paymentCard__wrapper .circle {
+      height: 135px;
+      width: 135px;
+      opacity: 0.8;
+      position: absolute;
+      border-radius: 50%;
+      /* background: linear-gradient(120deg, #0f3c87, #fdfdfd); */
+  }
+
+  .box.paymentCard__wrapper .circle-1 {
+      left: 0;
+  }
+
+  .box.paymentCard__wrapper .circle-2 {
+      bottom: 0;
+      right: 0;
+  }
+
+.paymentCard__wrapper .card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(35px);
+  box-shadow: 0 0 80px -49px rgba(0, 0, 0, 0.25);
+  padding: 5px 30px 5px 30px;
+  overflow: hidden;
+}
+
+.paymentCard__wrapper .logo {
+  padding-bottom: 9px;
+  opacity: 0.9;
+}
+
+  .paymentCard__wrapper .logo img {
+      width: 50px;
+      height: 35px;
+  }
+
+.paymentCard__wrapper .card input.paymentInput {
+  font-size: 20px;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background: transparent;
+  color: #fff;
+  border: 0;
+  outline: none;
+}
+
+  .paymentCard__wrapper .card input.paymentInput:focus {
+      background: transparent;
+  }
+
+.paymentCard__wrapper input::placeholder {
+  color: #fdfdfd94;
+}
+
+.paymentCard__wrapper .group {
+  display: flex;
+  gap: 10px;
+}
+
+.paymentCard__wrapper .card-number {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.paymentCard__wrapper .card input + .underline:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: width .3s;
+}
+
+.paymentCard__wrapper .card input:hover + .underline:after {
+  width: 100%;
+}
+
+.paymentCard__wrapper .expiration-date {
+  padding: 0px 0px 0px 0px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.paymentCard__wrapper .ccv {
+  margin-right: 0px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.paymentCard__wrapper label {
+  color: #fff;
+  font-size: 12px;
+  font-weight: normal;
+  pointer-events: none;
+  display: block;
+  padding-bottom: 2px;
+  white-space: pre;
+}

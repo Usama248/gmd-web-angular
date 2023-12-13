@@ -1,0 +1,28 @@
+.panel{
+  .panel-body{
+    width: 100%;
+    display: flex;
+    .panel-side{
+      transition: .4s ease-in-out all;
+      width: 0px;
+      // animation: fullbodyShow .4s ease ;
+    }
+    .panel-side:not(.hide-nav){
+     width: 230px !important;
+      // width: 100%;
+
+    }
+    .panel-content{
+      width: 100%;
+      height: calc(100vh - 66px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      .content-body{
+        flex-grow: 1;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
