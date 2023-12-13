@@ -2,10 +2,10 @@ import { Component, OnInit, ViewEncapsulation, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { LoaderService } from '../../services/loader.service';
 import { RouterModule } from '@angular/router';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { NgOptimizedImage } from '@angular/common'
+import { LoaderService } from 'src/app/shared/services/loader.service';
 @Component({
   selector: 'app-auth-layout',
   standalone: true,

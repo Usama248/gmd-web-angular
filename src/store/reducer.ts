@@ -38,12 +38,14 @@ export interface UserDataState {
     loading: false,
     error: ''
     };
-    export const todoReducer = createReducer(
+    export const userDataReducer = createReducer(
     initialState,
     
     on(loadUserData, (state : any) => ({ ...state, loading: true })),
     
-    on(loadUserDataSuccess, (state : any, { userData }) =>({ ...state, userData, loading: false })),
+    on(loadUserDataSuccess, (state : any, { data }) =>(
+        { ...state, data, loading: false }
+        )),
     
     on(loadUserDataFailure, (state : any, { error }) => ({ ...state, error, loading: false })),
     

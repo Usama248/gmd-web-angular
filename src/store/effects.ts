@@ -5,13 +5,14 @@ import { loadUserData, loadUserDataFailure, loadUserDataSuccess } from "./action
 import { AuthService } from "src/app/appServices/auth.service";
 
 @Injectable()
-export class TodoEffects {
+export class UserDataEffects {
   loadTodos$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadUserData),
       mergeMap(() =>
         this.authService.getProfile().pipe(
-          map((userData) => loadUserDataSuccess({ userData })),
+          map((res: any) =>
+           loadUserDataSuccess({ data: res.data })),
           catchError((error) =>
             of(loadUserDataFailure({ error: error.message }))
           )

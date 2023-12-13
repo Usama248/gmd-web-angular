@@ -2,9 +2,11 @@
 a:link.btn.btn-rounded {
   border-radius: 50px;
   padding: 8px 25px; 
-  font-weight: 400;
+  font-weight: 600;
 }
-
+body {
+    font-family: 'Lato', sans-serif !important;
+}
 .text-muted {
     color: #314358 !important;
 }

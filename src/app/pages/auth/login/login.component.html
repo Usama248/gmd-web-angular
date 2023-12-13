@@ -1,13 +1,13 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="gmdLogin">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="gmdLogin" id="loginForm">
     <div class="gmdLogin-heading">
-        <h2 class="sign-in-heading m-b-10">Sign In</h2>
+        <h2 class="sign-in-heading m-b-10">Log in to Gaudian MD</h2>
         <p>Enter your credentials to get access</p>
     </div>
     <div class="form-group">
-        <label class="mb-0" for="inputEmail"><span
+        <label class="mb-1" for="username"><span
                 class="steric-required text-danger">*</span>Username</label>
         <div class="position-relative">
-            <input formControlName="username" type="text" class="w-100"
+            <input formControlName="username" type="text" class="w-100" id="username" autocomplete="off"
                 placeholder="Email address" pInputText>
             <span class="input-group-span">
                 <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em"
@@ -26,13 +26,13 @@
 
     <div class="form-group">
         <div class="d-flex justify-content-between flex-wrap">
-            <label class="mb-0" for="inputPassword"><span
+            <label for="password" class="mb-1"><span
                     class="steric-required text-danger">*</span>Password</label>
             <a [routerLink]="['/login/forgot-password']"
                 class="text-muted text-hover-primary font-size">Forgot Your Password?</a>
         </div>
         <div class="position-relative login-password-box">
-            <input type="password" formControlName="password" class="w-100"
+            <input type="password" formControlName="password" class="w-100" id="password"
                 placeholder="Password" pInputText #passwordInput>
                 <span class="input-group-span">
                     <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em"

@@ -23,7 +23,7 @@
     position: absolute;
     width: 300px;
     height: 35px;
-    background: #81a143;
+    background: #7D9B41;
     z-index: 4;
     bottom: 0;
     right: 0;
@@ -70,12 +70,9 @@
   
   .login-logo {
     position: relative;
-    width: 220px;
     top: 15px;
   }
   
-  
-
   .gmdLogin input {
     height: 45px;
     padding-left: 40px;
@@ -89,7 +86,7 @@
   
   .sign-in-heading {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     color: #314f84;
   }
   
@@ -105,13 +102,13 @@
   
   .login-footer button {
     width: 100%;
-    background: #81a143;
+    background: #7D9B41;
   }
   
   .login-footer button:hover,
   .login-footer .btn.btn:focus {
-    background: #81a143;
-    border-color: #81a143;
+    background: #7D9B41;
+    border-color: #7D9B41;
     box-shadow: unset;
   }
   

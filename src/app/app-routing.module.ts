@@ -5,18 +5,20 @@ export const APP_ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   {
     path: 'login',
-    loadComponent: () => import('./shared/Components/auth-layout/auth-layout.component').then(x=>x.AuthLayoutComponent),
+    title: 'Log in to Gaudian MD',
+    loadComponent: () => import('./pages/auth/auth-layout/auth-layout.component').then(x=>x.AuthLayoutComponent),
     children: [
-      { path: '', loadComponent: () => import('./pages/login/login.component').then(x=>x.LoginComponent) },
-      { path: 'forgot-password', loadComponent: () => import('./pages/forgot-password/forgot-password.component').then(x=>x.ForgotPasswordComponent) },
+      { path: '', loadComponent: () => import('./pages/auth/login/login.component').then(x=>x.LoginComponent) },
+      { path: 'forgot-password',  title: 'Reset your password', loadComponent: () => import('./pages/auth/forgot-password/forgot-password.component').then(x=>x.ForgotPasswordComponent) },
     ],
   },
   {
     path: 'clinic-dashboard',
+    title: 'Clinic Dashboard',
     loadComponent: () => import('./shared/Components/layout/layout.component').then(x=>x.LayoutComponent),
     canActivate: [authGuard],
     children: [
-      { path: '', loadComponent: () => import('./pages/clinic-dashboard/clinic-dashboard.component').then(x=>x.ClinicDashboardComponent) },
+      { path: '', loadComponent: () => import('./pages/clinic/clinic-dashboard/clinic-dashboard.component').then(x=>x.ClinicDashboardComponent) },
     ],
   }, 
 ];

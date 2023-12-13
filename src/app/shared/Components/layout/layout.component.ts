@@ -7,6 +7,9 @@ import { ToastModule } from 'primeng/toast';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { LoaderService } from '../../services/loader.service';
 import { SignalrNotificationService } from '../../services/signalr-notification.service';
+import { AppState } from 'src/store/store';
+import { Store } from '@ngrx/store';
+import { loadUserData } from 'src/store/actions';
 @Component({
   selector: 'app-layout',
   standalone: true,
@@ -16,15 +19,21 @@ import { SignalrNotificationService } from '../../services/signalr-notification.
   providers: [SignalrNotificationService]
 })
 export class LayoutComponent implements OnInit {
-  constructor(private injector: Injector, private loader: LoaderService, private notificationService: SignalrNotificationService) { }
   isLoading = false;
-  ngOnInit(): void {
+  constructor(private loader: LoaderService, private notificationService: SignalrNotificationService, private store: Store<AppState>) { 
     this.listenToLoading();
+  }
+  ngOnInit(): void {
     this.notificationService.startConnection();
+    this.loadUserData();
   }
   listenToLoading(): void {
     effect(() => {
       this.isLoading = this.loader.isLoading();
-    }, {injector: this.injector});
+    });
   }
+   loadUserData() {
+     this.store.dispatch(loadUserData());
+   }
+  
 }
