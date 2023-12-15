@@ -1,5 +1,5 @@
-export interface UserData {
-    Id : string;
+export interface UserProfileModel {
+    Id? : string;
     ProfileId : string;
     FirstName : string;
     LastName : string;

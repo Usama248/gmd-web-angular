@@ -5,12 +5,12 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { AuthService } from '../appServices/auth.service';
-import { StorageService } from '../shared/services/storage.service';
+import { AuthService } from '../../services/auth-service/auth.service';
+import { StorageService } from '../../shared/services/storage.service';
 import { catchError, finalize, throwError } from 'rxjs';
-import { BusyService } from '../shared/services/busy.service';
-import { LoaderService } from '../shared/services/loader.service';
-import { ToastService } from '../shared/services/toast.service';
+import { BusyService } from '../../shared/services/busy.service';
+import { LoaderService } from '../../shared/services/loader.service';
+import { ToastService } from '../../shared/services/toast.service';
 
 @Injectable()
 export class HttpRequestsHandlerInterceptor implements HttpInterceptor {

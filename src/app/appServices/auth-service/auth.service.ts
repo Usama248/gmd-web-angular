@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiHandler } from '../shared/services/api-handler.service';
+import { ApiHandler } from '../../shared/services/api-handler.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { AUTH_API_ENDPOINTS } from '../shared/Constants/api-endpoint-url';
+import { AUTH_API_ENDPOINTS } from '../../shared/constants/api-endpoint-url';
 import { jwtDecode } from 'jwt-decode';
-import { StorageService } from '../shared/services/storage.service';
+import { StorageService } from '../../shared/services/storage.service';
 
 @Injectable({
   providedIn: 'root'

@@ -6,16 +6,37 @@
   </div>
   <div class="gmd-card-body">
     <div class="card">
-      <ng-container *ngIf="products else loader" >
-        <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-container *ngIf="products" >
+        <!-- [loading]="loading" [lazy]="true" (onLazyLoad)="loadProducts($event)" [customSort]="true" (sortFunction)="customSort($event)" -->
+        <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }" 
+        [paginator]="true" [rows]="10" [totalRecords]="this.total" [globalFilterFields]="['PhysicianName','CreatedDate','AssignedRoles', 'AssignmentType', 'Status', 'Action']">
           <ng-template pTemplate="header">
               <tr>
-                  <th pSortableColumn="PhysicianName"  >Physician Name <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="CreatedDate"  >Created Date  <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="AssignedRoles"  >Assigned Roles <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="AssignmentType"  >Assignment Type <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="Status"  >Status <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="Action"  >Action <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="PhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="CreatedDate">Created Date  <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="AssignedRoles">Assigned Roles <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="AssignmentType">Assignment Type <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="Status">Status <p-sortIcon field="code"></p-sortIcon></th>
+                  <th>Action</th>
+              </tr>
+              <tr>
+                <th>
+                  <p-columnFilter type="text" field="PhysicianName"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="CreatedDate"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="AssignedRoles"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="AssignmentType"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="Status"></p-columnFilter>
+              </th>
+              <th>
+              </th>
               </tr>
           </ng-template>
           <ng-template pTemplate="body" let-product>
@@ -41,11 +62,6 @@
   </div>
   </div>
 </div>
-
-<ng-template #loader>
-  <app-loader></app-loader>
-</ng-template>
-
 
 
 

@@ -1,18 +1,17 @@
 import { Component, OnInit, ViewEncapsulation, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { RouterModule } from '@angular/router';
-import {ProgressBarModule} from 'primeng/progressbar';
 import { NgOptimizedImage } from '@angular/common'
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
 @Component({
-  selector: 'app-auth-layout',
-  standalone: true,
-  imports: [CommonModule,RouterModule, ToastModule, ProgressSpinnerModule, ProgressBarModule, NgOptimizedImage],
-  templateUrl: './auth-layout.component.html',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./auth-layout.component.scss']
+    selector: 'app-auth-layout',
+    standalone: true,
+    templateUrl: './auth-layout.component.html',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./auth-layout.component.scss'],
+    imports: [NgIf, RouterModule, ToastModule, NgOptimizedImage, LoaderComponent]
 })
 export class AuthLayoutComponent implements OnInit {
   isLoading = false;

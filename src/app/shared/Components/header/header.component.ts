@@ -5,6 +5,7 @@ import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { SidebarService } from '../../services/sidebar.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,16 +16,16 @@ import { SidebarService } from '../../services/sidebar.service';
 })
 export class HeaderComponent implements OnInit {
 showsideNav:boolean  = true;
-  constructor(private sidebarService:SidebarService){}
+  constructor(private sidebarService:SidebarService, private authService: AuthService){}
   notificationDropdown: boolean = false;
   items: MenuItem[] | undefined;
   noti: MenuItem[] | undefined;
   ngOnInit(): void {
     this.items = [
       {
-        label: 'Update',
+        label: 'Logout',
         icon: 'pi pi-refresh',
-
+        command: () => this.authService.logout()
       },
       {
         label: 'Update',
@@ -34,7 +35,6 @@ showsideNav:boolean  = true;
       {
         label: 'Delete',
         icon: 'pi pi-times',
-
       }
 
     ];
@@ -53,6 +53,5 @@ showsideNav:boolean  = true;
   toggleSidenav(){
     this.showsideNav = !this.showsideNav
     this.sidebarService.showNav(this.showsideNav)
-
   }
 }

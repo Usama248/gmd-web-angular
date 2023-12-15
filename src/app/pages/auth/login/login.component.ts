@@ -4,12 +4,12 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/appServices/auth.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { Router, RouterModule } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
-import { ErrorMessagesComponent } from "../../../shared/Components/error-messages/error-messages.component";
+import { ErrorMessagesComponent } from "../../../shared/components/error-messages/error-messages.component";
 import { DisableDuringSubmitDirective } from 'src/app/shared/directives/disable-during-submit.directive';
 
 @Component({
@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
 
   onSubmit(): void {
     if (this.form.valid) {

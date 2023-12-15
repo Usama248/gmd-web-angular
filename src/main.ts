@@ -5,12 +5,11 @@ import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
-import { HttpRequestsHandlerInterceptor } from './app/appInterceptor/http-requests-handler.interceptor';
+import { HttpRequestsHandlerInterceptor } from './app/interceptors/http-request-interceptor/http-requests-handler.interceptor';
 import { provideStore } from '@ngrx/store';
-import { provideEffects } from '@ngrx/effects';
-import { appEffects, appStore } from './store/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './environments/environment';
+import { rootReducer } from './store/reducers';
 
 
 bootstrapApplication(AppComponent, {
@@ -19,8 +18,7 @@ bootstrapApplication(AppComponent, {
         useClass: HttpRequestsHandlerInterceptor,
         multi: true
     },
-    provideStore(appStore),
-    provideEffects(appEffects),
+    provideStore(rootReducer),
     MessageService, importProvidersFrom(BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, StoreDevtoolsModule.instrument({
         maxAge: 25, // Retains last 25 states
         logOnly: environment.production, // Restrict extension to log-only mode

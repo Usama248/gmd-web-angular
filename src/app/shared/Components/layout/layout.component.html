@@ -10,6 +10,7 @@
     </div>
     <div class="panel-content ">
       <div class="content-body  p-4">
+        <app-loader *ngIf="isLoading"></app-loader>  
         <router-outlet></router-outlet>
       </div>
 

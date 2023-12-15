@@ -17,7 +17,7 @@
     </div>
     <div class="card">
       <ng-container *ngIf="activeTab == 'activeConversation'">
-        <ng-container *ngIf="products else loader">
+        <ng-container *ngIf="products">
           <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header">
               <tr>
@@ -57,7 +57,7 @@
           </p-table>
         </ng-container></ng-container>
       <ng-container *ngIf="activeTab == 'closedConversation'">
-        <ng-container *ngIf="products else loader">
+        <ng-container *ngIf="products">
           <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header">
               <tr>
@@ -125,9 +125,6 @@
   </div>
 </div>
 
-<ng-template #loader>
-  <app-loader></app-loader>
-</ng-template>
 <p-dialog header="Conversation Form" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
   [draggable]="false" [resizable]="false">
   <p class="m-0">
@@ -136,15 +133,15 @@
   <div>
     <div class="planPageQuestion flex flex-column gap-1 align-items-base" id="addOnQuestion">
       <div class="flex align-items-center py-2 px-3  gmd-badge-lg">
-        <p-radioButton name="pizza" value="Cheesee" inputId="ingredient3"></p-radioButton>
+        <p-radioButton name="pizza" value="Cheesee" [(ngModel)]="ingredient" inputId="ingredient3"></p-radioButton>
         <label for="ingredient3" class="ml-2 fs-3">Protocol or Document Related</label>
       </div>
       <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
-        <p-radioButton name="pizza" value="Cheeseee" inputId="ingredient2"></p-radioButton>
+        <p-radioButton name="pizza" value="Cheeseee" [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton>
         <label for="ingredient2" class="ml-2 fs-3">Clinical Questions</label>
       </div>
       <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
-        <p-radioButton name="pizza" value="Cheese" inputId="ingredient1"></p-radioButton>
+        <p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton>
         <label for="ingredient1" class="ml-2 fs-3">Other</label>
       </div>
     </div>

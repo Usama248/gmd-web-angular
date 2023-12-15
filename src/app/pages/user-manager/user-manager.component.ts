@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
-import { LoaderComponent } from 'src/app/shared/loader/loader.component';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -17,7 +16,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     CommonModule,
     TableModule,
     InputTextareaModule,
-    LoaderComponent,
     ButtonModule,
     RadioButtonModule,
     DialogModule,

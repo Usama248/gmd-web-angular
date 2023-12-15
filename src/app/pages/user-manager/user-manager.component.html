@@ -17,7 +17,7 @@
     </div>
     <div class="card">
       <ng-container *ngIf="activeTab == 'activeConversation'">
-        <ng-container *ngIf="products else loader">
+        <ng-container *ngIf="products">
           <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header">
               <tr>
@@ -57,7 +57,7 @@
           </p-table>
         </ng-container></ng-container>
       <ng-container *ngIf="activeTab == 'closedConversation'">
-        <ng-container *ngIf="products else loader">
+        <ng-container *ngIf="products">
           <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header">
               <tr>
@@ -125,9 +125,6 @@
   </div>
 </div>
 
-<ng-template #loader>
-  <app-loader></app-loader>
-</ng-template>
 <p-dialog header="Conversation Form" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
   [draggable]="false" [resizable]="false">
   <p class="m-0">
