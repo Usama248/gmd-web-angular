@@ -1,64 +1,45 @@
-.login-back-design {
-    height: 100vh;
+.gmd-login-main {
+  .login-back-design {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-  }
-  
-  .top-design {
-    height: 80%;
-    background: #f6f8fb;
-    transform: skewY(-12deg);
-    position: fixed;
-    top: -166px;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
+    .top-design {
+      height: 80%;
+      background: #f6f8fb;
+      transform: skewY(-12deg);
+      position: fixed;
+      top: -166px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 35px;
+        background: #7D9B41;
+        z-index: 4;
+        bottom: 0;
+        right: 0;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 35px;
+        background: #81a143ad;
+        z-index: 4;
+        bottom: -36px;
+        left: 0;
+      }
+    }
   }
 
-  .top-design:after {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 35px;
-    background: #7D9B41;
-    z-index: 4;
-    bottom: 0;
-    right: 0;
-  }
-  
-  .top-design:before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 35px;
-    background: #81a143ad;
-    z-index: 4;
-    bottom: -36px;
-    left: 0;
-  }
-
-  .sign-in-form {
-    max-width: 550px !important;
-    padding: 0 10px;
-    width: 100%
-  }
-
-  .form-control:focus {
-    background-color: transparent !important
-  }
-
-  .card-custom {
-    background: white;
-    padding: 30px;
-    z-index: 1;
-    position: relative;
-    box-shadow: 0px 0px 30px 4px gainsboro;
-    border-radius: 5px;
-  }
-  
   .main-wrapper {
     display: flex;
     flex-direction: column;
@@ -66,78 +47,126 @@
     height: 90vh;
     align-items: center;
     justify-content: center;
-  }
-  
-  .login-logo {
-    position: relative;
-    top: 15px;
-  }
-  
-  .gmdLogin input {
-    height: 45px;
-    padding-left: 40px;
-  }
-  
-  .gmdLogin .input-group-span svg {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-  }
-  
-  .sign-in-heading {
-    font-size: 24px;
-    font-weight: 600;
-    color: #314f84;
-  }
-  
-  .gmdLogin-heading p {
-    color: #435765;
-    font-weight: 400;
-  }
-  
-  .steric-required {
-    font-size: 20px;
-    vertical-align: text-top;
-  }
-  
-  .login-footer button {
-    width: 100%;
-    background: #7D9B41;
-  }
-  
-  .login-footer button:hover,
-  .login-footer .btn.btn:focus {
-    background: #7D9B41;
-    border-color: #7D9B41;
-    box-shadow: unset;
-  }
-  
-  .sign-in-form {
-    max-width: 550px !important;
-    padding: 0 10px;
-    width: 100%
-  }
-  
-  @media(max-width: 576px) {
-    .sign-in-form .card-custom {
-      padding: 0 !important;
+
+    .sign-in-form {
+      max-width: 550px !important;
+      padding: 0 10px;
+      width: 100%;
+
+      .login-logo {
+        position: relative;
+        top: 15px;
+      }
+
+      .card-custom {
+        background: white;
+        padding: 30px;
+        z-index: 1;
+        position: relative;
+        box-shadow: 0px 0px 30px 4px gainsboro;
+        border-radius: 5px;
+
+        .card-body {
+          padding: 1.25rem;
+
+          .gmdLogin {
+            .gmdLogin-heading {
+              .sign-in-heading {
+                font-size: 24px;
+                font-weight: 600;
+                color: #314f84;
+              }
+
+              p {
+                color: #435765;
+                font-weight: 400;
+              }
+            }
+
+            .form-group {
+              label {
+                font-size: .875rem;
+
+                .steric-required {
+                  font-size: 20px;
+                  vertical-align: text-top;
+                }
+
+                a {
+                  font-size: .875rem;
+                }
+              }
+
+              input {
+                height: 45px;
+                padding: 0 40px;
+
+                &:focus {
+                  background-color: transparent !important
+                }
+              }
+
+              .input-group-span {
+                svg {
+                  position: absolute;
+                  top: 14px;
+                  left: 7.8px;
+                }
+
+                &.eyePassword {
+                  position: absolute;
+                  top: 2px;
+                  right: 40px;
+                }
+              }
+            }
+
+            .login-footer {
+              button {
+                width: 100%;
+                background: #7D9B41;
+
+                &:hover,
+                &:focus {
+                  background: #7D9B41;
+                  border-color: #7D9B41;
+                  box-shadow: unset;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
-  
-  @media screen and (max-width: 1600px) {
-    .top-design {
-      top: -175px;
-    }
+}
+
+// remove password eye in Edge browser
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+@media(max-width: 576px) {
+  .sign-in-form .card-custom {
+    padding: 0 !important;
   }
-  
-  @media screen and (min-width: 1921px) {
-    .top-design {
-      top: -320px;
-    }
+}
+
+@media screen and (max-width: 1600px) {
+  .top-design {
+    top: -175px;
   }
-  
-  @media (min-width:1601px) and (max-width:1920px) {
-    .top-design {
-      top: -260px;
-    }
+}
+
+@media screen and (min-width: 1921px) {
+  .top-design {
+    top: -320px;
   }
+}
+
+@media (min-width:1601px) and (max-width:1920px) {
+  .top-design {
+    top: -260px;
+  }
+}

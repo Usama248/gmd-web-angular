@@ -77,19 +77,10 @@ export class LoginComponent implements OnInit {
   getControl(keyOrPath: string): FormControl {
     return this.form.get(keyOrPath) as FormControl;
   }
-  passwordShowHide(showSpan: HTMLSpanElement, hideSpan: HTMLSpanElement, passwordInput: HTMLInputElement, isShow: boolean) {
-    if (isShow) {
-      showSpan.classList.remove("show-password");
-      showSpan.classList.add("hide-password");
-      hideSpan.classList.remove("hide-password");
-      hideSpan.classList.add("show-password");
-      passwordInput.type = "text"
-    } else {
-      showSpan.classList.add("show-password");
-      showSpan.classList.remove("hide-password");
-      hideSpan.classList.remove("show-password");
-      hideSpan.classList.add("hide-password");
-      passwordInput.type = "password"
-    };
+  isPasswordShow: boolean = false
+  passwordShowHide(passwordInput: HTMLInputElement) {
+    this.isPasswordShow = !this.isPasswordShow
+    passwordInput.type = this.isPasswordShow ? "text" : "password"
   }
+
 }
