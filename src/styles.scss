@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "assets/css/partials/bootstrap.css";
-@import "assets/css/partials/grid";
-@import "assets/css/partials/variable";
-@import "assets/css/partials/common";
+@import "./styles/bootstrap.css";
+@import "./styles/grid";
+@import "./styles/_variable.scss";
+@import "./styles/common";
 @import "primeng/resources/themes/saga-green/theme.css";
 @import "primeng/resources/primeng.css";
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap');
@@ -16,6 +16,7 @@ a:link.btn.btn-rounded {
 
 body {
     font-family: 'Lato', sans-serif !important;
+    margin: 0;
 }
 
 .text-muted {
@@ -28,4 +29,13 @@ body {
 
 p {
     line-height: 1.7;
+}
+
+.portal-main-content {
+    overflow: auto;
+    padding: 1rem;
+    flex: 1 1 auto;
+    min-height: 1px;
+    display: flex;
+    flex-direction: column;
 }

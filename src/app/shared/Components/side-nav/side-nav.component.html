@@ -1,14 +1,16 @@
-<div class="sideNavbar-main border-right pt-2 d-flex flex-column justify-content-between" [ngClass]="showNav?'':'slide-back '">
+<div class="sideNavbar-main border-right pt-2 d-flex flex-column justify-content-between"
+  [ngClass]="showNav?'':'slide-back '">
   <nav class="main-menu mb-2">
     <input type="hidden" id="isResourceShow" value="True">
-    <ul class="sidebar-ul">
+    <ul class="sidebar-ul mt-0">
       <ng-container *ngFor="let item of navitem;let i = index ">
 
-        <li class="menu-item pointer position-relative" [ngClass]="showsub ==i ? 'show':''" >
-          <a class="menu-link open-submenu pointer" (click)="showSubmenu(i)" [routerLink]="item.route" routerLinkActive="active" >
+        <li class="menu-item pointer position-relative" [ngClass]="showsub ==i ? 'show':''">
+          <a class="menu-link open-submenu pointer" (click)="showSubmenu(i)" [routerLink]="item.route"
+            routerLinkActive="active">
             <span class="d-flex justify-content-between align-items-center w-100">
               <span class="d-flex justify-content-start align-items-center gap-3">
-                <span class="svg-container "[ngClass]="item.icon" >
+                <span class="svg-container " [ngClass]="item.icon">
 
                 </span>
                 <span class="menu-text">{{item.name}}</span>
@@ -46,7 +48,7 @@
         <div class="gmd-resource-header">
           <div class="d-flex justify-content-between align-items-center">
             <h2 id="TextAnimate" class="textLeftToRight text-white greeting ellipsis-one m-0">Hi ! Ahad clinic</h2>
-            <p-button (click)="togglePopup()"    [rounded]="true" [text]="true" severity="secondary " icon="pi-times pi" >
+            <p-button (click)="togglePopup()" [rounded]="true" [text]="true" severity="secondary " icon="pi-times pi">
 
             </p-button>
           </div>
@@ -83,7 +85,10 @@
                     </span>
                   </div>
                   <span class="pt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="14" width="8" fill="#314f84" viewBox="0 0 256 512"><path d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="14" width="8" fill="#314f84" viewBox="0 0 256 512">
+                      <path
+                        d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z" />
+                    </svg>
                   </span>
                 </a>
 
@@ -99,15 +104,15 @@
   <div class="sidebar-footer">
     <div class="profile-main-sidebar d-flex align-items-end">
       <div class="exp-specialist-wrapper w-100 mt-2">
-        <h6 class="fs-1 mt-0 mb-2">Contact Your Client Experience Specialist now</h6>
+        <h6 class="fs-1 mt-0 mb-2 font-12">Contact Your Client Experience Specialist now</h6>
         <div class="imgDetailWrapper mb-2 d-flex align-items-center">
           <div class="img">
             <img src="https://uat-portal.guardian-md.com/img/support-image.jpg" class="rounded-circle">
           </div>
           <div class="detail mt-2 pl-2">
-            <h6 class="name ellipsis-one fs-2 m-0">Contact Support</h6>
-            <p class="info fs-1 m-0 text-muted ellipsis-one ">877-340-1697</p>
-            <p class="info1 m-0 fs-1 profile-sidebar-emails text-muted break-all"
+            <h6 class="name ellipsis-one fs-2 m-0 font-12">Contact Support</h6>
+            <p class="info fs-1 m-0 text-muted ellipsis-one font-11">877-340-1697</p>
+            <p class="info1 m-0 fs-1 profile-sidebar-emails text-muted text-break font-12"
               href="mailto:info@guardianmedicaldirection.com">info@guardianmedicaldirection.com</p>
           </div>
         </div>
