@@ -6,6 +6,8 @@ import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { SidebarService } from '../../services/sidebar.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { AuthRepository } from 'src/app/services/auth-service/auth.repository';
+import { UserProfileModel } from 'src/app/models/user/user-profile.model';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -16,9 +18,11 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  showsideNav: boolean = true;
-  constructor(private sidebarService: SidebarService, private authService: AuthService) { }
+showsideNav:boolean  = true;
+loginUserData : UserProfileModel | undefined;
+  constructor(private sidebarService:SidebarService, private authRepository: AuthRepository){}
   notificationDropdown: boolean = false;
+  isClinic: boolean = false;
   items: MenuItem[] | undefined;
   noti: MenuItem[] | undefined;
   ngOnInit(): void {
@@ -33,7 +37,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Logout',
         icon: 'pi pi-sign-out',
-        command: () => this.authService.logout()
+          command: () => this.authRepository.logout()
       },
       {
         label: 'Update',
@@ -46,6 +50,10 @@ export class HeaderComponent implements OnInit {
       }
 
     ];
+    this.authRepository.getLoginUserData().subscribe(res => {
+      this.isClinic = res?.isClinic;
+      this.loginUserData = res;
+    })
   }
   showNotificationDropdown(e: Event) {
     e.stopPropagation();

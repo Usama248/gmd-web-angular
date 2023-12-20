@@ -1,123 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { SortEvent } from 'primeng/api';
+import { ClinicianRequestStatusService } from 'src/app/services/clinician-request-status-service/clinician-request-status.service';
+import { ClinicianRequestStatusModel } from 'src/app/models/clinician-request-status/clinician-request-status.model';
+import { TagModule } from 'primeng/tag';
+import { ClinicianRequestStatusRepository } from 'src/app/services/clinician-request-status-service/clinician-request-status.repository';
 
 @Component({
   selector: 'app-physician',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonModule],
+  imports: [CommonModule, TableModule, ButtonModule, TagModule],
   templateUrl: './physician.component.html',
   styleUrls: ['./physician.component.scss']
 })
-export class PhysicianComponent implements OnInit {
-  productsData = [
-    {
-      PhysicianName: "fdsfsd",
-      CreatedDate: "fdsfsd",
-      AssignedRoles: "fdsfsd",
-      AssignmentType: "fdsfsd",
-      Status: "fdsfsd",
-      Action: "fdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    },
-    {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
-    }
-  ]
-  products: any = [];
-  total = 0;
+export class PhysicianComponent implements OnInit, AfterViewInit {
+  constructor(private clinicianRequestStatusRepository: ClinicianRequestStatusRepository) {}
+  ngAfterViewInit(): void {
+ 
+  }
+  clinicianRequests! : ClinicianRequestStatusModel[];
   loading = false;
   ngOnInit(): void {
-   this.products = this.productsData;
    this.loading = true;
+   this.clinicianRequestStatusRepository.getClinicianRequestStatusData().subscribe(res => {
+    this.clinicianRequests = [...res];
+    this.clinicianRequests.forEach((clinicianRequest) => (clinicianRequest.createdDate = new Date(clinicianRequest.createdDate)));
+    this.loading = false;
+   })
   }
-
 
   customSort(event: SortEvent) {
     event.data?.sort((data1, data2) => {
@@ -137,17 +49,20 @@ export class PhysicianComponent implements OnInit {
 
   loadProducts(event: TableLazyLoadEvent) {
     this.loading = true;
-    this.products = this.productsData;
+    // this.products = this.productsData;
     setTimeout(() => {
-      this.products = this.products.slice(event.first);
+      this.clinicianRequests = this.clinicianRequests.slice(event.first);
       if(event.sortField) {
-        this.products = this.products.sort((a : any, b: any) => a.PhysicianName.localeCompare(b.PhysicianName));
+        this.clinicianRequests = this.clinicianRequests.sort((a : any, b: any) => a.PhysicianName.localeCompare(b.PhysicianName));
       }
       this.loading = false;
-      this.total = this.productsData.length;
+      // this.total = this.productsData.length;
     }, 1000);
   }
 
+  getRoles(input: string, delimiter: string): string[] {
+    return input.split(delimiter);
+  }
 }
 
 

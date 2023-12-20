@@ -15,7 +15,8 @@
             </div>
           </div>
           <div class="col ml-4">
-            <h2 class="font-32 font-weight-600 mb-0 text-left">2</h2>
+            <h2 class="font-32 font-weight-600 mb-0 text-left">{{dashboardData?.clinicianDetail?.approvedCliniciansCount}}
+            </h2>
             <span class="font-13 text-muted text-left">Approved Physician</span>
           </div>
         </div>
@@ -36,7 +37,8 @@
             </div>
           </div>
           <div class="col ml-4">
-            <h2 class="font-32 font-weight-600 mb-0 text-left">22</h2>
+            <h2 class="font-32 font-weight-600 mb-0 text-left">{{dashboardData?.documentsDetail?.signedDocumentCount}}
+            </h2>
             <span class="font-13 text-muted text-left">Reviewed Documents</span>
           </div>
         </div>
@@ -57,7 +59,8 @@
             </div>
           </div>
           <div class="col ml-4">
-            <h2 class="font-32 font-weight-600 mb-0 text-left">0</h2>
+            <h2 class="font-32 font-weight-600 mb-0 text-left">{{dashboardData?.documentsDetail?.pendingdocumentCount}}
+            </h2>
             <span class="font-13 text-muted text-left">Pending Documents</span>
           </div>
         </div>
@@ -84,31 +87,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let clinician of dashboardData?.clinicianDetail?.cliniciansList">
                 <td>
-                  Virat Kohli
+                  {{clinician.clinicianName}}
                 </td>
-                <td>12/01/2023</td>
+                <td>{{clinician.createdDate | date: 'MM/dd/yyyy'}}</td>
                 <td>
-                  <span class="badge badge-success ">
-                    Approved
-                  </span>
+                  Approved
                 </td>
               </tr>
-              <tr>
-                <td>
-                  uat phy
-                </td>
-                <td>11/02/2023</td>
-                <td>
-                  <span class="badge badge-pill
-                                          badge-success success_badge common_badge success_badge">
-                    Approved
-                  </span>
-                </td>
-              </tr>
-
-
             </tbody>
           </table>
         </div>
@@ -130,31 +117,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let doc of dashboardData?.documentsDetail?.documentList">
                 <td>
-                  Virat Kohli
+                  {{doc.fileName}}
                 </td>
-                <td>12/01/2023</td>
+                <td>{{doc.createdDate | date: 'MM/dd/yyyy'}}</td>
                 <td>
-                  <span class="badge badge-success ">
-                    Approved
-                  </span>
+                  <p-tag [value]="CLINICIAN_DODUMENTS_ENUM_NAMES$.get(doc.status)" [rounded]="true" [severity]="CLINICIAN_DODUMENTS_ENUM_COLORS$.get(doc.status)"></p-tag>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  uat phy
-                </td>
-                <td>11/02/2023</td>
-                <td>
-                  <span class="badge badge-pill
-                                          badge-success success_badge common_badge success_badge">
-                    Approved
-                  </span>
-                </td>
-              </tr>
-
-
             </tbody>
           </table>
         </div>

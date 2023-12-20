@@ -16,9 +16,8 @@ export const APP_ROUTES: Routes = [
     path: 'clinic-dashboard',
     title: 'Clinic Dashboard',
     loadComponent: () => import('./shared/components/layout/layout.component').then(x => x.LayoutComponent),
-    canActivate: [authGuard],
     children: [
-      { path: '', loadComponent: () => import('./pages/clinic/clinic-dashboard/clinic-dashboard.component').then(x => x.ClinicDashboardComponent) },
+      { path: '',  canActivate: [authGuard], loadComponent: () => import('./pages/clinic/clinic-dashboard/clinic-dashboard.component').then(x => x.ClinicDashboardComponent) },
     ],
   },
 
@@ -95,6 +94,16 @@ export const APP_ROUTES: Routes = [
       { path: '', loadComponent: () => import('./pages/notification/notification.component').then(x => x.NotificationComponent) },
     ],
   },
+  {
+    path: 'profile-main',
+    title: 'Profile',
+    loadComponent: () => import('./shared/components/layout/layout.component').then(x => x.LayoutComponent),
+    // canActivate: [authGuard],
+    children: [
+      { path: '', loadComponent: () => import('./pages/profile/profile-main/profile-main.component').then(x => x.ProfileMainComponent) },
+    ],
+  },
+
   // {
   //   path: 'page-not-found',
   //   loadComponent: () =>

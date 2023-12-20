@@ -21,20 +21,20 @@ import { LoaderComponent } from '../loader/loader.component';
 })
 export class LayoutComponent implements OnInit, OnDestroy {
   showNav:boolean = true;
+  isLoading = false;
   constructor(private injector: Injector, private loader: LoaderService, 
     private notificationService: SignalrNotificationService, 
     private navService:SidebarService, private authRepo: AuthRepository) {
     this.navService.onShowNav().subscribe(x => this.showNav =x)
+     this.listenToLoading();
    }
-  isLoading = false;
   ngOnInit(): void {
-    this.listenToLoading();
     this.getUserData();
   }
   listenToLoading(): void {
     effect(() => {
       this.isLoading = this.loader.isLoading();
-    }, {injector: this.injector});
+    })
   }
   ngOnDestroy(): void {
     this.notificationService.closeConnection();

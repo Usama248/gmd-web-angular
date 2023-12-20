@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { SidebarService } from '../../services/sidebar.service';
-
+declare function FreshworksWidget(arg0: string): any;
 @Component({
   selector: 'app-side-nav',
   standalone: true,
@@ -13,6 +13,7 @@ import { SidebarService } from '../../services/sidebar.service';
 })
 export class SideNavComponent implements AfterViewInit {
   showNav: boolean = true
+  window = window;
   constructor(private sideNavService: SidebarService) {
     this.sideNavService.onShowNav().subscribe(x => this.showNav = x)
 
@@ -116,5 +117,8 @@ export class SideNavComponent implements AfterViewInit {
   }
   togglePopup() {
     this.showResource = !this.showResource
+  }
+  FreshworksWidgetOpen() {
+    FreshworksWidget('open');
   }
 }

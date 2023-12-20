@@ -32,6 +32,9 @@ export class AuthRepository {
     });
     return getUserData;
   }
+  logout() {
+    this.authService.logout();
+  }
 }
 
 

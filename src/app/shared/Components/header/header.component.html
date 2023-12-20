@@ -45,10 +45,10 @@
       <div class="d-flex flex-column pointer pl-3" (click)="menu.toggle($event)">
 
         <div class="d-flex align-items-center">
-          <span class="font-14">Clinic one</span>
+          <span class="font-14">{{this.loginUserData?.userName}}</span>
           <span><i class="pi pi-angle-right pl-2" style="color: #708090"></i></span>
         </div>
-        <span class="font-11 text-muted">Clinic one</span>
+        <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
       </div>
     </div>
   </div>

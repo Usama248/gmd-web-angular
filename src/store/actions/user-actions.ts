@@ -3,10 +3,10 @@ import { UserProfileModel } from "../../app/models/user/user-profile.model";
 
 
 export enum UserActionTypes {
-    LOAD_REQUEST  = '[My Feature] Load Request',
-    LOAD_SUCCESS   = '[My Feature] Load Success',
-    LOAD_FAILURE   = '[My Feature] Load Failure',
-    LOAD_UPDATE  = '[My Feature] Load Update',
+    LOAD_REQUEST  = '[User Auth] Load Request',
+    LOAD_SUCCESS   = '[User Auth] Load Success',
+    LOAD_FAILURE   = '[User Auth] Load Failure',
+    LOAD_UPDATE  = '[User Auth] Load Update',
     LOGOUT = 'Logout',
   }
 
