@@ -1,0 +1,28 @@
+@import './variable';
+
+// Prime nd Tabs scss
+.p-tabview {
+    .p-tabview-nav-container {
+        .p-tabview-nav-content {
+            .p-tabview-nav {
+                border-color: #f0f0f0;
+                column-gap: 12px !important;
+
+                li {
+                    a {
+                        color: #808080;
+                        font-weight: 400;
+                        padding: 0.7rem 1rem;
+                    }
+
+                    &.p-highlight {
+                        a {
+                            color: $primary-color;
+                            border-color: $primary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

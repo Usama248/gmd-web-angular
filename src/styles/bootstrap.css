@@ -1641,6 +1641,9 @@ fieldset {
 .font-weight-500{
   font-weight: 500 !important;
 }
+.text-dark {
+  color: #343a40!important;
+}
 .text-white{
   color: white !important;
 }

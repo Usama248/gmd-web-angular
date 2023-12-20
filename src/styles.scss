@@ -6,6 +6,8 @@
 @import "primeng/resources/themes/saga-green/theme.css";
 @import "primeng/resources/primeng.css";
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap');
+@import "primeicons/primeicons.css";
+@import "./styles/primeng-overwrite";
 
 .btn.btn-rounded,
 a:link.btn.btn-rounded {
@@ -38,4 +40,44 @@ p {
     min-height: 1px;
     display: flex;
     flex-direction: column;
+}
+
+.gmd-main-card {
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 22px;
+    min-height: 106px;
+    background: #fff;
+    border: 1px solid #edf2f9;
+    box-shadow: 2px 2px 30px -7px rgb(0 0 0 / 5%);
+    display: block;
+}
+
+// gmd form global scss 
+.gmd-form-group {
+    text-align: left;
+    margin-bottom: 1rem;
+
+    .gmd-form-label {
+        font-size: 13px;
+        color: #343434;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .gmd-form-input {
+        height: 35px;
+        font-size: 13px;
+        border-radius: 6px;
+        color: #343434;
+        padding-top: 4px;
+        border: 1px solid #d9d9d9;
+        display: block;
+        width: 100%;
+
+        &:focus {
+            border-color: $primary-color;
+            box-shadow: none;
+        }
+    }
 }

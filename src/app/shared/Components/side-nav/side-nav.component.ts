@@ -12,8 +12,8 @@ import { SidebarService } from '../../services/sidebar.service';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements AfterViewInit {
-showNav:boolean = true
-  constructor(private sideNavService:SidebarService) {
+  showNav: boolean = true
+  constructor(private sideNavService: SidebarService) {
     this.sideNavService.onShowNav().subscribe(x => this.showNav = x)
 
   }
@@ -21,79 +21,79 @@ showNav:boolean = true
 
   }
 
-showResource:boolean = false
+  showResource: boolean = false
   navitem: any[] = [
     {
-      icon:``,
-      route:"/clinic-dashboard",
+      icon: `pi pi-home`,
+      route: "/clinic-dashboard",
       name: "Dashboard",
-      subnav:[
+      subnav: [
 
       ]
     },
     {
-      icon:"pi pi-user-plus",
-      route:"/physicians",
+      icon: "pi pi-user-plus",
+      route: "/physicians",
       name: "Physicians",
-      subnav:[
+      subnav: [
 
       ]
     },
     {
-      icon:"pi pi-comments",
-      route:"/conversation",
+      icon: "pi pi-comments",
+      route: "/conversation",
       name: "Conversations",
-      subnav:[
+      subnav: [
 
       ]
     },
     {
-      icon:"pi pi-file",
-      route:null,
+      icon: "pi pi-file",
+      route: null,
       name: "Documents",
-      subnav:[
+      subnav: [
         {
-          icon:"pi pi-file-import",
-          route:"/chart-review",
+          icon: "pi pi-file-import",
+          route: "/chart-review",
           name: "Chart Review",
 
         },
         {
-          icon:"pi pi-chart-bar",
-          route:"/document",
+          icon: "pi pi-chart-bar",
+          route: "/document",
           name: "Document",
         },
       ]
     },
 
     {
-      icon:"pi pi-users",
-      route:"/users",
+      icon: "pi pi-users",
+      route: "/users",
       name: "Manage Users",
-      subnav:[
+      subnav: [
 
       ]
     },
     {
-      icon:"pi pi-file",
-      route:null,
+      icon: "pi pi-file",
+      route: null,
       name: "Billing Details",
-      subnav:[
+      subnav: [
         {
-          icon:"pi pi-chart-pie",
-          route:"/billing",
+          icon: "pi pi-chart-pie",
+          route: "/billing",
           name: "Billing Dashboard",
 
         },
         {
-          icon:"pi pi-id-card",
-          route:"/subscription",
+          icon: "pi pi-id-card",
+          route: "/subscription",
           name: "Subscriptions",
 
         },
         {
-          icon:"pi-credit-card pi",
-          route:"/payment",
+          icon: "pi-credit-card pi",
+          route: "/payment",
           name: "Payment Due",
 
         },
@@ -101,20 +101,20 @@ showResource:boolean = false
     },
 
     {
-      icon:"pi pi-bell ",
-      route:"/notification",
+      icon: "pi pi-bell ",
+      route: "/notification",
       name: "Notifications",
-      subnav:[
+      subnav: [
 
       ]
     },
 
   ]
-  showsub:any = -1;
-  showSubmenu(e:any){
-    this.showsub == e ? this.showsub =-1 : this.showsub = e
+  showsub: any = -1;
+  showSubmenu(e: any) {
+    this.showsub == e ? this.showsub = -1 : this.showsub = e
   }
-  togglePopup(){
+  togglePopup() {
     this.showResource = !this.showResource
   }
 }

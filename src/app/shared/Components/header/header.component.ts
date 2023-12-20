@@ -6,25 +6,33 @@ import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { SidebarService } from '../../services/sidebar.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, MenubarModule, MenuModule, ButtonModule],
+  imports: [CommonModule, MenubarModule, MenuModule, ButtonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-showsideNav:boolean  = true;
-  constructor(private sidebarService:SidebarService, private authService: AuthService){}
+  showsideNav: boolean = true;
+  constructor(private sidebarService: SidebarService, private authService: AuthService) { }
   notificationDropdown: boolean = false;
   items: MenuItem[] | undefined;
   noti: MenuItem[] | undefined;
   ngOnInit(): void {
     this.items = [
       {
+        label: 'Profile',
+        icon: 'pi pi-user',
+        routerLink: '/profile-main',
+        name: 'Profile'
+
+      },
+      {
         label: 'Logout',
-        icon: 'pi pi-refresh',
+        icon: 'pi pi-sign-out',
         command: () => this.authService.logout()
       },
       {
@@ -39,18 +47,18 @@ showsideNav:boolean  = true;
 
     ];
   }
-  showNotificationDropdown(e:Event) {
+  showNotificationDropdown(e: Event) {
     e.stopPropagation();
     this.notificationDropdown = !this.notificationDropdown
   }
-  stopPropogate(e:Event){
+  stopPropogate(e: Event) {
     e.stopPropagation();
   }
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     this.notificationDropdown = false
   }
-  toggleSidenav(){
+  toggleSidenav() {
     this.showsideNav = !this.showsideNav
     this.sidebarService.showNav(this.showsideNav)
   }
