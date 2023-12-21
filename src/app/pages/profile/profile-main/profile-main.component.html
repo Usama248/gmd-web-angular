@@ -29,6 +29,18 @@
 
                                         <div class="col-md-12">
                                             <div class="gmd-form-group">
+                                                <label class="gmd-form-label" for="">Lab Alert Secret Key</label>
+                                                <div class="d-flex">
+                                                    <input
+                                                        class="gmd-form-input border-top-right-0 border-bottom-right-0"
+                                                        placeholder="Lab Alert Secret Key" type="text" pInputText />
+                                                    <button class="profileGenerateBtn rounded-0">Generate Key</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="gmd-form-group">
                                                 <label class="gmd-form-label" for="">Equi life API Key</label>
                                                 <input class="gmd-form-input" placeholder="Equi life API Key"
                                                     type="text" pInputText />
@@ -66,6 +78,10 @@
                                                     pInputText />
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12 text-right">
+                                            <p-button label="Save Changes" class="gmd-primary-btn"></p-button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -74,14 +90,50 @@
                 </div>
             </p-tabPanel>
             <p-tabPanel header="Change Password">
-                <p>
-                    Change Password
-                </p>
+                <form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="gmd-form-group">
+                                <label class="gmd-form-label" for="">Current Password</label>
+                                <input class="gmd-form-input" placeholder="Enter current password" type="password"
+                                    pInputText />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="gmd-form-group">
+                                <label class="gmd-form-label" for="">New Password</label>
+                                <input class="gmd-form-input" placeholder="Enter new password" type="password"
+                                    pInputText />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="gmd-form-group">
+                                <label class="gmd-form-label" for="">Verify Password</label>
+                                <input class="gmd-form-input" placeholder="Enter verify password" type="password"
+                                    pInputText />
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-right">
+                            <p-button label="Save Changes" class="gmd-primary-btn"></p-button>
+                        </div>
+                    </div>
+                </form>
             </p-tabPanel>
             <p-tabPanel header="Verify Number">
-                <p>
-                    Verify Number
-                </p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="gmd-form-group">
+                            <label class="gmd-form-label font-16" for="">Mobile Number</label>
+                            <input class="gmd-form-input" placeholder="056-786-9999" type="password" pInputText />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-right">
+                        <p-button label="Verify Number" class="gmd-primary-btn"></p-button>
+                    </div>
+                </div>
             </p-tabPanel>
             <p-tabPanel header="Agreements">
                 <p>

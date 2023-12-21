@@ -10,26 +10,33 @@ import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 import { LoaderComponent } from '../loader/loader.component';
+import { MessagesModule } from 'primeng/messages';
+import { Message } from 'primeng/api';
+
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent, ToastModule, SideNavComponent,LoaderComponent],
+  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent, ToastModule, SideNavComponent, LoaderComponent, MessagesModule],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   providers: [SignalrNotificationService]
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-  showNav:boolean = true;
+  showNav: boolean = true;
   isLoading = false;
-  constructor(private injector: Injector, private loader: LoaderService, 
-    private notificationService: SignalrNotificationService, 
-    private navService:SidebarService, private authRepo: AuthRepository) {
-    this.navService.onShowNav().subscribe(x => this.showNav =x)
-     this.listenToLoading();
-   }
+  messages: Message[] = [];
+  constructor(private injector: Injector, private loader: LoaderService,
+    private notificationService: SignalrNotificationService,
+    private navService: SidebarService, private authRepo: AuthRepository) {
+    this.navService.onShowNav().subscribe(x => this.showNav = x)
+    this.listenToLoading();
+  }
   ngOnInit(): void {
     this.getUserData();
+    this.messages = [
+      { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
+    ];
   }
   listenToLoading(): void {
     effect(() => {
@@ -40,8 +47,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.notificationService.closeConnection();
   }
   getUserData() {
-   this.authRepo.getLoginUserData(false).subscribe(res => {
-     console.log(res);
-   });
+    this.authRepo.getLoginUserData(false).subscribe(res => {
+      console.log(res);
+    });
   }
 }

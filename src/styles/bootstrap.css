@@ -1647,8 +1647,26 @@ fieldset {
 .text-white{
   color: white !important;
 }
+.rounded-circle {
+  border-radius: 100%;
+}
+.rounded-0 {
+  border-radius: 0 !important;
+}
 .border-right{
   border-right: 1px solid #e1e4e6 !important;
+}
+.border-top-left-0 {
+  border-top-left-radius: 0 !important;
+}
+.border-bottom-left-0 {
+  border-bottom-left-radius: 0 !important;
+}
+.border-top-right-0 {
+  border-top-right-radius: 0 !important;
+}
+.border-bottom-right-0 {
+  border-bottom-right-radius: 0 !important;
 }
 .bg-white{
   background-color: white !important;

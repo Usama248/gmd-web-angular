@@ -1,10 +1,16 @@
 <header class="header">
   <div class="d-flex align-items-center justify-content-between w-100">
     <div class="d-flex align-items-center gap-5">
-      <img src="https://uat-portal.guardian-md.com/assets/media/logos/gmd-logo.png" height="40" class="mr-2 p-1" />
+      <div class="logo-div"><img src="https://uat-portal.guardian-md.com/assets/media/logos/gmd-logo.png" height="40"
+          class="mr-2 p-1" />
+      </div>
       <p-button icon="pi pi-align-right" (click)="toggleSidenav()" class="square" [text]="true"
         severity="secondary "></p-button>
-
+      <div class="top-alert d-none d-md-block">
+        <div class="card">
+          <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+        </div>
+      </div>
     </div>
     <div class="d-flex gap-3 align-items-center">
       <span class="position-relative pointer mr-3">
@@ -46,7 +52,7 @@
 
         <div class="d-flex align-items-center">
           <span class="font-14">{{this.loginUserData?.userName}}</span>
-          <span><i class="pi pi-angle-right pl-2" style="color: #708090"></i></span>
+          <span class="profileArrow"><i class="pi pi-angle-right pl-2" style="color: #708090"></i></span>
         </div>
         <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
       </div>
@@ -54,4 +60,4 @@
   </div>
 </header>
 
-<p-menu #menu [model]="items" [popup]="true"></p-menu>
+<p-menu #menu [model]="items" class="profileDropdown" [popup]="true"></p-menu>

@@ -10,6 +10,7 @@
   border-left: solid #dee2e6 !important;
   transition: .3s ease-in-out all;
   transform: translateX(0);
+  overflow: auto;
 
   &.slide-back {
     transform: translateX(-300px);
@@ -24,7 +25,7 @@
         .menu-link {
           display: flex;
           align-items: center;
-          justify-content: start;
+          justify-content: left;
           color: #575757 !important;
           border-right: 3px solid transparent !important;
           padding: 10px 8px 10px 16px;
@@ -33,7 +34,7 @@
           display: flex;
           gap: 10px;
           height: 41px;
-
+          cursor: pointer;
 
           &.active {
             background: #83c6e74c;
@@ -52,15 +53,18 @@
           height: 100%;
           transition: .3s ease-in-out all;
           padding-left: 1rem;
+          list-style: none;
         }
 
         &.show {
-          .submenu {
-            max-height: 200px;
+          .menu-link {
+            .rotateArrow {
+              transform: rotate(90deg);
+            }
           }
 
-          .rotateArrow {
-            transform: rotate(90deg);
+          .submenu {
+            max-height: 200px;
           }
         }
       }
