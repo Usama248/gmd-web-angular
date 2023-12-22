@@ -46,3 +46,22 @@
         box-shadow: none;
     }
 }
+
+.notificationBtn {
+    button {
+        box-shadow: none;
+        background-color: transparent !important;
+        padding-top: 10px;
+
+        i {
+            font-size: 20px;
+
+            .p-badge {
+                background-color: $primary-color;
+                color: white;
+                border-radius: 3px !important;
+                font-size: 10px;
+            }
+        }
+    }
+}

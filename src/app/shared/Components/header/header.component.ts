@@ -10,11 +10,12 @@ import { AuthRepository } from 'src/app/services/auth-service/auth.repository';
 import { UserProfileModel } from 'src/app/models/user/user-profile.model';
 import { RouterModule } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
+import { BadgeModule } from 'primeng/badge';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, MenubarModule, MenuModule, ButtonModule, RouterModule, MessagesModule],
+  imports: [CommonModule, MenubarModule, MenuModule, ButtonModule, RouterModule, MessagesModule, BadgeModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

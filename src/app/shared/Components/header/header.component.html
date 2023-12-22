@@ -14,8 +14,9 @@
     </div>
     <div class="d-flex gap-3 align-items-center">
       <span class="position-relative pointer mr-3">
-        <p-button (click)="showNotificationDropdown($event)" severity="secondary " icon="pi pi-bell" [rounded]="true"
-          [text]="true">
+        <p-button (click)="showNotificationDropdown($event)" class="notificationBtn" severity="secondary"
+          [rounded]="true" [text]="true">
+          <i class="pi pi pi-bell" pBadge value="2"></i>
         </p-button>
 
         <div class="notification " (click)="stopPropogate($event)" [ngClass]="notificationDropdown?'show':''">

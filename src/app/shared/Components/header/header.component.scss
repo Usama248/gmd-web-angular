@@ -37,6 +37,11 @@
   .single-notification {
     border-bottom: 1px solid #dee2e6;
     padding: 10px;
+    transition: .3s ease-in-out all;
+
+    &:hover {
+      background-color: #fafafa;
+    }
   }
 
   .notification-title {
