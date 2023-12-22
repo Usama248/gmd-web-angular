@@ -31,12 +31,12 @@
   overflow: hidden;
   right: -10px;
   width: 300px;
-  top: 61px;
+  top: 40px;
   z-index: 100;
 
   .single-notification {
     border-bottom: 1px solid #dee2e6;
-    padding: .6rem .8rem;
+    padding: 10px;
   }
 
   .notification-title {
@@ -64,6 +64,19 @@
     color: rgb(87, 87, 87);
     font-family: sans-serif;
     line-height: 1.4;
+
+    p {
+      line-height: 1.4;
+    }
+  }
+}
+
+.profileIcon {
+  transform: rotate(0deg);
+  transition: .3s ease-in-out all;
+
+  &.profileArrow {
+    transform: rotate(90deg);
   }
 }
 

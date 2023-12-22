@@ -19,24 +19,26 @@
         </p-button>
 
         <div class="notification " (click)="stopPropogate($event)" [ngClass]="notificationDropdown?'show':''">
-          <h4 class="notification-title fw-3 fs-5">Notification</h4>
+          <h4 class="notification-title font-18 p-2 mb-0">Notification</h4>
           <div class="flex flex-column ">
-            <div class="d-flex gap-2 single-notification">
+            <div class="d-flex gap-2 single-notification align-items-center">
               <div class="icon">
-                <span class="pi pi-apple"></span>
+                <span class="pi pi-file"></span>
               </div>
-              <div class="text-wraper">
-                <p class="m-0 fs-2">I totally would go full with and what I mean with full is the whole . </p>
-                <p class="fs-2 m-0 text-muted">about 35 min</p>
+              <div class="text-wraper pl-2">
+                <p class="m-0 font-13 font-weight-500">I totally would go full with and what I mean with full is the
+                  whole . </p>
+                <p class="fs-2 m-0 text-muted font-12">about 35 min</p>
               </div>
             </div>
-            <div class="d-flex gap-2 single-notification">
+            <div class="d-flex gap-2 single-notification align-items-center">
               <div class="icon">
-                <span class="pi pi-apple"></span>
+                <span class="pi pi-file"></span>
               </div>
-              <div class="text-wraper">
-                <p class="m-0 fs-2">I totally would go full with and what I mean with full is the whole . </p>
-                <p class="fs-2 m-0 text-muted">about 35 min</p>
+              <div class="text-wraper pl-2">
+                <p class="m-0 font-13 font-weight-500">I totally would go full with and what I mean with full is the
+                  whole . </p>
+                <p class="fs-2 m-0 text-muted font-12">about 35 min</p>
               </div>
             </div>
             <div class="text-center">
@@ -48,11 +50,12 @@
       </span>
       <span class="v-hr"></span>
 
-      <div class="d-flex flex-column pointer pl-3" (click)="menu.toggle($event)">
+      <div class="d-flex flex-column pointer pl-3" (click)="menu.toggle($event);Profileicon = !Profileicon">
 
         <div class="d-flex align-items-center">
           <span class="font-14">{{this.loginUserData?.userName}}</span>
-          <span class="profileArrow"><i class="pi pi-angle-right pl-2" style="color: #708090"></i></span>
+          <span class="{{Profileicon?'profileIcon profileArrow':'profileIcon'}}"><i class="pi pi-angle-right pl-2"
+              style="color: #708090"></i></span>
         </div>
         <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
       </div>

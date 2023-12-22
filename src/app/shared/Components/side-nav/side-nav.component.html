@@ -43,12 +43,13 @@
     </ul>
 
 
-    <div class="gmd-resource-Container " [ngClass]="showResource?'':'isClose'" id="resoursePopupWrap">
+    <div class="gmd-resource-Container" [ngClass]="showResource ? '' : 'isClose'" id="resoursePopupWrap">
       <div class="gmd-resource-card" id="cardAnimation">
         <div class="gmd-resource-header">
           <div class="d-flex justify-content-between align-items-center">
             <h2 id="TextAnimate" class="textLeftToRight text-white greeting ellipsis-one m-0">Hi ! Ahad clinic</h2>
-            <p-button (click)="togglePopup()" [rounded]="true" [text]="true" severity="secondary " icon="pi-times pi">
+            <p-button (click)="togglePopup()" class="closeBtn" [rounded]="true" [text]="true" severity="secondary "
+              icon="pi-times pi">
 
             </p-button>
           </div>

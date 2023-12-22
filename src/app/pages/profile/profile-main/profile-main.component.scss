@@ -1,3 +1,5 @@
+@import '../../../../styles/variable';
+
 .profileGenerateBtn {
     border-color: #edf2f9;
     border: 1px solid #81A143;
@@ -8,4 +10,6 @@
     color: white;
     white-space: nowrap;
     cursor: pointer;
+    font-family: $primary-font;
+
 }

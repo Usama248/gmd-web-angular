@@ -26,11 +26,12 @@ export class HeaderComponent implements OnInit {
   isClinic: boolean = false;
   items: MenuItem[] | undefined;
   noti: MenuItem[] | undefined;
+  Profileicon: boolean = false;
 
   messages: Message[] = [];
   ngOnInit(): void {
     this.messages = [
-      { severity: 'warn', summary: 'ATTENTION:', detail: 'You have not registered any clinical users (Standard or Advanced users) under this account.' },
+      { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
     ];
     this.items = [
       {
