@@ -1,79 +1,66 @@
-<div class="gmd-card card-common-bg p-3 h-100">
+<div class="card-common-bg p-4 h-100">
   <div class="gmd-card-header">
     <h3 class="text-left font-18 font-weight-500">Physician Requests
     </h3>
   </div>
   <div class="gmd-card-body">
-        <!-- [loading]="loading" [lazy]="true" (onLazyLoad)="loadProducts($event)" [customSort]="true" (sortFunction)="customSort($event)" -->
-        <p-table class="table gmd-table"
-        #dt2
-        [value]="clinicianRequests"
-        dataKey="id"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['PhysicianName', 'CreatedDate', 'AssignedRoles','AssignmentType', 'Status']"
-        [tableStyle]="{ 'min-width': '75rem' }"
-        >
+    <!-- [loading]="loading" [lazy]="true" (onLazyLoad)="loadProducts($event)" [customSort]="true" (sortFunction)="customSort($event)" -->
+    <p-table class="table gmd-table" #dt2 [value]="clinicianRequests" dataKey="id" [rows]="10"
+      [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="['PhysicianName', 'CreatedDate', 'AssignedRoles','AssignmentType', 'Status']"
+      [tableStyle]="{ 'min-width': '75rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="clinicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
+          <th pSortableColumn="createdDate">Created Date <p-sortIcon field="code"></p-sortIcon></th>
+          <th pSortableColumn="csRoles">Assigned Roles <p-sortIcon field="code"></p-sortIcon></th>
+          <th pSortableColumn="physicianAssignmentType">Assignment Type <p-sortIcon field="code"></p-sortIcon></th>
+          <th pSortableColumn="status">Status <p-sortIcon field="code"></p-sortIcon></th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <th>
+            <p-columnFilter type="text" field="clinicianName"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="date" field="createdDate"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="csRoles"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="physicianAssignmentType"></p-columnFilter>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="status"></p-columnFilter>
+          </th>
+          <th>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-physicianRequest>
+        <tr>
+          <td>{{ physicianRequest.clinicianName }}</td>
+          <td>
+            {{ physicianRequest.createdDate | date: 'MM/dd/yyyy' }}
 
-          <ng-template pTemplate="header">
-              <tr>
-                  <th pSortableColumn="clinicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="createdDate">Created Date  <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="csRoles">Assigned Roles <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="physicianAssignmentType">Assignment Type <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="status">Status <p-sortIcon field="code"></p-sortIcon></th>
-                  <th>Action</th>
-              </tr>
-              <tr>
-                <th>
-                  <p-columnFilter type="text" field="clinicianName"></p-columnFilter>
-              </th>
-              <th>
-                  <p-columnFilter type="date" field="createdDate"></p-columnFilter>
-              </th>
-              <th>
-                  <p-columnFilter type="text" field="csRoles"></p-columnFilter>
-              </th>
-              <th>
-                  <p-columnFilter type="text" field="physicianAssignmentType"></p-columnFilter>
-              </th>
-              <th>
-                <p-columnFilter type="text" field="status"></p-columnFilter>
-              </th>
-              <th>
-              </th>
-              </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-physicianRequest>
-              <tr>
-                  <td>{{ physicianRequest.clinicianName }}</td>
-                  <td>
-                    {{ physicianRequest.createdDate  | date: 'MM/dd/yyyy' }}
-
-                  </td>
-                  <td>
-                    <div *ngFor="let role of getRoles(physicianRequest.csRoles, ',')" class="mb-1">
-                    <p-tag [value]="role" severity="info"></p-tag>
-                  </div>                 
-                </td>
-                  <td>
-                    <div class="">
-                      {{ physicianRequest.physicianAssignmentType }}
-                    </div>
-                  </td>
-                  <td>{{ physicianRequest.status }}</td>
-                  <td><p-button label="success" [rounded]="true" [outlined]="true" severity="success" label="Action" iconPos="right" icon="pi-angle-down pi"></p-button></td>
-              </tr>
-          </ng-template>
-      </p-table>
+          </td>
+          <td>
+            <div *ngFor="let role of getRoles(physicianRequest.csRoles, ',')" class="mb-1">
+              <p-tag [value]="role" severity="info"></p-tag>
+            </div>
+          </td>
+          <td>
+            <div class="">
+              {{ physicianRequest.physicianAssignmentType }}
+            </div>
+          </td>
+          <td>{{ physicianRequest.status }}</td>
+          <td><p-button label="success" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
+              severity="success" label="Action" iconPos="right" icon="pi-angle-down pi"></p-button></td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
-
-
-
-
-
-

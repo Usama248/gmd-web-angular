@@ -1,11 +1,16 @@
 .header {
   border-bottom: 1px solid #dee2e6 !important;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   position: relative;
   background-color: white;
 
   .logo-div {
-    min-width: 220px;
+    max-width: 220px;
+    width: 100%;
+  }
+
+  .userDropdownMain {
+    width: max-content;
   }
 }
 

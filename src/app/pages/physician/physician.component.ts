@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableLazyLoadEvent, TableModule } from 'primeng/table';
+import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { SortEvent } from 'primeng/api';
 import { ClinicianRequestStatusService } from 'src/app/services/clinician-request-status-service/clinician-request-status.service';
@@ -16,19 +16,22 @@ import { ClinicianRequestStatusRepository } from 'src/app/services/clinician-req
   styleUrls: ['./physician.component.scss']
 })
 export class PhysicianComponent implements OnInit, AfterViewInit {
-  constructor(private clinicianRequestStatusService: ClinicianRequestStatusService) {}
-  ngAfterViewInit(): void {
- 
+  clear(_t12: Table) {
+    throw new Error('Method not implemented.');
   }
-  clinicianRequests! : ClinicianRequestStatusModel[];
+  constructor(private clinicianRequestStatusService: ClinicianRequestStatusService) { }
+  ngAfterViewInit(): void {
+
+  }
+  clinicianRequests!: ClinicianRequestStatusModel[];
   loading = false;
   ngOnInit(): void {
-   this.loading = true;
-   this.clinicianRequestStatusService.getAllClinicianRequests().subscribe(res => {
-    this.clinicianRequests = res.data;
-    this.clinicianRequests.forEach((clinicianRequest) => (clinicianRequest.createdDate = new Date(clinicianRequest.createdDate)));
-    this.loading = false;
-   })
+    this.loading = true;
+    this.clinicianRequestStatusService.getAllClinicianRequests().subscribe(res => {
+      this.clinicianRequests = res.data;
+      this.clinicianRequests.forEach((clinicianRequest) => (clinicianRequest.createdDate = new Date(clinicianRequest.createdDate)));
+      this.loading = false;
+    })
   }
 
   customSort(event: SortEvent) {
@@ -52,8 +55,8 @@ export class PhysicianComponent implements OnInit, AfterViewInit {
     // this.products = this.productsData;
     setTimeout(() => {
       this.clinicianRequests = this.clinicianRequests.slice(event.first);
-      if(event.sortField) {
-        this.clinicianRequests = this.clinicianRequests.sort((a : any, b: any) => a.PhysicianName.localeCompare(b.PhysicianName));
+      if (event.sortField) {
+        this.clinicianRequests = this.clinicianRequests.sort((a: any, b: any) => a.PhysicianName.localeCompare(b.PhysicianName));
       }
       this.loading = false;
       // this.total = this.productsData.length;

@@ -1,12 +1,11 @@
 <header class="header">
   <div class="d-flex align-items-center justify-content-between w-100">
-    <div class="d-flex align-items-center gap-5">
-      <div class="logo-div"><img src="https://uat-portal.guardian-md.com/assets/media/logos/gmd-logo.png" height="40"
-          class="mr-2 p-1" />
+    <div class="d-flex align-items-center gap-5 w-100">
+      <div class="logo-div"><img src="../../../../assets/images/GMD-blue.png" height="40" class="mr-2 p-1" />
       </div>
       <p-button icon="pi pi-align-right" (click)="toggleSidenav()" class="square" [text]="true"
         severity="secondary "></p-button>
-      <div class="top-alert d-none d-md-block">
+      <div class="top-alert d-none d-md-block py-2">
         <div class="card">
           <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
         </div>
@@ -51,7 +50,8 @@
       </span>
       <span class="v-hr"></span>
 
-      <div class="d-flex flex-column pointer pl-3" (click)="menu.toggle($event);Profileicon = !Profileicon">
+      <div class="d-flex flex-column pointer pl-3 userDropdownMain"
+        (click)="menu.toggle($event);Profileicon = !Profileicon">
 
         <div class="d-flex align-items-center">
           <span class="font-14">{{this.loginUserData?.userName}}</span>

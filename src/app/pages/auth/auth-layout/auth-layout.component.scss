@@ -1,3 +1,5 @@
+@import "../../../../styles/variable";
+
 .gmd-login-main {
   .login-back-design {
     position: absolute;
@@ -21,7 +23,7 @@
         position: absolute;
         width: 300px;
         height: 35px;
-        background: #7D9B41;
+        background: $primary-color;
         z-index: 4;
         bottom: 0;
         right: 0;
@@ -32,7 +34,7 @@
         position: absolute;
         width: 300px;
         height: 35px;
-        background: #81a143ad;
+        background: $primary-color;
         z-index: 4;
         bottom: -36px;
         left: 0;
@@ -107,9 +109,9 @@
               }
 
               .input-group-span {
-                svg {
+                span {
                   position: absolute;
-                  top: 14px;
+                  top: 12px;
                   left: 7.8px;
                 }
 
@@ -124,12 +126,12 @@
             .login-footer {
               button {
                 width: 100%;
-                background: #7D9B41;
+                background: $primary-color;
 
                 &:hover,
                 &:focus {
-                  background: #7D9B41;
-                  border-color: #7D9B41;
+                  background: $primary-color;
+                  border-color: $primary-color;
                   box-shadow: unset;
                 }
               }

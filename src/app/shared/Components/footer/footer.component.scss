@@ -1,3 +1,5 @@
+@import '../../../../styles/variable';
+
 .gmd-portal-footer {
     padding: 10px;
     box-shadow: 0px 0px 0px 1px #dcdcdc87;
@@ -8,7 +10,7 @@
         -webkit-box-align: center;
         align-items: center;
         border-radius: 35px;
-        background-color: #81A143;
+        background-color: $primary-color;
         box-shadow: none;
         color: rgb(255, 255, 255) !important;
         z-index: 1;
