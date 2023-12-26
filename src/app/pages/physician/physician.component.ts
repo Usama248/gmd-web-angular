@@ -16,7 +16,7 @@ import { ClinicianRequestStatusRepository } from 'src/app/services/clinician-req
   styleUrls: ['./physician.component.scss']
 })
 export class PhysicianComponent implements OnInit, AfterViewInit {
-  constructor(private clinicianRequestStatusRepository: ClinicianRequestStatusRepository) {}
+  constructor(private clinicianRequestStatusService: ClinicianRequestStatusService) {}
   ngAfterViewInit(): void {
  
   }
@@ -24,8 +24,8 @@ export class PhysicianComponent implements OnInit, AfterViewInit {
   loading = false;
   ngOnInit(): void {
    this.loading = true;
-   this.clinicianRequestStatusRepository.getClinicianRequestStatusData().subscribe(res => {
-    this.clinicianRequests = [...res];
+   this.clinicianRequestStatusService.getAllClinicianRequests().subscribe(res => {
+    this.clinicianRequests = res.data;
     this.clinicianRequests.forEach((clinicianRequest) => (clinicianRequest.createdDate = new Date(clinicianRequest.createdDate)));
     this.loading = false;
    })
