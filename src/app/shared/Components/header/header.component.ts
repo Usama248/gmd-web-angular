@@ -5,12 +5,12 @@ import { MenuModule } from 'primeng/menu';
 import { MenuItem, Message } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { SidebarService } from '../../services/sidebar.service';
-import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { AuthRepository } from 'src/app/services/auth-service/auth.repository';
 import { UserProfileModel } from 'src/app/models/user/user-profile.model';
 import { RouterModule } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
 import { BadgeModule } from 'primeng/badge';
+import { NotificationRepository } from 'src/app/services/notificaition-service/notification-repository';
 
 @Component({
   selector: 'app-header',
@@ -22,15 +22,27 @@ import { BadgeModule } from 'primeng/badge';
 export class HeaderComponent implements OnInit {
   showsideNav: boolean = true;
   loginUserData: UserProfileModel | undefined;
-  constructor(private sidebarService: SidebarService, private authRepository: AuthRepository) { }
+  constructor(private sidebarService: SidebarService, private authRepository: AuthRepository,private notificationRepo: NotificationRepository) { }
   notificationDropdown: boolean = false;
   isClinic: boolean = false;
   items: MenuItem[] | undefined;
   noti: MenuItem[] | undefined;
   Profileicon: boolean = false;
+  totalNotifications = "0";
 
   messages: Message[] = [];
   ngOnInit(): void {
+    this.notificationRepo.getUserNotificationsCount().subscribe({
+      next: res =>  {
+        if (res > 100)
+        {
+          this.totalNotifications = "100+";
+        } else {
+          this.totalNotifications = res.toString();
+        }
+    }, error: err => {
+    }
+    })
     this.messages = [
       { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
     ];
@@ -68,5 +80,14 @@ export class HeaderComponent implements OnInit {
   toggleSidenav() {
     this.showsideNav = !this.showsideNav
     this.sidebarService.showNav(this.showsideNav)
+  }
+  getLatesttNotifications() {
+    this.notificationRepo.getLatestNotifications().subscribe({
+      next: res => {
+       
+      },
+      error: err => {
+      }
+    })
   }
 }

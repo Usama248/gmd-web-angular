@@ -6,6 +6,7 @@ import { ClinicService } from 'src/app/services/clinic-service/clinic.service';
 import { ClinicDashboardModel } from 'src/app/models/clinic/clinic-dashboard-model';
 import { TagModule } from 'primeng/tag';
 import { ClinicianDocumentsEnumNames, ClinicianDocumentsEnumTagColors } from 'src/app/enums/clinician-documents-enum';
+import { ClinicianRequestStatusNames, ClinicianRequestStatusTagColors } from 'src/app/enums/clinician-request-status-enum';
 
 @Component({
   selector: 'app-clinic-dashboard',
@@ -18,6 +19,8 @@ export class ClinicDashboardComponent implements OnInit {
   dashboardData : ClinicDashboardModel | undefined;
   CLINICIAN_DODUMENTS_ENUM_NAMES$ = ClinicianDocumentsEnumNames;
   CLINICIAN_DODUMENTS_ENUM_COLORS$ = ClinicianDocumentsEnumTagColors;
+  CLINICIAN_REQUEST_STATUS_ENUM_NAMES$ = ClinicianRequestStatusNames;
+  CLINICIAN_REQUEST_STATUS_ENUM_COLORS$ = ClinicianRequestStatusTagColors;
 
   constructor(private clinicService: ClinicService) {
      this.clinicService.getClinicDashboardData().subscribe({

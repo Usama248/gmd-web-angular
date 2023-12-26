@@ -1,22 +1,27 @@
 import { ActionReducerMap, createSelector } from "@ngrx/store";
 import  * as fromUser from "./user-reducer";
 import  * as fromClinicRequestStatus from "./clinic-request-status-reducer";
+import * as fromNotificationState from "./notificaation-reducer";
 
 //stores
 export interface RootReducerState {
   userProfileStore: fromUser.UserDataState
   clinicianRequestStatusStore: fromClinicRequestStatus.ClinicianRequestStatusState
+  notificationStore: fromNotificationState.NotificationState
 };
 
 //reducers
 export const rootReducer: ActionReducerMap<RootReducerState> = {
   userProfileStore: fromUser.UserDataReducer,
-  clinicianRequestStatusStore : fromClinicRequestStatus.ClinicianRequestStatusReducer
+  clinicianRequestStatusStore : fromClinicRequestStatus.ClinicianRequestStatusReducer,
+  notificationStore: fromNotificationState.ClinicianRequestStatusReducer
 };
 
 // states
 export const getUserState =  (state: RootReducerState) => state.userProfileStore;
 export const getClinicianRequestStatusState = (state: RootReducerState) => state.clinicianRequestStatusStore;
+export const getNotificationState = (state: RootReducerState) => state.notificationStore;
+
 
 //selectors
 export const getUserLoading = createSelector(getUserState, fromUser.getLoading);
@@ -28,6 +33,11 @@ export const getClinicianRequestStatusLoading = createSelector(getClinicianReque
 export const getClinicianRequestStatusLoaded = createSelector(getClinicianRequestStatusState, fromClinicRequestStatus.getLoaded)
 export const getClinicianRequestStatusStoreData = createSelector(getClinicianRequestStatusState, fromClinicRequestStatus.getclinicianRequestStatusData)
 export const getClinicianRequestStatusError = createSelector(getClinicianRequestStatusState, fromClinicRequestStatus.getclinicianRequestStatusError)
+
+export const getNotificationLoading = createSelector(getNotificationState, fromNotificationState.getLoading)
+export const getNotificationLoaded = createSelector(getNotificationState, fromNotificationState.getLoaded)
+export const getNotificationCount = createSelector(getNotificationState, fromNotificationState.getNotificationCount)
+export const getNotificationError = createSelector(getNotificationState, fromNotificationState.getNotificationCountError)
 
 
 

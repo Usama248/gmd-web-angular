@@ -68,8 +68,6 @@
     </div>
   </div>
 
-
-
   <div class="row mt-4">
     <div class="col-lg-6">
       <div class="physian-request dashboard-card p-4">
@@ -93,7 +91,7 @@
                 </td>
                 <td>{{clinician.createdDate | date: 'MM/dd/yyyy'}}</td>
                 <td>
-                  Approved
+                  <p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(clinician.status)" [severity]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(clinician.status)"></p-tag>
                 </td>
               </tr>
             </tbody>
@@ -123,7 +121,7 @@
                 </td>
                 <td>{{doc.createdDate | date: 'MM/dd/yyyy'}}</td>
                 <td>
-                  <p-tag [value]="CLINICIAN_DODUMENTS_ENUM_NAMES$.get(doc.status)" [rounded]="true" [severity]="CLINICIAN_DODUMENTS_ENUM_COLORS$.get(doc.status)"></p-tag>
+                  <p-tag [value]="CLINICIAN_DODUMENTS_ENUM_NAMES$.get(doc.status)" [severity]="CLINICIAN_DODUMENTS_ENUM_COLORS$.get(doc.status)"></p-tag>
                 </td>
               </tr>
             </tbody>

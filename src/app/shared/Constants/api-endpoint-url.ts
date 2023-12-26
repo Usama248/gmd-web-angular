@@ -14,3 +14,8 @@ export const CLINICIAN_REQUEST_STATUS_API_ENDPOINTS = {
 export const CLINIC_API_ENDPOINTS = {
     GetDashboardForClinic: '/api/Clinic/GetDashboardForClinic',
 };
+
+export const NOTIFICATIONS_ENDPOINTS = {
+    GetCountOfNotification : "/api/Notification/GetCountOfNotification",
+    GetLastestUnReadNotifications: "api/Notification/GetLastestUnReadNotifications"
+}

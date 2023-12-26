@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SidebarService } from '../../services/sidebar.service';
 declare function FreshworksWidget(arg0: string): any;
 @Component({
@@ -14,7 +14,7 @@ declare function FreshworksWidget(arg0: string): any;
 export class SideNavComponent implements AfterViewInit {
   showNav: boolean = true
   window = window;
-  constructor(private sideNavService: SidebarService) {
+  constructor(private sideNavService: SidebarService, private router: Router) {
     this.sideNavService.onShowNav().subscribe(x => this.showNav = x)
 
   }
@@ -115,6 +115,12 @@ export class SideNavComponent implements AfterViewInit {
   showSubmenu(e: any) {
     this.showsub == e ? this.showsub = -1 : this.showsub = e
   }
+  hasMatchingRoute(subnav: []) {
+   var routes = subnav.map((x :any) => x.route);
+   return routes.some(x=> x == this.router.url) ;
+  }
+ 
+  
   togglePopup() {
     this.showResource = !this.showResource
   }

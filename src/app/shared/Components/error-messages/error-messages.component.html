@@ -1,69 +1,42 @@
 <small *ngIf="hasErrorWhenDirty('min')" class="p-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
     </span>
-    {{ displayName }} must be minimum {{ getErrorProperty('min',
-    'min') }}</small>
+    {{ displayName }} must be minimum {{ getErrorProperty('min','min') }}
+</small>
 <small *ngIf="hasErrorWhenDirty('max')" class="p-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
-    </span> {{ displayName }} must be maximum {{ getErrorProperty('max',
-    'max') }}</small>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
+    </span> {{ displayName }} must be maximum {{ getErrorProperty('max','max') }}
+</small>
 <small *ngIf="hasErrorWhenDirty('required')" class="p-error input-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
     </span>
     {{ displayName }} is required
 </small>
 <small *ngIf="hasErrorWhenDirty('email')" class="p-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
-    </span> {{ displayName }} must be a valid email</small>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
+    </span> {{ displayName }} must be a valid email
+</small>
 <small *ngIf="hasErrorWhenDirty('minlength')" class="p-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
-    </span> {{ displayName }} must be minimum {{getErrorProperty('minlength', 'requiredLength') }} characters</small>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
+    </span>{{ displayName }} must be minimum {{getErrorProperty('minlength', 'requiredLength') }} characters
+</small>
 <small *ngIf="hasErrorWhenDirty('maxlength')" class="p-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
-    </span> {{ displayName }} must be maximum {{ getErrorProperty('maxlength', 'requiredLength') }} characters</small>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
+    </span> {{ displayName }} must be maximum {{ getErrorProperty('maxlength', 'requiredLength') }} characters
+</small>
 <small *ngIf="hasErrorWhenDirty('pattern')" class="p-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
-    </span> {{ displayName }} must follow the pattern {{ getErrorProperty('pattern', 'requiredPattern') }} </small>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
+    </span> {{ displayName }} must follow the pattern {{ getErrorProperty('pattern', 'requiredPattern') }}
+ </small>
 <small *ngIf="hasErrorWhenDirty('null')" class="p-error">
     <span class="mr-1">
-        <svg aria-hidden="true" class="stUf5b qpSchb" fill="currentColor" focusable="false" width="16px" height="16px"
-            viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
-            </path>
-        </svg>
-    </span>{{ displayName }} must have a value </small>
+        <i class="pi pi-info-circle" style="font-size: 1rem"></i>
+    </span>{{ displayName }} must have a value 
+</small>

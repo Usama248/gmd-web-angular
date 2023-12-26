@@ -5,7 +5,7 @@
     <ul class="sidebar-ul mt-0">
       <ng-container *ngFor="let item of navitem;let i = index ">
 
-        <li class="menu-item pointer position-relative" [ngClass]="showsub ==i ? 'show':''">
+        <li class="menu-item pointer position-relative" [ngClass]="showsub == i || hasMatchingRoute(item.subnav) ? 'show':''">
           <a class="menu-link open-submenu pointer" (click)="showSubmenu(i)" [routerLink]="item.route"
             routerLinkActive="active">
             <span class="d-flex justify-content-between align-items-center w-100">
@@ -23,7 +23,7 @@
           <ng-container *ngIf="item.subnav.length > 0">
             <ul class="submenu " id="clinicDocu_4">
               <li class="menu-item" aria-haspopup="true" *ngFor="let sub of item.subnav">
-                <a [routerLink]="sub.route" class="menu-link d-flex gap-3">
+                <a [routerLink]="sub.route" class="menu-link d-flex gap-3"  routerLinkActive="active" >
                   <span [class]="sub.icon">
 
                   </span>
