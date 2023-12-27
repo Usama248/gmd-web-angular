@@ -1704,3 +1704,8 @@ fieldset {
     padding-right: 1.5rem!important;
 }
 }
+
+
+#launcher-frame {
+  bottom: -4px !important;
+}

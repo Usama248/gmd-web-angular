@@ -52,6 +52,7 @@
         box-shadow: none;
         background-color: transparent !important;
         padding-top: 10px;
+        border-radius: 0;
 
         i {
             font-size: 20px;
@@ -79,6 +80,7 @@
 
 .p-button {
     border-color: transparent !important;
+    box-shadow: none !important;
 }
 
 // Primeng grid css
@@ -110,4 +112,26 @@
         }
 
     }
+
+    .p-sortable-column {
+        &.p-highlight {
+            color: $primary-color !important;
+
+            .p-sortable-column-icon {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+
+.profileDropdown {
+    .p-menuitem-content {
+        background-color: transparent !important;
+
+        &:hover {
+            background-color: #e9ecef !important;
+        }
+    }
+
 }

@@ -54,11 +54,14 @@
         (click)="menu.toggle($event);Profileicon = !Profileicon">
 
         <div class="d-flex align-items-center">
-          <span class="font-14">{{this.loginUserData?.userName}}</span>
+          <div>
+            <span class="font-14 d-block">{{this.loginUserData?.userName}}</span>
+            <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
+          </div>
           <span class="{{Profileicon?'profileIcon profileArrow':'profileIcon'}}"><i class="pi pi-angle-right pl-2"
-              style="color: #708090"></i></span>
+              style="color: #708090"></i>
+          </span>
         </div>
-        <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
       </div>
     </div>
   </div>
