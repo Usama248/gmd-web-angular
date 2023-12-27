@@ -31,7 +31,7 @@ export class SideNavComponent implements AfterViewInit {
   navitem: any[] = [
     {
       icon: `pi pi-home`,
-      route: "/clinic-dashboard",
+      route: "/clinic/dashboard",
       name: "Dashboard",
       subnav: [
 
@@ -39,7 +39,7 @@ export class SideNavComponent implements AfterViewInit {
     },
     {
       icon: "pi pi-user-plus",
-      route: "/physicians",
+      route: "/clinic/physicians",
       name: "Physicians",
       subnav: [
 
@@ -47,7 +47,7 @@ export class SideNavComponent implements AfterViewInit {
     },
     {
       icon: "pi pi-comments",
-      route: "/conversation",
+      route: "/clinic/conversation",
       name: "Conversations",
       subnav: [
 
@@ -60,13 +60,13 @@ export class SideNavComponent implements AfterViewInit {
       subnav: [
         {
           icon: "pi pi-file-import",
-          route: "/chart-review",
+          route: "/clinic/chart-review",
           name: "Chart Review",
 
         },
         {
           icon: "pi pi-chart-bar",
-          route: "/document",
+          route: "/clinic/document",
           name: "Document",
         },
       ]
@@ -74,7 +74,7 @@ export class SideNavComponent implements AfterViewInit {
 
     {
       icon: "pi pi-users",
-      route: "/users",
+      route: "/clinic/users",
       name: "Manage Users",
       subnav: [
 
@@ -87,19 +87,19 @@ export class SideNavComponent implements AfterViewInit {
       subnav: [
         {
           icon: "pi pi-chart-pie",
-          route: "/billing",
+          route: "/clinic/billing",
           name: "Billing Dashboard",
 
         },
         {
           icon: "pi pi-id-card",
-          route: "/subscription",
+          route: "/clinic/subscription",
           name: "Subscriptions",
 
         },
         {
           icon: "pi-credit-card pi",
-          route: "/payment",
+          route: "/clinic/payment",
           name: "Payment Due",
 
         },
@@ -108,7 +108,7 @@ export class SideNavComponent implements AfterViewInit {
 
     {
       icon: "pi pi-bell ",
-      route: "/notification",
+      route: "/clinic/notification",
       name: "Notifications",
       subnav: [
 

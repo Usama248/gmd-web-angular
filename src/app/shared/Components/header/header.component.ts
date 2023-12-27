@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
 
   messages: Message[] = [];
   ngOnInit(): void {
+    console.log("header initialized");
     this.notificationRepo.getUserNotificationsCount().subscribe({
       next: res => {
         if (res > 100) {
@@ -50,7 +51,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Profile',
         icon: 'pi pi-user',
-        routerLink: '/profile-main',
+        routerLink: '/clinic/profile-main',
         name: 'Profile'
 
       },

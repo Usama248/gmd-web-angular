@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
           if (res.status == 1) {
             this.storageService.accessToken = res.data.accessToken;
             this.toastService.showSuccess(res.message)
-            this.router.navigate(['/clinic-dashboard']);
+            this.router.navigate(['/clinic/dashboard']);
           } else {
             this.toastService.showError(res.message)
           }
