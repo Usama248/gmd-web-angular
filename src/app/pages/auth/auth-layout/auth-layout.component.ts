@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common'
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
+import { delay } from 'rxjs';
 @Component({
     selector: 'app-auth-layout',
     standalone: true,
@@ -22,8 +23,10 @@ export class AuthLayoutComponent implements OnInit {
   }
 
   listenToLoading(): void {
-    effect(() => {
-      this.isLoading = this.loader.isLoading();
-    });
+    this.loader.isLoading
+      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
+      .subscribe((loading) => {
+        this.isLoading = loading;
+      });
   }
 }

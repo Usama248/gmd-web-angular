@@ -12,6 +12,7 @@ import { SideNavComponent } from '../side-nav/side-nav.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { MessagesModule } from 'primeng/messages';
 import { Message } from 'primeng/api';
+import { delay } from 'rxjs';
 
 
 @Component({
@@ -44,9 +45,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.isScreenSmall = window.innerWidth < 1024;
   }
   listenToLoading(): void {
-    effect(() => {
-      this.isLoading = this.loader.isLoading();
-    })
+    this.loader.isLoading
+      .pipe(delay(0)) // This prevents a ExpressionChangedAfterItHasBeenCheckedError for subsequent requests
+      .subscribe((loading) => {
+        this.isLoading = loading;
+      });
   }
   ngOnDestroy(): void {
     this.notificationService.closeConnection();
