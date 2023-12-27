@@ -1,127 +1,94 @@
-<div class="gmd-card h-100">
-  <div class="gmd-card-header flex justify-content-between	align-items-center	">
-    <h4 class="gmd-card-title">Conversation
+<div class="card-common-bg p-4 h-100">
+  <div class="gmd-card-header d-flex justify-content-between	align-items-center	">
+    <h4 class="sub-heading">Conversation
     </h4>
     <ng-container *ngIf="activeTab == 'activeConversation'">
-      <p-button severity="success" (click)="showDialog()" label="Request Conversation" [rounded]="true"> </p-button>
+      <p-button class="gmd-primary-btn" (click)="showDialog()" label="Request Conversation" [rounded]="true">
+      </p-button>
     </ng-container>
   </div>
   <div class="gmd-card-body">
-    <div class="gmd-tab">
-      <ul class="">
-        <li (click)="conversationTab('activeConversation')" [ngClass]="activeTab == 'activeConversation'?'active':''">
-          Active Conversations</li>
-        <li (click)="conversationTab('closedConversation')" [ngClass]="activeTab == 'closedConversation'?'active':''">
-          Closed Conversations</li>
-      </ul>
-    </div>
-    <div class="card">
-      <ng-container *ngIf="activeTab == 'activeConversation'">
-        <ng-container *ngIf="products">
-          <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-            <ng-template pTemplate="header">
-              <tr>
-                <th pSortableColumn="PhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="CreatedDate">Created Date <p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="AssignedRoles">Assigned Roles <p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="AssignmentType">Assignment Type <p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Status">Status <p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Action">Action <p-sortIcon field="code"></p-sortIcon></th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-product>
-              <tr>
-                <td>{{ product.PhysicianName }}</td>
-                <td>{{ product.CreatedDate }}</td>
-                <td>
-                  <div>
-                    <span class="gmd-badge-lg">{{ product.AssignedRoles }}</span>
-                  </div>
-                </td>
-                <td>
-                  <div class="">
-                    <span class="badge-info badge">
-                      {{ product.AssignmentType }}
-                    </span>
-                  </div>
-                </td>
-                <td>{{ product.Status }}</td>
-                <td>
-                  <div class="flex gap-2">
-                    <p-button severity="danger"  class="square" [outlined]="true"   icon="pi-comments pi"></p-button>
-                    <p-button severity="success" class="square" [outlined]="true"   icon="pi-comments pi"></p-button>
-                   </div>
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
-        </ng-container></ng-container>
-      <ng-container *ngIf="activeTab == 'closedConversation'">
-        <ng-container *ngIf="products">
-          <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
-            <ng-template pTemplate="header">
-              <tr>
-                <th pSortableColumn="Title">Title<p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Physician Name">Physician Name<p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Conversation For User">Conversation For User<p-sortIcon field="code"></p-sortIcon>
-                </th>
-                <th pSortableColumn="Start Date">Start Date<p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="End Date">End Date<p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Ended By">Ended By<p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Archived">Archived<p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Priority">Priority<p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="Actions">Actions<p-sortIcon field="code"></p-sortIcon></th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-product>
-              <tr>
-                <td>{{ product.PhysicianName }}</td>
-                <td>{{ product.CreatedDate }}</td>
-                <td>
-                  <div>
-                    <span class="gmd-badge-lg">{{ product.AssignedRoles }}</span>
-                  </div>
-                </td>
-
-
-                <td>
-                  <div class="">
-                    <span class="badge-info badge">
-                      {{ product.AssignmentType }}
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="">
-                    <span class="badge-info badge">
-                      {{ product.AssignmentType }}
-                    </span>
-                  </div>
-                </td>
-                <td>{{ product.Status }}</td>
-                <td>
-                  <div class="">
-                    <span class="badge-purple badge">
-                      {{ product.AssignmentType }}
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="">
-                    <span class="badge badge-success">non urgent</span>
-                  </div>
-                </td>
-                <td>
-                 <div class="flex gap-2">
-                  <p-button severity="success" class="square" [outlined]="true"   icon="pi-comments pi"></p-button>
-                 </div>
+    <div class="card profile-tab-card">
+      <p-tabView>
+        <p-tabPanel header="Active Conversations">
+          <ng-container *ngIf="products">
+            <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="Title">Title <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="PhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="ConversationUser">Conversation For User<p-sortIcon field="code"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="CreatorName">Creator Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="Status">Status <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="Action">Action <p-sortIcon field="code"></p-sortIcon></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-product>
+                <tr>
+                  <td>{{ product.Title }}</td>
+                  <td>{{ product.PhysicianName }}</td>
+                  <td>
+                    <div>
+                      <span class="gmd-badge-lg">{{ product.ConversationUser }}</span>
+                    </div>
                   </td>
-              </tr>
-            </ng-template>
-          </p-table>
-        </ng-container>
-      </ng-container>
+                  <td>
+                    {{ product.CreatorName }}
+                  </td>
+                  <td>{{ product.Status }}</td>
+                  <td>
+                    <div class="flex gap-2">
+                      <p-button severity="danger" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
+                      <p-button severity="success" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </ng-container>
+        </p-tabPanel>
+        <p-tabPanel header="Closed Conversations">
+          <ng-container *ngIf="products">
+            <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="Title">Title <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="PhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="ConversationUser">Conversation For User<p-sortIcon field="code"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="CreatorName">Creator Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="Status">Status <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="Action">Action <p-sortIcon field="code"></p-sortIcon></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-product>
+                <tr>
+                  <td>{{ product.Title }}</td>
+                  <td>{{ product.PhysicianName }}</td>
+                  <td>
+                    <div>
+                      <span class="gmd-badge-lg">{{ product.ConversationUser }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    {{ product.CreatorName }}
+                  </td>
+                  <td>{{ product.Status }}</td>
+                  <td>
+                    <div class="flex gap-2">
+                      <p-button severity="danger" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
+                      <p-button severity="success" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </ng-container>
+        </p-tabPanel>
+      </p-tabView>
     </div>
+
   </div>
 </div>
 
@@ -151,7 +118,8 @@
     </div>
     <div class="form-group mt-3">
       <label class="gmd-label" for="">Physician</label>
-      <p-dropdown class="w-100" [options]="cities"  optionLabel="name" [showClear]="true" placeholder="Select a City"></p-dropdown>
+      <p-dropdown class="w-100" [options]="cities" optionLabel="name" [showClear]="true"
+        placeholder="Select a City"></p-dropdown>
     </div>
     <div class="form-group mt-3">
       <label class="gmd-label" for="">Physician Role</label>
@@ -166,13 +134,13 @@
   </div>
   <div class="form-group mt-3">
     <label class="gmd-label" for=""> Message</label>
-    <textarea rows="5" cols="30" class="w-100" pInputTextarea ></textarea>
+    <textarea rows="5" cols="30" class="w-100" pInputTextarea></textarea>
 
   </div>
 
   <ng-template pTemplate="footer">
-    <p-button  severity="secondary" (Click)="showDialog()" [outlined]=true label="close" styleClass="p-button-text"></p-button>
-    <p-button  severity="success" label="save changes" styleClass="p-button-text"></p-button>
-</ng-template>
+    <p-button severity="secondary" (Click)="showDialog()" [outlined]=true label="close"
+      styleClass="p-button-text"></p-button>
+    <p-button severity="success" label="save changes" styleClass="p-button-text"></p-button>
+  </ng-template>
 </p-dialog>
-

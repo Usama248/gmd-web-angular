@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormsModule } from '@angular/forms';
+import { TabViewModule } from 'primeng/tabview';
 
 
 
@@ -23,33 +24,34 @@ import { FormsModule } from '@angular/forms';
     DialogModule,
     InputTextModule,
     DropdownModule,
-    FormsModule],
+    FormsModule,
+    TabViewModule],
   templateUrl: './conversation.component.html',
   styleUrls: ['./conversation.component.scss']
 })
 export class ConversationComponent implements OnInit {
   ngOnInit(): void {
-   
+
   }
   activeTab: string = 'activeConversation'
   visible: boolean = false
   ingredient!: string;
   products: any = [
     {
-      PhysicianName: "fdsfsd",
-      CreatedDate: "fdsfsd",
-      AssignedRoles: "fdsfsd",
-      AssignmentType: "fdsfsd",
-      Status: "fdsfsd",
-      Action: "fdsfsd",
+      Title: "Title 1",
+      PhysicianName: "Physician 1",
+      ConversationUser: "user",
+      CreatorName: "Maaz",
+      Status: "",
+      Action: "",
     },
     {
-      PhysicianName: "adsfsd",
-      CreatedDate: "sfsd",
-      AssignedRoles: "dsfsd",
-      AssignmentType: "xdsfsd",
-      Status: "xdsfsd",
-      Action: "bdsfsd",
+      Title: "Title 2",
+      PhysicianName: "Physician 2",
+      ConversationUser: "user",
+      CreatorName: "Ali",
+      Status: "",
+      Action: "",
     }
   ]
   cities: any = [
