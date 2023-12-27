@@ -1,13 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableModule } from 'primeng/table';
-import { LoaderComponent } from 'src/app/shared/loader/loader.component';
-import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { InputTextModule } from 'primeng/inputtext';
-import { DropdownModule } from 'primeng/dropdown';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 
@@ -15,15 +7,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
   selector: 'app-chart-review',
   standalone: true,
   imports: [
-    CommonModule,
-    TableModule,
-    InputTextareaModule,
-    LoaderComponent,
-    ButtonModule,
-    RadioButtonModule,
-    DialogModule,
-    InputTextModule,
-    DropdownModule],
+    CommonModule],
   templateUrl: './chart-review.component.html',
   styleUrls: ['./chart-review.component.scss']
 })

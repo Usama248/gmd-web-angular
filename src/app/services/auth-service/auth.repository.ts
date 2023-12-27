@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { RootReducerState, getUserInfo, getUserLoaded, getUserLoading } from "src/store/reducers";
 import { AuthService } from "./auth.service";
 import { Observable, combineLatest, take } from "rxjs";
-import { loadUserDataFailure, loadUserDataRequest, loadUserDataSuccess } from "src/store/actions/user-actions";
+import { loadUserDataFailure, loadUserDataRequest, loadUserDataSuccess, logout } from "src/store/actions/user-actions";
 import { UserProfileModel } from "src/app/models/user/user-profile.model";
 
 @Injectable({ providedIn: 'root' })
@@ -33,6 +33,7 @@ export class AuthRepository {
     return getUserData;
   }
   logout() {
+    this.store.dispatch(logout());
     this.authService.logout();
   }
 }

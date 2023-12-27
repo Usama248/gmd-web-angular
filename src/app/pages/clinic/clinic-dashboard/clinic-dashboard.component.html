@@ -87,61 +87,67 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let clinician of dashboardData?.clinicianDetail?.cliniciansList">
-                  <td>
-                    {{clinician.clinicianName}}
-                  </td>
-                  <td>{{clinician.createdDate | date: 'MM/dd/yyyy'}}</td>
-                  <td>
-                    <p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(clinician.status)"
-                      [severity]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(clinician.status)"></p-tag>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center" colspan="3">Record not found</td>
-                </tr>
+                <ng-container *ngIf="dashboardData?.clinicianDetail?.cliniciansList; else loadingTemplate">
+                  <tr *ngFor="let clinician of dashboardData?.clinicianDetail?.cliniciansList">
+                    <td>
+                      {{clinician.clinicianName}}
+                    </td>
+                    <td>{{clinician.createdDate | date: 'MM/dd/yyyy'}}</td>
+                    <td>
+                      <p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(clinician.status)"
+                        [class]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(clinician.status)"></p-tag>
+                    </td>
+                  </tr>
+                </ng-container>
               </tbody>
             </table>
           </div>
         </div>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="recent-docuement dashboard-card p-4">
-        <div class="gmd-card w-100">
-          <div class="gmd-card-header">
-            <h3 class="text-left font-18 font-weight-500">Recent Documents
-            </h3>
-          </div>
-          <div class="table-responsive">
-            <table class="table gmd-table custom-table">
-              <thead>
-                <tr>
-                  <th class="p-l-20">Document Name</th>
-                  <th>Assigned To</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let doc of dashboardData?.documentsDetail?.documentList">
-                  <td>
-                    {{doc.fileName}}
-                  </td>
-                  <td>{{doc.createdDate | date: 'MM/dd/yyyy'}}</td>
-                  <td>
-                    <p-tag [value]="CLINICIAN_DODUMENTS_ENUM_NAMES$.get(doc.status)"
-                      [severity]="CLINICIAN_DODUMENTS_ENUM_COLORS$.get(doc.status)"></p-tag>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center" colspan="4">Record not found</td>
-                </tr>
-              </tbody>
-            </table>
+      <div class="col-lg-6">
+        <div class="recent-docuement dashboard-card p-4">
+          <div class="gmd-card w-100">
+            <div class="gmd-card-header">
+              <h3 class="text-left font-18 font-weight-500">Recent Documents
+              </h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table gmd-table custom-table">
+                <thead>
+                  <tr>
+                    <th class="p-l-20">Document Name</th>
+                    <th>Assigned To</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="dashboardData?.documentsDetail?.documentList; else loadingTemplate">
+                    <tr *ngFor="let doc of dashboardData?.documentsDetail?.documentList">
+                      <td>
+                        {{doc.fileName}}
+                      </td>
+                      <td>
+                        {{doc.clinicianName}}
+                      </td>
+                      <td>{{doc.createdDate | date: 'MM/dd/yyyy'}}</td>
+                      <td>
+                        <p-tag [value]="CLINICIAN_DODUMENTS_ENUM_NAMES$.get(doc.status)"
+                          [class]="CLINICIAN_DODUMENTS_ENUM_COLORS$.get(doc.status)"></p-tag>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
+      <ng-template #loadingTemplate>
+        <tr>
+          <td class="text-center" colspan="3">Record not found</td>
+        </tr>
+      </ng-template>
+    </div>

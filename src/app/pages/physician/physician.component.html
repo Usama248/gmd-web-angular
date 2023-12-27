@@ -47,16 +47,18 @@
 
           </td>
           <td>
-            <div *ngFor="let role of getRoles(physicianRequest.csRoles, ',')" class="mb-1">
-              <p-tag [value]="role" severity="info"></p-tag>
-            </div>
+            <ng-container *ngIf="physicianRequest?.csRoles?.length > 0">
+              <div *ngFor="let role of getRoles(physicianRequest.csRoles, ',')" class="mb-1">
+                <p-tag [value]="role" class="p-tag-secondary"></p-tag>
+              </div>
+            </ng-container>
           </td>
           <td>
             <div class="">
-              {{ physicianRequest.physicianAssignmentType }}
+              <p-tag value="Clinic" class="p-tag-primary"></p-tag>
             </div>
           </td>
-          <td>{{ physicianRequest.status }}</td>
+          <td><p-tag value="Approved" class="p-tag-success"></p-tag></td>
           <td><p-button label="success" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
               severity="success" label="Action" iconPos="right" icon="pi-angle-down pi"></p-button></td>
         </tr>

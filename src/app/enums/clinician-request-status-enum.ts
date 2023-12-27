@@ -16,9 +16,9 @@ export const ClinicianRequestStatusNames =new Map<number,string>(
 export const ClinicianRequestStatusTagColors = new Map<number,string>(
     [
 
-        [ClinicianRequestStatusEnum.InProgress,'warning'],
-        [ClinicianRequestStatusEnum.Approved,'success'],
-        [ClinicianRequestStatusEnum.Rejected,'danger'],
-        [ClinicianRequestStatusEnum.UnAssigned,'danger'],
+        [ClinicianRequestStatusEnum.InProgress,'p-tag-warning'],
+        [ClinicianRequestStatusEnum.Approved,'p-tag-success'],
+        [ClinicianRequestStatusEnum.Rejected,'p-tag-danger'],
+        [ClinicianRequestStatusEnum.UnAssigned,'p-tag-danger'],
     ]
 )

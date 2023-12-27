@@ -49,6 +49,15 @@ export const APP_ROUTES: Routes = [
     ],
   },
   {
+    path: 'chart-review',
+    title: 'Chart Review',
+    loadComponent: () => import('./shared/components/layout/layout.component').then(x => x.LayoutComponent),
+    canActivate: [authGuard],
+    children: [
+      { path: '', loadComponent: () => import('./pages/chart-review/chart-review.component').then(x => x.ChartReviewComponent) },
+    ],
+  },
+  {
     path: 'users',
     title: 'Users',
     loadComponent: () => import('./shared/components/layout/layout.component').then(x => x.LayoutComponent),

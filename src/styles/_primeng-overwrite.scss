@@ -136,6 +136,37 @@
 
 }
 
-.p-tag {
-    background: $primary-color;
+.p-tag-secondary {
+    .p-tag {
+        background-color: #c9c9c95e;
+        color: rgb(0 0 0 / 60%);
+    }
+}
+
+.p-tag-primary {
+    .p-tag {
+        background-color: rgba(131, 198, 231, 0.2980392157);
+        color: $primary-color;
+
+    }
+}
+
+.p-tag-success {
+    .p-tag {
+        background-color: #689f384d;
+        color: #4c8a16;
+    }
+}
+
+.p-tag-danger {
+    .p-tag {
+        background-color: #ffd8d8;
+        color: #D32F2F;
+    }
+}
+.p-tag-warning {
+    .p-tag {
+        background-color: #ffeadc;
+        color: #f97316;
+    }
 }

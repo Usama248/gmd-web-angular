@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { UserProfileModel } from "../../app/models/user/user-profile.model";
-import { loadUserDataRequest, loadUserDataFailure, loadUserDataSuccess, updateUserData } from "../actions/user-actions";
+import { loadUserDataRequest, loadUserDataFailure, loadUserDataSuccess, updateUserData, logout } from "../actions/user-actions";
 
 export interface UserDataState {
     userProfileData: UserProfileModel;
@@ -51,6 +51,9 @@ export const UserDataReducer = createReducer(initialState,
 
     on(loadUserDataFailure, (state, { error }) => (
         { ...state, error: error, loading: false, loaded: false }
+    )),
+    on(logout, (state) => (
+        { ...state, error: "", loading: false, loaded: false }
     )));
 
 // selectors
@@ -58,5 +61,3 @@ export const getLoading = (state: UserDataState) => state.loading;
 export const getLoaded = (state: UserDataState) => state.loaded;
 export const getUserInfo = (state: UserDataState) => state.userProfileData;
 export const getUserError = (state: UserDataState) => state.error;
-
-

@@ -25,14 +25,14 @@ export const ClinicianDocumentsEnumNames =new Map<number,string>(
 
 export const ClinicianDocumentsEnumTagColors = new Map<number,string>(
     [
-        [ClinicianDocumentsEnum.All,'primary'],
-        [ClinicianDocumentsEnum.Submitted,'warning'],
-        [ClinicianDocumentsEnum.Reviewed,'success'],
-        [ClinicianDocumentsEnum.Complete,'success'],
-        [ClinicianDocumentsEnum.Declined,'danger'],
-        [ClinicianDocumentsEnum.Draft,'primary'],
-        [ClinicianDocumentsEnum.Pending,'warning'],
-        [ClinicianDocumentsEnum.Rejected,'danger'],
-        [ClinicianDocumentsEnum.SendToPHhy,'info']
+        [ClinicianDocumentsEnum.All,'p-tag-primary'],
+        [ClinicianDocumentsEnum.Submitted,'p-tag-warning'],
+        [ClinicianDocumentsEnum.Reviewed,'p-tag-success'],
+        [ClinicianDocumentsEnum.Complete,'p-tag-success'],
+        [ClinicianDocumentsEnum.Declined,'p-tag-danger '],
+        [ClinicianDocumentsEnum.Draft,'p-tag-primary'],
+        [ClinicianDocumentsEnum.Pending,'p-tag-warning'],
+        [ClinicianDocumentsEnum.Rejected,'p-tag-danger '],
+        [ClinicianDocumentsEnum.SendToPHhy,'p-tag-info']
     ]
 )

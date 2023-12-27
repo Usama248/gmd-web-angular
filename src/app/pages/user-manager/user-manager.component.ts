@@ -1,26 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { InputTextModule } from 'primeng/inputtext';
-import { DropdownModule } from 'primeng/dropdown';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @Component({
   selector: 'app-user-manager',
   standalone: true,
   imports: [
-    CommonModule,
-    TableModule,
-    InputTextareaModule,
-    ButtonModule,
-    RadioButtonModule,
-    DialogModule,
-    InputTextModule,
-    DropdownModule],
+    CommonModule],
   templateUrl: './user-manager.component.html',
   styleUrls: ['./user-manager.component.scss']
 })
