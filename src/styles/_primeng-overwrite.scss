@@ -78,9 +78,11 @@
     }
 }
 
-.p-button {
-    border-color: transparent !important;
-    box-shadow: none !important;
+.login-footer {
+    .p-button {
+        border-color: transparent !important;
+        box-shadow: none !important;
+    }
 }
 
 // Primeng grid css
@@ -98,6 +100,13 @@
     border-bottom: 1px solid #f0f0f0;
     font-weight: 400;
     vertical-align: inherit !important;
+
+    .datatable-actionBtn {
+        button {
+            border-color: $primary-color;
+            color: $primary-color;
+        }
+    }
 }
 
 .p-datatable {
@@ -164,6 +173,7 @@
         color: #D32F2F;
     }
 }
+
 .p-tag-warning {
     .p-tag {
         background-color: #ffeadc;

@@ -17,7 +17,17 @@ export const APP_ROUTES: Routes = [
     title: 'Clinic Dashboard',
     loadComponent: () => import('./shared/components/layout/layout.component').then(x => x.LayoutComponent),
     children: [
-      { path: '',  canActivate: [authGuard], loadComponent: () => import('./pages/clinic/clinic-dashboard/clinic-dashboard.component').then(x => x.ClinicDashboardComponent) },
+      { path: '', canActivate: [authGuard], loadComponent: () => import('./pages/clinic/clinic-dashboard/clinic-dashboard.component').then(x => x.ClinicDashboardComponent) },
+    ],
+  },
+
+  {
+    path: 'profile-main',
+    title: 'Profile',
+    loadComponent: () => import('./shared/components/layout/layout.component').then(x => x.LayoutComponent),
+    // canActivate: [authGuard],
+    children: [
+      { path: '', loadComponent: () => import('./pages/profile/profile-main/profile-main.component').then(x => x.ProfileMainComponent) },
     ],
   },
 
