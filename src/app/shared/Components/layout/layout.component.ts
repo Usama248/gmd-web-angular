@@ -1,4 +1,4 @@
-import { Component, Injector, OnDestroy, OnInit, effect } from '@angular/core';
+import { Component, HostListener, Injector, OnDestroy, OnInit, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
@@ -25,6 +25,7 @@ import { Message } from 'primeng/api';
 export class LayoutComponent implements OnInit, OnDestroy {
   showNav: boolean = true;
   isLoading = false;
+  isScreenSmall: boolean = window.innerWidth < 1024;
   messages: Message[] = [];
   constructor(private injector: Injector, private loader: LoaderService,
     private notificationService: SignalrNotificationService,
@@ -37,6 +38,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.messages = [
       { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
     ];
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.isScreenSmall = window.innerWidth < 1024;
   }
   listenToLoading(): void {
     effect(() => {

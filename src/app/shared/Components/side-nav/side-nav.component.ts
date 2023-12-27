@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { Router, RouterModule } from '@angular/router';
@@ -12,11 +12,16 @@ declare function FreshworksWidget(arg0: string): any;
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements AfterViewInit {
-  showNav: boolean = true
+  showNav: boolean = true;
+  isScreenSmall: boolean = window.innerWidth < 1024;
   window = window;
   constructor(private sideNavService: SidebarService, private router: Router) {
     this.sideNavService.onShowNav().subscribe(x => this.showNav = x)
 
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.isScreenSmall = window.innerWidth < 1024;
   }
   ngAfterViewInit(): void {
 
@@ -116,11 +121,11 @@ export class SideNavComponent implements AfterViewInit {
     this.showsub == e ? this.showsub = -1 : this.showsub = e
   }
   hasMatchingRoute(subnav: []) {
-   var routes = subnav.map((x :any) => x.route);
-   return routes.some(x=> x == this.router.url) ;
+    var routes = subnav.map((x: any) => x.route);
+    return routes.some(x => x == this.router.url);
   }
- 
-  
+
+
   togglePopup() {
     this.showResource = !this.showResource
   }

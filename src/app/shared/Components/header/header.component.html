@@ -1,11 +1,14 @@
-<header class="header">
+<header class="header py-2">
   <div class="d-flex align-items-center justify-content-between w-100">
     <div class="d-flex align-items-center gap-5 w-100">
       <div class="logo-div"><img src="../../../../assets/images/GMD-blue.png" height="40" class="mr-2 p-1" />
       </div>
-      <p-button icon="pi pi-align-right" (click)="toggleSidenav()" class="square" [text]="true"
-        severity="secondary "></p-button>
-      <div class="top-alert d-none d-md-block py-2">
+      <p-button (click)="toggleSidenav()" class="square mr-2" [text]="true" severity="secondary ">
+        <span>
+          <i class="pi pi-align-right"></i>
+        </span>
+      </p-button>
+      <div class="top-alert d-none d-md-block">
         <div class="card">
           <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
         </div>
@@ -54,9 +57,12 @@
         (click)="menu.toggle($event);Profileicon = !Profileicon">
 
         <div class="d-flex align-items-center">
-          <div>
+          <div class="userTopName">
             <span class="font-14 d-block">{{this.loginUserData?.userName}}</span>
             <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
+          </div>
+          <div class="userImage">
+            <img src="../../../../assets/images/user.webp" width="40" class="rounded-circle" />
           </div>
           <span class="{{Profileicon?'profileIcon profileArrow':'profileIcon'}}"><i class="pi pi-angle-right pl-2"
               style="color: #708090"></i>

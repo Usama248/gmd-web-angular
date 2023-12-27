@@ -12,6 +12,22 @@
   .userDropdownMain {
     width: max-content;
     cursor: pointer;
+
+    .userTopName {
+      display: block;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .userImage {
+      display: none;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
   }
 }
 

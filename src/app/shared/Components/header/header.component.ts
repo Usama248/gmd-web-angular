@@ -22,26 +22,26 @@ import { NotificationRepository } from 'src/app/services/notificaition-service/n
 export class HeaderComponent implements OnInit {
   showsideNav: boolean = true;
   loginUserData: UserProfileModel | undefined;
-  constructor(private sidebarService: SidebarService, private authRepository: AuthRepository,private notificationRepo: NotificationRepository) { }
+  constructor(private sidebarService: SidebarService, private authRepository: AuthRepository, private notificationRepo: NotificationRepository) { }
   notificationDropdown: boolean = false;
   isClinic: boolean = false;
   items: MenuItem[] | undefined;
   noti: MenuItem[] | undefined;
   Profileicon: boolean = false;
   totalNotifications = "0";
+  activeIcon: boolean = false
 
   messages: Message[] = [];
   ngOnInit(): void {
     this.notificationRepo.getUserNotificationsCount().subscribe({
-      next: res =>  {
-        if (res > 100)
-        {
+      next: res => {
+        if (res > 100) {
           this.totalNotifications = "100+";
         } else {
           this.totalNotifications = res.toString();
         }
-    }, error: err => {
-    }
+      }, error: err => {
+      }
     })
     this.messages = [
       { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
@@ -84,7 +84,7 @@ export class HeaderComponent implements OnInit {
   getLatesttNotifications() {
     this.notificationRepo.getLatestNotifications().subscribe({
       next: res => {
-       
+
       },
       error: err => {
       }
