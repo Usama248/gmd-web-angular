@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
@@ -17,7 +17,7 @@ import { DisableDuringSubmitDirective } from 'src/app/shared/directives/disable-
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [RouterModule, DisableDuringSubmitDirective, CommonModule, ButtonModule, InputTextModule, CardModule, ReactiveFormsModule, ErrorMessagesComponent]
+  imports: [RouterModule, DisableDuringSubmitDirective, NgIf, ButtonModule, InputTextModule, CardModule, ReactiveFormsModule, ErrorMessagesComponent]
 })
 export class LoginComponent implements OnInit {
   fieldTextType = false;

@@ -1,17 +1,16 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { SortEvent } from 'primeng/api';
 import { ClinicianRequestStatusService } from 'src/app/services/clinician-request-status-service/clinician-request-status.service';
 import { ClinicianRequestStatusModel } from 'src/app/models/clinician-request-status/clinician-request-status.model';
 import { TagModule } from 'primeng/tag';
-import { ClinicianRequestStatusRepository } from 'src/app/services/clinician-request-status-service/clinician-request-status.repository';
 
 @Component({
   selector: 'app-physician',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonModule, TagModule],
+  imports: [NgFor, NgIf, DatePipe, TableModule, ButtonModule, TagModule],
   templateUrl: './physician.component.html',
   styleUrls: ['./physician.component.scss']
 })

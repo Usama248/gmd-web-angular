@@ -1,4 +1,4 @@
-import { ClinicianDocumentsEnum } from "src/app/enums/clinician-documents-enum";
+import { ClinicianDocumentsEnum } from "src/app/shared/constants/enums/clinician-documents-enum";
 
 export interface ClinicDocumentRequestModel
 {

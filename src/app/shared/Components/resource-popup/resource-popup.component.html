@@ -1,0 +1,55 @@
+<div class="gmd-resource-Container" [ngClass]="isShow ? '' : 'isClose'" id="resoursePopupWrap">
+    <div class="gmd-resource-card" id="cardAnimation">
+      <div class="gmd-resource-header">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 id="TextAnimate" class="textLeftToRight text-white greeting ellipsis-one m-0">Hi ! Ahad clinic</h2>
+          <p-button (click)="togglePopup()" class="closeBtn" [rounded]="true" [text]="true" severity="secondary "
+            icon="pi-times pi">
+          </p-button>
+        </div>
+        <p class="text-white textLeftToRight2">
+          Guardian Learning Material
+        </p>
+      </div>
+      <div class="gmd-resource-body">
+        <div id="resources_data d-none" style="display: none;">
+          <div class="no_data_img">
+            <!-- <img src="/img/noCourseAvaialbe.svg"> -->
+            <p class="mt-2">No Data Found</p>
+          </div>
+        </div>
+        <div id="resources_data">
+
+          <div class="gmd-resource-Iconwrapper">
+
+            <div class="full-width mb-4">
+              <h5 class="textLeftToRight m-0">Resource Center</h5>
+              <p class="textLeftToRight2">Get started with these resource center below </p>
+            </div>
+            <div class="full-width">
+              <h5 class="textLeftToRight mb-3">Resource Center</h5>
+            </div>
+            <div class="Unit-container">
+              <a class="d-flex align-items-center justify-content-between" href="/Resources/Index?Id=19">
+                <div class="gmd-recourse-unit iconAndTextTransi">
+                  <span class="icon">
+                    <i class="pi-telegram pi"></i>
+                  </span>
+                  <span title="Documents" class="label">
+                    Documents
+                  </span>
+                </div>
+                <span class="pt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="14" width="8" fill="#314f84" viewBox="0 0 256 512">
+                    <path
+                      d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z" />
+                  </svg>
+                </span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

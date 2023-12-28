@@ -61,7 +61,7 @@
         <div class="gmd-resource-body">
           <div id="resources_data d-none" style="display: none;">
             <div class="no_data_img">
-              <!-- <img src="/img/noCourseAvaialbe.svg"> -->
+              <img src="/img/noCourseAvaialbe.svg">
               <p class="mt-2">No Data Found</p>
             </div>
           </div>
@@ -127,13 +127,12 @@
     </div>
     <div class="gmd-resource-icon d-inline-flex align-items-center cursor-pointer my-2" id="resoursePopupButton"
       (click)="togglePopup()">
-
+      <span id="resDoc" class="pr-2">
+        <i class="pi pi-window-maximize
+        "></i>
+      </span>
       <span class="resource-btn menu-text d-line ellipsis-one">
         Resources
-      </span>
-      <span id="resDoc" class="pl-2">
-        <i class="pi pi-window-maximize
-              "></i>
       </span>
     </div>
   </div>

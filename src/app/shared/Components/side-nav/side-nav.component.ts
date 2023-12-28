@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { Router, RouterModule } from '@angular/router';
 import { SidebarService } from '../../services/sidebar.service';
+import { ResourcePopupComponent } from '../resource-popup/resource-popup.component';
 declare function FreshworksWidget(arg0: string): any;
 @Component({
   selector: 'app-side-nav',
   standalone: true,
-  imports: [CommonModule, ButtonModule, RouterModule],
+  imports: [CommonModule, ButtonModule, RouterModule, ResourcePopupComponent],
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss']
 })
@@ -124,12 +125,13 @@ export class SideNavComponent implements AfterViewInit {
     var routes = subnav.map((x: any) => x.route);
     return routes.some(x => x == this.router.url);
   }
-
-
+  FreshworksWidgetOpen() {
+    FreshworksWidget('open');
+  }
   togglePopup() {
     this.showResource = !this.showResource
   }
-  FreshworksWidgetOpen() {
-    FreshworksWidget('open');
+  handleIsShowResource($event: boolean) {
+    this.showResource = $event;
   }
 }
