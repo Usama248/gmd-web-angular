@@ -92,10 +92,15 @@
   </div>
 </div>
 
-<p-dialog header="Conversation Form" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
-  [draggable]="false" [resizable]="false">
+<p-dialog header="Conversation Form" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }"
+  [draggable]="false" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+  <ng-template pTemplate="header">
+    <div class="inline-flex align-items-center justify-content-center gap-2">
+      <h5>Conversation Form</h5>
+    </div>
+  </ng-template>
   <p class="m-0">
-  <p>Please describe what this communication is related to so that we may route it appropriately?
+    Please describe what this communication is related to so that we may route it appropriately?
   </p>
   <div>
     <div class="planPageQuestion flex flex-column gap-1 align-items-base" id="addOnQuestion">
@@ -137,10 +142,8 @@
     <textarea rows="5" cols="30" class="w-100" pInputTextarea></textarea>
 
   </div>
-
   <ng-template pTemplate="footer">
-    <p-button severity="secondary" (Click)="showDialog()" [outlined]=true label="close"
-      styleClass="p-button-text"></p-button>
-    <p-button severity="success" label="save changes" styleClass="p-button-text"></p-button>
+    <p-button class="dialog-secondary-btn" [outlined]=true label="Close" styleClass="p-button-text"></p-button>
+    <p-button class="dialog-primary-btn" label="Save Changes" styleClass="p-button-text"></p-button>
   </ng-template>
 </p-dialog>

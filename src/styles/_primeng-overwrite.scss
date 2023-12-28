@@ -47,6 +47,10 @@
     }
 }
 
+.p-button {
+    box-shadow: none !important;
+}
+
 .notificationBtn {
     button {
         box-shadow: none;
@@ -178,5 +182,63 @@
     .p-tag {
         background-color: #ffeadc;
         color: #f97316;
+    }
+}
+
+// primeng dialog scss
+.p-dialog {
+    border-radius: 20px;
+    overflow: hidden;
+
+    .p-dialog-header {
+        padding: 1rem;
+
+        h5 {
+            font-size: 20px;
+            font-family: $primary-font;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .p-dialog-header-close {
+            background-color: $primary-light-color;
+            color: $primary-color;
+        }
+    }
+
+    .p-dialog-content {
+        padding: 1rem;
+        border-top: 1px solid #e9ecef;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .p-dialog-footer {
+        padding: 1rem;
+
+        .dialog-primary-btn {
+            button {
+                background-color: $primary-color;
+                color: white;
+                font-size: 14px;
+                border: 1px solid $primary-color;
+                padding: 0.375rem 14px;
+                border-radius: 6px;
+                font-family: $primary-font;
+                height: 35px;
+            }
+        }
+
+        .dialog-secondary-btn {
+            button {
+                background-color: transparent;
+                color: $primary-color;
+                font-size: 14px;
+                border: 1px solid $primary-color;
+                padding: 0.375rem 14px;
+                border-radius: 6px;
+                font-family: $primary-font;
+                height: 35px;
+            }
+        }
     }
 }
