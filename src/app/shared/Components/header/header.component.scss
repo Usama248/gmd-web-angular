@@ -56,17 +56,6 @@
   top: 40px;
   z-index: 100;
 
-  .single-notification {
-    border-bottom: 1px solid #dee2e6;
-    padding: 10px;
-    transition: .3s ease-in-out all;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #eaeaea;
-    }
-  }
-
   .notification-title {
     background-color: #314f84;
     font-family: sans-serif;
@@ -74,18 +63,6 @@
     text-align: center;
     color: white;
     padding: 10px;
-  }
-
-  .icon span {
-    background-color: #83C6E74C;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    color: #314f84;
-    font-size: 20px;
-    display: flex;
-    height: 45px;
-    width: 45px;
   }
 
   .text-wraper {

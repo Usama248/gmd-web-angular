@@ -1,36 +1,53 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { SortEvent } from 'primeng/api';
-import { ClinicianRequestStatusService } from 'src/app/services/clinician-request-status-service/clinician-request-status.service';
-import { ClinicianRequestStatusModel } from 'src/app/models/clinician-request-status/clinician-request-status.model';
 import { TagModule } from 'primeng/tag';
+import { ClinicianRequestStatusEnum, ClinicianRequestStatusNames, ClinicianRequestStatusTagColors } from 'src/app/shared/constants/enums/clinician-request-status-enum';
+import { PhysicianAssignTypeNames, PhysicianAssignTypeTagColors } from 'src/app/shared/constants/enums/physician-assignment-type-enum';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { FormsModule } from '@angular/forms';
+import { ClinicianRequestStatusRepository } from 'src/app/services/clinician-request-status-service/clinician-request-status.repository';
+import { IClinicianRequestStatus } from 'src/index-db/interfaces/clinician-request-status.interface';
 
 @Component({
   selector: 'app-physician',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe, TableModule, ButtonModule, TagModule],
+  imports: [NgFor, NgIf, DatePipe, FormsModule, TableModule, ButtonModule, TagModule, MultiSelectModule],
   templateUrl: './physician.component.html',
   styleUrls: ['./physician.component.scss']
 })
 export class PhysicianComponent implements OnInit, AfterViewInit {
-  clear(_t12: Table) {
-    throw new Error('Method not implemented.');
-  }
-  constructor(private clinicianRequestStatusService: ClinicianRequestStatusService) { }
+  CLINICIAN_REQUEST_STATUS_ENUM_NAMES$ = ClinicianRequestStatusNames;
+  CLINICIAN_REQUEST_STATUS_ENUM_COLORS$ = ClinicianRequestStatusTagColors;
+  PHYSICIAN_ASSIGN_TYPE_NAMES$ = PhysicianAssignTypeNames;
+  PHYSICIA_ASSIGN_TYPE_TAG_COLORS$ = PhysicianAssignTypeTagColors;
+  statusList : {
+    label: any;
+    value: ClinicianRequestStatusEnum;
+   }[] = Object.keys(ClinicianRequestStatusEnum)
+    .filter((key: any) => !isNaN(Number(ClinicianRequestStatusEnum[key])))
+    .map((key: any) => ({ label: this.CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(ClinicianRequestStatusEnum[key] as unknown as ClinicianRequestStatusEnum), value: + ClinicianRequestStatusEnum[key] as ClinicianRequestStatusEnum }));
+
+
+  @ViewChild('dt2') dt: Table | undefined;
+
+  constructor(private clinicianRequestStatusService: ClinicianRequestStatusRepository) { }
   ngAfterViewInit(): void {
 
   }
-  clinicianRequests!: ClinicianRequestStatusModel[];
+  clinicianRequests!: IClinicianRequestStatus[];
   loading = false;
   ngOnInit(): void {
     this.loading = true;
-    this.clinicianRequestStatusService.getAllClinicianRequests().subscribe(res => {
-      this.clinicianRequests = res.data;
-      this.clinicianRequests.forEach((clinicianRequest) => (clinicianRequest.createdDate = new Date(clinicianRequest.createdDate)));
+    this.clinicianRequestStatusService.getClinicianRequestStatusData().subscribe(res => {
+      if(res.length > 0) {
+      this.clinicianRequests = res;
       this.loading = false;
+      }
     })
+    console.log(this.statusList);
   }
 
   customSort(event: SortEvent) {
@@ -64,6 +81,15 @@ export class PhysicianComponent implements OnInit, AfterViewInit {
 
   getRoles(input: string, delimiter: string): string[] {
     return input.split(delimiter);
+  }
+  applyFilterGlobal($event: any, stringVal: string) {
+    this.dt?.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+  }
+  clear(table: Table) {
+    table.clear();
+  }
+  clickedd(val: any) {
+    console.log(val);
   }
 }
 

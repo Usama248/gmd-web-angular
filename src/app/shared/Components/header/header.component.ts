@@ -11,13 +11,14 @@ import { RouterModule } from '@angular/router';
 import { MessagesModule } from 'primeng/messages';
 import { BadgeModule } from 'primeng/badge';
 import { NotificationRepository } from 'src/app/services/notificaition-service/notification-repository';
+import { LatestNotificationComponent } from "../latest-notification/latest-notification.component";
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, MenubarModule, MenuModule, ButtonModule, RouterModule, MessagesModule, BadgeModule],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    standalone: true,
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    imports: [CommonModule, MenubarModule, MenuModule, ButtonModule, RouterModule, MessagesModule, BadgeModule, LatestNotificationComponent]
 })
 export class HeaderComponent implements OnInit {
   showsideNav: boolean = true;

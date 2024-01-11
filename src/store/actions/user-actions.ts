@@ -15,3 +15,4 @@ export const loadUserDataSuccess = createAction(UserActionTypes.LOAD_REQUEST, pr
 export const loadUserDataFailure = createAction(UserActionTypes.LOAD_FAILURE, props<{ error: string }>());
 export const updateUserData = createAction('[UserData] Update UserData', props<{ data: UserProfileModel }>());
 export const logout = createAction(UserActionTypes.LOGOUT);
+ 

@@ -18,6 +18,6 @@ export class NotificationService  extends ApiHandler {
     return this.get(environment.apiUrl + NOTIFICATIONS_ENDPOINTS.GetCountOfNotification+"?id="+this.authService.loginUserId)
   }
   public getLatestNotifications() {
-    return this.get(environment.apiUrl + NOTIFICATIONS_ENDPOINTS.GetCountOfNotification+"?id="+this.authService.loginUserId)
+    return this.get(environment.apiUrl + NOTIFICATIONS_ENDPOINTS.GetLastestUnReadNotifications+"?id="+this.authService.loginUserId)
   }
 }

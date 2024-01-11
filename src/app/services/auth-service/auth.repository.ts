@@ -36,6 +36,9 @@ export class AuthRepository {
     this.store.dispatch(logout());
     this.authService.logout();
   }
+  public get loginUserId() {
+    return this.authService.loginUserId;
+  }
 }
 
 

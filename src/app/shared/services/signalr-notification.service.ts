@@ -3,11 +3,14 @@ import * as signalR from "@microsoft/signalr"
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { environment } from 'src/environments/environment';
 import { ToastService } from './toast.service';
+import { RootReducerState } from 'src/store/reducers';
+import { Store } from '@ngrx/store';
+import { NotificationActions } from 'src/store/actions/notification-action';
 
 @Injectable()
 export class SignalrNotificationService {
   hubConnection!: signalR.HubConnection;
-  constructor(public _authService: AuthService, private toastrService: ToastService) {
+  constructor(public _authService: AuthService, private toastrService: ToastService, private store: Store<RootReducerState>) {
     console.log("SignalR service initialized");
     this.startConnection();
   }
@@ -44,6 +47,7 @@ export class SignalrNotificationService {
   }
 
   handleReceiveNotification(notification: any) {
+    this.store.dispatch(NotificationActions.loadReceiveNewNotification());
     const { userId, subject, message } = notification;
     if (notification.isDeclined) {
       this.toastrService.showError(message);

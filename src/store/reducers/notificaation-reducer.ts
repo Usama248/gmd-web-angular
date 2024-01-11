@@ -15,7 +15,7 @@ export const initialState: NotificationState = {
     error: ""
 }
 
-export const ClinicianRequestStatusReducer = createReducer(initialState,
+export const NotificationReducer = createReducer(initialState,
     on(NotificationActions.loadNotificationCount, (state) => (
         { ...state, loading: true }
     )),
@@ -24,7 +24,11 @@ export const ClinicianRequestStatusReducer = createReducer(initialState,
     )),
     on(NotificationActions.loadNotificationCountFailture, (state, { error }) => (
         { ...state, error: error, loading: false, loaded: false }
-    )));
+    )),
+    on(NotificationActions.loadReceiveNewNotification, (state) => (
+        {...state, notificationCount: (state.notificationCount+ 1)}
+    ))
+);
 
 //selectors
 export const getLoading = (state: NotificationState) => state.loading;

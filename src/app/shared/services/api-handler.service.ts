@@ -22,7 +22,6 @@ export class ApiHandler implements IApiBaseActions {
             console.log(response);
         }
     }
-
     get(url: string) {
         return this.myHttpClient
             .get<any>(url)

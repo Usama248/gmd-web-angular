@@ -1,4 +1,4 @@
-import { ClinicianRequestStatusModel } from "../clinician-request-status/clinician-request-status.model"
+import { IClinicianRequestStatus } from "src/index-db/interfaces/clinician-request-status.interface";
 import { ClinicDocumentRequestModel } from "../document/clinic-document-request-model";
 
 export interface ClinicDashboardModel
@@ -10,7 +10,7 @@ export interface ClinicDashboardModel
 
 export interface CliniciansForClinic
 {
-    cliniciansList : ClinicianRequestStatusModel[];
+    cliniciansList : IClinicianRequestStatus[];
     approvedCliniciansCount : number;
     pendingCliniciansCount  : number;
     rejectedCliniciansCount  : number;

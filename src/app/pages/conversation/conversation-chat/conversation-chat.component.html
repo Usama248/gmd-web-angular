@@ -1,0 +1,37 @@
+<div id="chat-div">
+    <div class="text_chat_body" id="chat-message-outer">
+        <div class="text_chat_body_inner" id="chat-message-list">
+            <div *ngFor="let message of messages">
+                <div class="chat_my_msg d-flex" style="flex-direction: row-reverse;"
+                    *ngIf="message.userID === numericUserId; else other_message">
+                    <img [src]="message.participantImage" class="chat_user_img">
+                    <div> <span class="_name">{{message.participantName}}</span>
+                        <div class="chat_user_msg" [innerHTML]="message.text"></div>
+                        <span class="_time">{{message.messageTime | date: 'MMM dd yyyy hh:mm a UTC' | date: 'MMM dd yyyy hh:mm a' }}</span>
+                    </div>
+                </div>
+                <ng-template #other_message>
+                    <div class="chat_others_msg d-flex" #other_message>
+                        <img [src]="message.participantImage" class="chat_user_img">
+                        <div>
+                            <span class="_name">{{message.participantName}}</span>
+                            <div class="chat_user_msg" [innerHTML]="message.text"></div>
+                            <span class="_time">{{message.messageTime | date: 'MMM dd yyyy hh:mm a UTC' | date: 'MMM dd yyyy hh:mm a' }}</span>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text_chat_input" *ngIf="allowMessage">
+    <div class="text_chat_input_inner">
+        <div class="d-flex align-items-center">
+            <textarea #messageInput type="text" class="form-control border-0 font-13 cstm-chat-input" maxlength="450"
+                placeholder="Your message here..." id="chat-input" autocomplete="off"
+                (keyup.enter)="sendChatMessage(messageInput)"></textarea>
+            <p-button type="button" class="btn py-2 px-3" (click)="sendChatMessage(messageInput)"><i
+                    class=" pi pi-send text-white"></i></p-button>
+        </div>
+    </div>
+</div>

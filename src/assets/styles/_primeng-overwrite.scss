@@ -49,8 +49,12 @@
 
 .p-button {
     box-shadow: none !important;
+    .p-button-outlined {
+        background-color: transparent;
+        color: $primary-color;
+        border: 1px solid;
+    }
 }
-
 .notificationBtn {
     button {
         box-shadow: none;
@@ -92,7 +96,7 @@
 // Primeng grid css
 .p-datatable .p-datatable-thead>tr>th {
     padding: 10px 18px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     font-family: $primary-font;
 }
@@ -184,6 +188,12 @@
         color: #f97316;
     }
 }
+.p-tag-info {
+    .p-tag {
+        background-color: #36c1ff54;
+        color: #168bbf;
+    }
+}
 
 // primeng dialog scss
 .p-dialog {
@@ -241,4 +251,8 @@
             }
         }
     }
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    white-space: nowrap;
 }

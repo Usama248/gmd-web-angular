@@ -1,0 +1,54 @@
+<form>
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <h5>Conversation Form</h5>
+        </div>
+    </ng-template>
+    <h6 class="m-0">
+        Please describe what this communication is related to so that we may route it appropriately?
+    </h6>
+    <div>
+        <div class="planPageQuestion flex flex-column gap-1 align-items-base" id="addOnQuestion">
+            <div class="flex align-items-center py-2 px-3  gmd-badge-lg">
+                <p-radioButton name="pizza" value="Cheesee" [(ngModel)]="ingredient"
+                    inputId="ingredient3"></p-radioButton>
+                <label for="ingredient3" class="ml-2 fs-3">Protocol or Document Related</label>
+            </div>
+            <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
+                <p-radioButton name="pizza" value="Cheeseee" [(ngModel)]="ingredient"
+                    inputId="ingredient2"></p-radioButton>
+                <label for="ingredient2" class="ml-2 fs-3">Clinical Questions</label>
+            </div>
+            <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
+                <p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient"
+                    inputId="ingredient1"></p-radioButton>
+                <label for="ingredient1" class="ml-2 fs-3">Other</label>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label class="gmd-label" for="">Title</label>
+            <input type="text" pInputText class="w-100">
+        </div>
+        <div class="form-group mt-3">
+            <label class="gmd-label" for="">Physician</label>
+            <div>
+                <p-dropdown class="w-100" [options]="cities" optionLabel="name" [showClear]="true"
+                    placeholder="Select a City"></p-dropdown>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label class="gmd-label" for="">Physician Role</label>
+            <div class="flex gap-2 flex-wrap">
+                <span class="gmd-badge-lg">Regional Director</span>
+                <span class="gmd-badge-lg">Core Compliance Director</span>
+                <span class="gmd-badge-lg">Clinical Education Director</span>
+                <span class="gmd-badge-lg">Collaborating Physician</span>
+                <span class="gmd-badge-lg">Medical Director</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <label class="gmd-label" for=""> Message</label>
+        <textarea rows="5" cols="30" class="w-100" pInputTextarea></textarea>
+    </div>
+</form>

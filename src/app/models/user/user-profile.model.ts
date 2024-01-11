@@ -1,5 +1,5 @@
 export interface UserProfileModel {
-    id? : string;
+    id : string;
     profileId : string;
     firstName : string;
     lastName : string;

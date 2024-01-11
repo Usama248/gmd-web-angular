@@ -1,9 +1,9 @@
 import { createReducer, on } from "@ngrx/store"
-import { ClinicianRequestStatusModel } from "src/app/models/clinician-request-status/clinician-request-status.model"
 import { ClinicianRequestStatusActions } from "../actions/clinician-request-status-action"
+import { IClinicianRequestStatus } from "src/index-db/interfaces/clinician-request-status.interface"
 
 export interface ClinicianRequestStatusState {
-    clinicianRequestStatusData: ClinicianRequestStatusModel[],
+    clinicianRequestStatusData: IClinicianRequestStatus[],
     loading: boolean,
     loaded: boolean,
     error: string
@@ -30,5 +30,5 @@ export const ClinicianRequestStatusReducer = createReducer(initialState,
 //selectors
 export const getLoading = (state: ClinicianRequestStatusState) => state.loading;
 export const getLoaded = (state: ClinicianRequestStatusState) => state.loaded;
-export const getclinicianRequestStatusData = (state: ClinicianRequestStatusState) => state.clinicianRequestStatusData;
+export const getclinicianRequestStatusData = (state: ClinicianRequestStatusState) => [...state.clinicianRequestStatusData];
 export const getclinicianRequestStatusError = (state: ClinicianRequestStatusState) => state.error;

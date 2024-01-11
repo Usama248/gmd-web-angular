@@ -1,3 +1,7 @@
+import { environment } from "src/environments/environment";
+
+export const API_URL: string = environment.apiUrl;
+
 export const AUTH_API_ENDPOINTS = {
     Login: '/api/Auth/login',
     ForgotPassToken: '/api/Auth/ForgotToken',
@@ -8,7 +12,7 @@ export const AUTH_API_ENDPOINTS = {
 
 
 export const CLINICIAN_REQUEST_STATUS_API_ENDPOINTS = {
-    GetClinicianRequestStatus: '/api/ClinicianRequestStatus/GetClinicianRequestStatus',
+    GetClinicianRequestStatus: API_URL + '/api/ClinicianRequestStatus/GetClinicianRequestStatus',
 };
 
 export const CLINIC_API_ENDPOINTS = {
@@ -17,5 +21,11 @@ export const CLINIC_API_ENDPOINTS = {
 
 export const NOTIFICATIONS_ENDPOINTS = {
     GetCountOfNotification : "/api/Notification/GetCountOfNotification",
-    GetLastestUnReadNotifications: "api/Notification/GetLastestUnReadNotifications"
+    GetLastestUnReadNotifications: "/api/Notification/GetLastestUnReadNotifications"
+}
+
+export const CONVERSATION_ENDPOINTS = {
+   GetAllConversationsForClinic : API_URL +  "/api/VideoCall/GetAllVideoCall",
+   GetRoomCredentials: API_URL +  "/api/Room/GetRoomCredentials",
+   GetParticipantMessages: API_URL +  "/api/Conversation/GetParticipantMessages",
 }

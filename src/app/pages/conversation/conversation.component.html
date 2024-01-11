@@ -3,147 +3,147 @@
     <h4 class="sub-heading">Conversation
     </h4>
     <ng-container *ngIf="activeTab == 'activeConversation'">
-      <p-button class="gmd-primary-btn" (click)="showDialog()" label="Request Conversation" [rounded]="true">
+      <p-button class="gmd-primary-btn" (click)="AddNewConversation()" label="Request Conversation" [rounded]="true">
       </p-button>
     </ng-container>
   </div>
   <div class="gmd-card-body">
     <div class="card profile-tab-card">
-      <p-tabView>
-        <p-tabPanel header="Active Conversations">
-          <ng-container *ngIf="products">
-            <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+      <p-tabView (onChange)="showConversations($event)">
+        <p-tabPanel header="Active Conversations" (onChange)="showActiveConversations()">
+            <p-table [value]="conversations" dataKey="id" [rows]="10"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['title', 'primaryPhysicianName', 'conversationForName','creatorName', 'room_Status']"
+            [tableStyle]="{ 'min-width': '75rem' }">
               <ng-template pTemplate="header">
                 <tr>
-                  <th pSortableColumn="Title">Title <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="PhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="ConversationUser">Conversation For User<p-sortIcon field="code"></p-sortIcon>
-                  </th>
-                  <th pSortableColumn="CreatorName">Creator Name <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="Status">Status <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="Action">Action <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="title">Title <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="primaryPhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="conversationForName">Conversation For User<p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="creatorName">Creator Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="createdDate">Created Date <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="startDate">Start Date <p-sortIcon field="code"></p-sortIcon></th>
+                  <th> Message</th>
+                  <th pSortableColumn="conversationType">Priority <p-sortIcon field="code"></p-sortIcon></th>
+                  <th> Action</th>
                 </tr>
               </ng-template>
-              <ng-template pTemplate="body" let-product>
+              <ng-template pTemplate="body" let-conversation as ConversationModel>
                 <tr>
-                  <td>{{ product.Title }}</td>
-                  <td>{{ product.PhysicianName }}</td>
+                  <td>{{ conversation.title }}</td>
+                  <td>{{ conversation.primaryPhysicianName }}</td>
                   <td>
                     <div>
-                      <span class="gmd-badge-lg">{{ product.ConversationUser }}</span>
+                      <span class="gmd-badge-lg">{{ conversation.conversationForName == "" ? "N/A" :  conversation.conversationForName}}</span>
                     </div>
                   </td>
                   <td>
-                    {{ product.CreatorName }}
+                    {{ conversation.creatorName }}
                   </td>
-                  <td>{{ product.Status }}</td>
                   <td>
-                    <div class="flex gap-2">
-                      <p-button severity="danger" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
-                      <p-button severity="success" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
+                    {{ conversation.created_Date | date: 'MMM dd yyyy hh:mm a UTC' | date: 'MMM dd yyyy hh:mm a' }}
+                  </td>
+                  <td>
+                    {{ conversation.startDate | date: 'MMM dd yyyy hh:mm a UTC' | date: 'MMM dd yyyy hh:mm a' }}
+                  </td>      
+                  <td>{{ conversation.description }}</td>
+                  <td>
+                    <p-tag [value]="CONVERSATION_TYPE_ENUM_NAMES$.get(conversation.conversationType)"
+                    [class]="CONVERSATION_TYPE_ENUM_COLORS$.get(conversation.conversationType)"></p-tag></td>
+                  <td>
+                    <div class="d-flex gap-2">
+                      <p-button severity="success" class="mr-1" [outlined]="true" icon="pi-comments pi" (onClick)="JoinChat(conversation)"></p-button>
+                      <p-button severity="danger" [outlined]="true" icon="pi-stop-circle pi"></p-button>
                     </div>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                  <td [attr.colspan]="columns?.length">
+                     No records found
                   </td>
                 </tr>
               </ng-template>
             </p-table>
-          </ng-container>
-        </p-tabPanel>
-        <p-tabPanel header="Closed Conversations">
-          <ng-container *ngIf="products">
-            <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+        </p-tabPanel> 
+        <p-tabPanel header="Closed Conversations" (onChange)="showPastConversations()">
+          <ng-container *ngIf="showPast && pastConversations">
+            <p-table [value]="pastConversations" dataKey="id" [rows]="10"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['title', 'primaryPhysicianName', 'conversationForName','creatorName', 'room_Status']"
+            [tableStyle]="{ 'min-width': '75rem' }">
               <ng-template pTemplate="header">
                 <tr>
-                  <th pSortableColumn="Title">Title <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="PhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="ConversationUser">Conversation For User<p-sortIcon field="code"></p-sortIcon>
-                  </th>
-                  <th pSortableColumn="CreatorName">Creator Name <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="Status">Status <p-sortIcon field="code"></p-sortIcon></th>
-                  <th pSortableColumn="Action">Action <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="title">Title <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="primaryPhysicianName">Physician Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="conversationForName">Conversation For User<p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="creatorName">Creator Name <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="startDate">Start Date <p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="endDate">End Date <p-sortIcon field="code"></p-sortIcon></th>
+                  <th> Message</th>
+                  <th pSortableColumn="conversationType">Priority <p-sortIcon field="code"></p-sortIcon></th>
+                  <th> Action</th>
                 </tr>
               </ng-template>
-              <ng-template pTemplate="body" let-product>
+              <ng-container *ngIf="pastConversations; else loadingTemplate">
+              <ng-template pTemplate="body" let-conversation as ConversationModel>
                 <tr>
-                  <td>{{ product.Title }}</td>
-                  <td>{{ product.PhysicianName }}</td>
+                  <td>{{ conversation.title }}</td>
+                  <td>{{ conversation.primaryPhysicianName }}</td>
                   <td>
                     <div>
-                      <span class="gmd-badge-lg">{{ product.ConversationUser }}</span>
+                      <span class="gmd-badge-lg">{{ conversation.conversationForName == "" ? "N/A" :  conversation.conversationForName}}</span>
                     </div>
                   </td>
                   <td>
-                    {{ product.CreatorName }}
+                    {{ conversation.creatorName }}
                   </td>
-                  <td>{{ product.Status }}</td>
+                  <td>
+                    {{ conversation.startDate | date: 'MMM dd yyyy hh:mm a UTC' | date: 'MMM dd yyyy hh:mm a' }}
+                  </td>
+                  <td>
+                    {{ conversation.endDate | date: 'MMM dd yyyy hh:mm a UTC' | date: 'MMM dd yyyy hh:mm a'}}
+                  </td>
+                  <td>{{ conversation.description }}</td>
+                  <td>
+                    <p-tag [value]="CONVERSATION_TYPE_ENUM_NAMES$.get(conversation.conversationType)"
+                    [class]="CONVERSATION_TYPE_ENUM_COLORS$.get(conversation.conversationType)"></p-tag></td>
                   <td>
                     <div class="flex gap-2">
-                      <p-button severity="danger" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
-                      <p-button severity="success" class="square" [outlined]="true" icon="pi-comments pi"></p-button>
+                      <p-button severity="success" class="square" [outlined]="true" icon="pi-comments pi" (onClick)="JoinChat(conversation)"></p-button>
                     </div>
                   </td>
                 </tr>
               </ng-template>
+            </ng-container>
             </p-table>
           </ng-container>
         </p-tabPanel>
       </p-tabView>
     </div>
-
   </div>
+  <ng-template #loadingTemplate>
+    <tr>
+      <td class="text-center" colspan="3">Record not found</td>
+    </tr>
+  </ng-template>
 </div>
 
 <p-dialog header="Conversation Form" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }"
   [draggable]="false" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
-  <ng-template pTemplate="header">
-    <div class="inline-flex align-items-center justify-content-center gap-2">
-      <h5>Conversation Form</h5>
-    </div>
-  </ng-template>
-  <p class="m-0">
-    Please describe what this communication is related to so that we may route it appropriately?
-  </p>
-  <div>
-    <div class="planPageQuestion flex flex-column gap-1 align-items-base" id="addOnQuestion">
-      <div class="flex align-items-center py-2 px-3  gmd-badge-lg">
-        <p-radioButton name="pizza" value="Cheesee" [(ngModel)]="ingredient" inputId="ingredient3"></p-radioButton>
-        <label for="ingredient3" class="ml-2 fs-3">Protocol or Document Related</label>
-      </div>
-      <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
-        <p-radioButton name="pizza" value="Cheeseee" [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton>
-        <label for="ingredient2" class="ml-2 fs-3">Clinical Questions</label>
-      </div>
-      <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
-        <p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton>
-        <label for="ingredient1" class="ml-2 fs-3">Other</label>
-      </div>
-    </div>
-    <div class="form-group mt-3">
-      <label class="gmd-label" for="">Title</label>
-      <input type="text" pInputText class="w-100">
-    </div>
-    <div class="form-group mt-3">
-      <label class="gmd-label" for="">Physician</label>
-      <p-dropdown class="w-100" [options]="cities" optionLabel="name" [showClear]="true"
-        placeholder="Select a City"></p-dropdown>
-    </div>
-    <div class="form-group mt-3">
-      <label class="gmd-label" for="">Physician Role</label>
-      <div class="flex gap-2 flex-wrap">
-        <span class="gmd-badge-lg">Regional Director</span>
-        <span class="gmd-badge-lg">Core Compliance Director</span>
-        <span class="gmd-badge-lg">Clinical Education Director</span>
-        <span class="gmd-badge-lg">Collaborating Physician</span>
-        <span class="gmd-badge-lg">Medical Director</span>
-      </div>
-    </div>
-  </div>
-  <div class="form-group mt-3">
-    <label class="gmd-label" for=""> Message</label>
-    <textarea rows="5" cols="30" class="w-100" pInputTextarea></textarea>
-
-  </div>
+  <app-add-conversation></app-add-conversation>
   <ng-template pTemplate="footer">
-    <p-button class="dialog-secondary-btn" [outlined]=true label="Close" styleClass="p-button-text"></p-button>
+    <p-button class="dialog-secondary-btn" [outlined]=true label="Close" styleClass="p-button-text" (onClick)="Close()"></p-button>
     <p-button class="dialog-primary-btn" label="Save Changes" styleClass="p-button-text"></p-button>
-  </ng-template>
+</ng-template>
 </p-dialog>
+
+<ng-container *ngIf="showChat">
+<p-dialog [header]="conversationToJoin.title" [(visible)]="showChat" [modal]="true" [style]="{ width: '50rem' }"
+  [draggable]="false" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+  <app-conversation-chat [conversation]="conversationToJoin" [loginUserInfo]="this.loginUserInfo" [allowMessage]="!this.showPast"></app-conversation-chat>
+</p-dialog>
+</ng-container>

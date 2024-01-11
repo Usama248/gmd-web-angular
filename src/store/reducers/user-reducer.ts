@@ -13,6 +13,7 @@ export const initialState: UserDataState = {
     loaded: false,
     error: "",
     userProfileData : {
+        id: "",
         profileId: "",
         firstName: "",
         lastName: "",

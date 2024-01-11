@@ -1,0 +1,9 @@
+<div *ngFor="let notification of notifications" class="d-flex gap-2 single-notification align-items-center">
+    <div class="icon">
+      <span [class]="NOTIFICATION_TYPE_NAME$.get(notification.notificationType)"></span>
+    </div>
+    <div class="text-wraper pl-2">
+      <p class="m-0 font-13 font-weight-500">{{notification.notificationDescription}}</p>
+      <p class="fs-2 m-0 text-muted font-12">{{notification.createdDate | timeAgo }}</p>
+    </div>
+  </div>

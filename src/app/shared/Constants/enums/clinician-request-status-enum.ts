@@ -2,9 +2,9 @@ export enum ClinicianRequestStatusEnum {
     InProgress = 1,
     Approved = 2,
     Rejected = 3,
-    UnAssigned = 4,
+    UnAssigned = 4
 }
-export const ClinicianRequestStatusNames =new Map<number,string>(
+export const ClinicianRequestStatusNames = new Map<number,string>(
     [
         [ClinicianRequestStatusEnum.InProgress,'Pending'],
         [ClinicianRequestStatusEnum.Approved,'Approved'],

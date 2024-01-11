@@ -30,6 +30,9 @@ export class AuthService extends ApiHandler {
   public get loginUserId() {
     return this.getUserData?.user_id;
   }
+  public get loginUserNumericId() {
+    return this.getUserData?.user_numeric_id;
+  }
   public getProfile() {
     return this.get(environment.apiUrl + AUTH_API_ENDPOINTS.GetProfile)
   }
