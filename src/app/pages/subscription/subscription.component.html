@@ -105,7 +105,7 @@
           <div class="d-flex justify-content-between mb-2 align-items-center flex-wrap">
             <label class=" font-weight-600 text-black-alpha-70 mb-0 font-12" >Your Current Services</label>
             <div class="text-right">
-              <div class="pl-2 font-14 font-weight-600 text-success pointer"> <i class="pi pi-plus font-12 "></i> Add Suggestion</div>
+              <div class=" suggestBtn "> <i class="pi pi-plus font-12 "></i> Add Suggestion</div>
             </div>
           </div>
           <div class="text-black-alpha-70 p-1">
@@ -119,7 +119,7 @@
 
         </div>
         <div class="text-right">
-          <button class="btn gmd-primary-btn px-4" id="SaveAddMoreServices" disabled="">Save</button>
+          <p-button label="Submit" [disabled]="true" class="gmd-primary-btn"></p-button>
         </div>
 
       </div>
@@ -133,7 +133,7 @@
               <div class="tooltip_container d-flex align-items-center ">
                 <h6 class="m-0 addOns_tag d-flex align-items-center gap-2">
                   <span class="ellipsis-one font-14 " title="Practice Partnership">Practice Partnership</span>
-                  <span class="badge badge-success">Purchased</span>
+                  <span class="badge badge-primary badge-sm">Purchased</span>
                 </h6>
 
               </div>

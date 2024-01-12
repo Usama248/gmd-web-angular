@@ -1,83 +1,75 @@
-<div class="flex gap-3">
-  <div class="w-100">
-    <p-card>
-      <h3 class="gmd-card-title mb-3">Credits</h3>
-      <div class="border-1 border-solid border-bluegray-200 p-3 border-round-md flex gap-3">
-        <div class="w-100">
-          <div
-            class=" flex justify-content-center flex-column text-center align-items-center bg-cyan-100 h-100 border-round-md">
-            <p>total Credits</p>
-            <h1 class="m-0 text-dark">5</h1>
+<div class="credit-payment">
+  <div class="billing-card bg-white p-3 w-100">
+    <div class="card-header"> <h3 class="text-left sub-heading">Credits</h3></div>
+     <div class=" credit-inner d-flex gap-3 align-items-center">
+       <div class="w-100">
+         <div
+           class=" current-balance d-flex justify-content-center flex-column text-center align-items-center h-100 border-round-md">
+           <p>total Credits</p>
+           <h1 class="m-0 text-dark">5</h1>
+         </div>
+       </div>
+       <div class="d-flex flex-column w-100 ">
+         <button class="gmd-theme-outline-round mb-3">Add Credit</button>
+         <div class="d-flex justify-content-between">
+           <div><i class="pi pi-money-bill mr-2"></i>Auto Credits</div>
+           <div>
+             <span>3/Monthly</span>
+           </div>
+         </div>
+         <div class="d-flex justify-content-between mt-2">
+           <div><i class="pi pi-money-bill mr-2"></i>Auto Credits</div>
+           <div>
+             <span>3/Monthly</span>
+           </div>
+         </div>
+         <button class="gmd-theme-outline-round mt-3" >View Credit History</button>
+       </div>
+     </div>
+   </div>
+   <div class="billing-card bg-white p-3 w-100">
+    <h3 class="text-left sub-heading">Payment Method</h3>
+    <div class="credit-inner gap-3 p-3 d-flex ">
+      <div class="flex w-100">
+        <div class="box paymentCard__wrapper">
+          <div class="circles">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
           </div>
-        </div>
-        <div class="flex flex-column justify-content-between w-100 gap-3">
-          <p-button severity="success" class="block" [rounded]="true" label="Add Credit" [outlined]="true"></p-button>
-          <div class="d-flex justify-content-between">
-            <div><i class="fa fa-money-bill-alt mr-2"></i>Auto Credits</div>
-            <div>
-              <span>3/Monthly</span>
-            </div>
-          </div>
-          <div class="d-flex justify-content-between">
-            <div><i class="fa fa-money-bill-alt mr-2"></i>Auto Credits</div>
-            <div>
-              <span>3/Monthly</span>
-            </div>
-          </div>
-          <p-button severity="success" class="block" [rounded]="true" label="View Credit History"
-            [outlined]="true"></p-button>
-        </div>
-      </div>
-    </p-card>
-
-  </div>
-  <div class="w-100">
-    <p-card>
-      <h3 class="gmd-card-title mb-3">Payment Method</h3>
-      <div class="border-1 border-solid border-bluegray-200 gap-3 p-3 border-round-md flex ">
-        <div class="flex w-100">
-          <div class="box paymentCard__wrapper">
-            <div class="circles">
-              <div class="circle circle-1"></div>
-              <div class="circle circle-2"></div>
-            </div>
-            <div class="card" id="paymentCardInfo">
-              <form>
-                <div class="logo">
-                  <img src="https://uat-portal.guardian-md.com/img/debitcardchip1.png">
-                </div>
-                <div class="card-number">
-                  <label>Card Number</label>
-                  <input id="card-number" class="paymentInput" placeholder="**** **** **** 4242" type="text" readonly=""
-                    maxlength="19">
+          <div class="card" id="paymentCardInfo">
+            <form>
+              <div class="logo">
+                <img src="https://uat-portal.guardian-md.com/img/debitcardchip1.png">
+              </div>
+              <div class="card-number">
+                <label>Card Number</label>
+                <input id="card-number" class="paymentInput" placeholder="**** **** **** 4242" type="text" readonly=""
+                  maxlength="19">
+                <span class="underline"></span>
+              </div>
+              <br>
+              <div class="group">
+                <div class="expiration-date">
+                  <label>Exp. Date</label>
+                  <input id="card-exp" class="paymentInput" placeholder="4/2024" type="text" maxlength="5"
+                    readonly="">
                   <span class="underline"></span>
                 </div>
-                <br>
-                <div class="group">
-                  <div class="expiration-date">
-                    <label>Exp. Date</label>
-                    <input id="card-exp" class="paymentInput" placeholder="4/2024" type="text" maxlength="5"
-                      readonly="">
-                    <span class="underline"></span>
-                  </div>
-                  <div class="ccv">
-                    <label>CCV</label>
-                    <input id="card-ccv" class="paymentInput" placeholder="***" type="text" maxlength="3" readonly="">
-                    <span class="underline"></span>
-                  </div>
+                <div class="ccv">
+                  <label>CCV</label>
+                  <input id="card-ccv" class="paymentInput" placeholder="***" type="text" maxlength="3" readonly="">
+                  <span class="underline"></span>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
-        <div class="flex w-100 flex-column gap-3">
-          <p-button severity="success" class="block" [rounded]="true" label="Add   New Card" [outlined]="true"></p-button>
-          <p-button severity="success" class="block" [rounded]="true" label="Add Payment Card" [outlined]="true"></p-button>
-
-        </div>
       </div>
-    </p-card>
-
+      <div class="flex w-100 flex-column gap-3">
+        <button class="gmd-theme-outline-round mb-3"  >Add   New Card</button>
+        <button class="gmd-theme-outline-round mb-3"  >Add Payment Card</button>
+      </div>
+    </div>
   </div>
 
 </div>

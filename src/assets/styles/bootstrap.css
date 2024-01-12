@@ -1326,12 +1326,11 @@ h6 {
 }
 
 .badge {
-  border-radius: 3px;
+  border-radius: 25px;
   padding: 3px 5px;
   font-size: .8rem;
   color: white;
 }
-
 .badge-green {
   background-color: #00b76a;
 }
@@ -1343,7 +1342,6 @@ h6 {
 .badge-red {
   background-color: #c50000;
 }
-
 .badge-blue {
   background-color: #0093e0;
 }
@@ -1675,7 +1673,9 @@ fieldset {
 .flex-wrap {
   flex-wrap: wrap;
 }
-
+.gap-3{
+  gap: 1rem;
+}
 @media (min-width: 768px){
   .pl-md-4, .px-md-4 {
     padding-left: 1.5rem!important;

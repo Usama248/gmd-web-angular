@@ -10,15 +10,18 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { FormsModule } from '@angular/forms';
 import { ClinicianRequestStatusRepository } from 'src/app/services/clinician-request-status-service/clinician-request-status.repository';
 import { IClinicianRequestStatus } from 'src/index-db/interfaces/clinician-request-status.interface';
+import { MenuModule } from 'primeng/menu';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-physician',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe, FormsModule, TableModule, ButtonModule, TagModule, MultiSelectModule],
+  imports: [NgFor, NgIf, DatePipe, FormsModule, InputTextModule,TableModule, ButtonModule,MenuModule, TagModule, MultiSelectModule],
   templateUrl: './physician.component.html',
   styleUrls: ['./physician.component.scss']
 })
 export class PhysicianComponent implements OnInit, AfterViewInit {
+  items:any
   CLINICIAN_REQUEST_STATUS_ENUM_NAMES$ = ClinicianRequestStatusNames;
   CLINICIAN_REQUEST_STATUS_ENUM_COLORS$ = ClinicianRequestStatusTagColors;
   PHYSICIAN_ASSIGN_TYPE_NAMES$ = PhysicianAssignTypeNames;
@@ -40,6 +43,20 @@ export class PhysicianComponent implements OnInit, AfterViewInit {
   clinicianRequests!: IClinicianRequestStatus[];
   loading = false;
   ngOnInit(): void {
+
+    this.items = [
+
+      {
+          items: [
+              {
+                  label: 'View',
+                  icon: 'pi pi-eye',
+                  url: 'http://angular.io'
+              },
+          ]
+      }
+  ];
+
     this.loading = true;
     this.clinicianRequestStatusService.getClinicianRequestStatusData().subscribe(res => {
       if(res.length > 0) {

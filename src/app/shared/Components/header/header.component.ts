@@ -78,6 +78,11 @@ export class HeaderComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     this.notificationDropdown = false
+    this.Profileicon = false;
+  }
+  showLogoutToggle(e:Event){
+    e.stopPropagation();
+    this.Profileicon = !this.Profileicon
   }
   toggleSidenav() {
     this.showsideNav = !this.showsideNav
@@ -92,4 +97,5 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
+ 
 }

@@ -100,10 +100,14 @@
           </td>
           <td><p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(physicianRequest.status)"
               [class]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(physicianRequest.status)"></p-tag>
-          <td><p-button label="success" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
+          <td>
+            <p-button label="success" (click)="menu.toggle($event)" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
               severity="success" label="Action" iconPos="right" icon="pi-angle-down pi"></p-button></td>
         </tr>
+
       </ng-template>
     </p-table>
   </div>
 </div>
+
+<p-menu #menu [model]="items" [popup]="true"></p-menu>

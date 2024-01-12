@@ -8,6 +8,39 @@
   width: 100%;
   margin: 0 auto;
 }
+.credit-payment{
+  display: flex;
+  gap: 1rem;
+}
+.current-balance {
+  background: #83C6E74C;
+  padding: 2.3rem 0.8rem;
+  border-radius: 20px;
+}
+.gmd-theme-outline-round{
+  color: #81A143;
+  border: 1px solid #81A143;
+  padding: 0.45rem 14px;
+  background-color: white;
+  border-radius: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+.credit-inner{
+  border: 1px solid gainsboro;
+  padding: 1rem;
+  border-radius: 5px;
+}
+.billing-card{
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 22px;
+}
 
   .box.paymentCard__wrapper .circle {
       height: 135px;
