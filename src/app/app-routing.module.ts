@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './route-guards/auth.guard';
+import { isClinicGuard } from './route-guards/is-clinic.guard';
 export const APP_ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   {
@@ -14,7 +15,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'clinic',
-    canActivate: [authGuard],
+    canActivate: [authGuard, isClinicGuard],
     loadComponent: () => import('./shared/components/layout/layout.component').then(x => x.LayoutComponent),
     children: [
       { path: 'dashboard', title: 'Clinic Dashboard', canActivate: [authGuard], loadComponent: () => import('./pages/clinic/clinic-dashboard/clinic-dashboard.component').then(x => x.ClinicDashboardComponent) },

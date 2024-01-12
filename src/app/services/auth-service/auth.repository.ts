@@ -39,6 +39,9 @@ export class AuthRepository {
   public get loginUserId() {
     return this.authService.loginUserId;
   }
+  public get UserTokenData() {
+    return this.authService.getUserData;
+  }
 }
 
 

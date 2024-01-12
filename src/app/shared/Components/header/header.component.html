@@ -52,15 +52,15 @@
         <div class="logout-dropdown show" *ngIf="Profileicon" >
           <div class="logout-dropdown-header ">
             <div class="media-body ">
-              <h6 class="mt-0 mb-0 font-18" title="Ahad clinic">Ahad clinic</h6>
-              <span class="font-13 profile-email ellipsis-two" title="ahad.clinic@yopmail.com">ahad.clinic@yopmail.com</span>
+              <h6 class="mt-0 mb-0 font-18" title="Ahad clinic">{{loginUserData?.userName}}</h6>
+              <span class="font-13 profile-email ellipsis-two" title="ahad.clinic@yopmail.com">{{loginUserData?.email}}</span>
             </div>
           </div>
           <hr>
       
-          <a   class=" d-flex align-items-center gap-2" ><i class="pi pi-user"></i> Profile</a>
-          <a   class=" d-flex align-items-center gap-2" ><i class="pi pi-file"></i> Billing Details</a>
-          <a   class=" d-flex align-items-center gap-2" ><i class="pi pi-sign-out"></i> Sign Out</a>
+          <a class="d-flex align-items-center gap-2" routerLink="/clinic/profile-main" ><i class="pi pi-user"></i> Profile</a>
+          <a class=" d-flex align-items-center gap-2" routerLink="/clinic/billing" ><i class="pi pi-file"></i> Billing Details</a>
+          <a class=" d-flex align-items-center gap-2" (click)="logout()"><i class="pi pi-sign-out"></i> Sign Out</a>
         </div>
 
 

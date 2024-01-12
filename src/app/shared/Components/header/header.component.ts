@@ -48,21 +48,6 @@ export class HeaderComponent implements OnInit {
     this.messages = [
       { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
     ];
-    this.items = [
-      {
-        label: 'Profile',
-        icon: 'pi pi-user',
-        routerLink: '/clinic/profile-main',
-        name: 'Profile'
-
-      },
-      {
-        label: 'Logout',
-        icon: 'pi pi-sign-out',
-        command: () => this.authRepository.logout()
-      },
-
-    ];
     this.authRepository.getLoginUserData().subscribe(res => {
       this.isClinic = res?.isClinic;
       this.loginUserData = res;
@@ -71,6 +56,9 @@ export class HeaderComponent implements OnInit {
   showNotificationDropdown(e: Event) {
     e.stopPropagation();
     this.notificationDropdown = !this.notificationDropdown
+  }
+  logout() {
+    this.authRepository.logout();
   }
   stopPropogate(e: Event) {
     e.stopPropagation();
