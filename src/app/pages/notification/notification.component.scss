@@ -1,20 +1,26 @@
 @import '../../../assets/styles/variable';
+
 .gmd-tab {
-ul{
-    border-bottom: 1px solid #f0f0f0;
-    column-gap: 12px;
-    list-style: none;
-    display: flex;
-    li{
-        padding: 5px 20px;
-        &.active{
-            color:$primary-color
+    ul {
+        border-bottom: 2px solid #f0f0f0;
+        column-gap: 12px;
+        list-style: none;
+        display: flex;
+        padding: 0;
+        li {
+            padding: 5px 20px;
+            cursor: pointer;
+            &.active {
+                color: $primary-color;
+                border-bottom:2px solid  $primary-color;
+                margin-bottom: -2px;
+            }
         }
     }
+
+
 }
 
-    
-}
 .message-paragraph {
     font-size: 12px;
     font-weight: 400;
@@ -26,21 +32,33 @@ ul{
     flex: 1;
 }
 
+.notification-heading,
+.notification_heading {
+    color: #212529;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.notification-heading {
+    font-size: 1.2rem;
+}
+
 .main-notificationRow {
     padding: 5px 0;
     background-color: #fff;
     position: relative;
     width: 100%;
+    display: flex;
+    justify-content: center;
     min-height: 62px;
     align-items: center;
+
     &:hover {
         background: #f1f1f1
     }
 }
 
-@media (max-width:992.98px) {
- 
-}
+@media (max-width:992.98px) {}
 
 
 .notificationtab {
@@ -158,10 +176,11 @@ i.readIcon {
 }
 
 .notification-heading {
-    background: #eff3f8;
+    background: #f6f8fb;
     padding: 5px 0;
     position: relative;
 }
+
 @media screen and (max-width: 991.98px) {
     .notification-card {
         height: auto !important;

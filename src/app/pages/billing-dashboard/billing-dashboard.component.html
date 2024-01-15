@@ -75,8 +75,8 @@
 </div>
 
 <div class="pt-3">
-  <p-card >
-    <h3 class="gmd-card-title mb-3">Subscription History</h3>
+  <div class="billing-card p-3" >
+    <h3 class="text-left sub-heading">Subscription History</h3>
     <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
           <tr>
@@ -97,5 +97,5 @@
           </tr>
       </ng-template>
   </p-table>
-  </p-card>
+  </div>
 </div>

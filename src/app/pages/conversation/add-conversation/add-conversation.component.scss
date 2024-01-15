@@ -1,0 +1,20 @@
+.gmd-badge-lg{
+    border-radius: 25px;
+    background: #eaecf0;
+    width: fit-content;
+    padding: 4px 8px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    label{
+        margin-bottom: 2px;
+    }
+}
+
+.p-dropdown{
+    width: 100%;
+}
+.physician-role{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}

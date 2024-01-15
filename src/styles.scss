@@ -8,7 +8,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap');
 @import "primeicons/primeicons.css";
 @import "./assets/styles/primeng-overwrite";
-
+body{
+    font-size: 14px;
+}
 .btn.btn-rounded,
 a:link.btn.btn-rounded {
     border-radius: 50px;
@@ -132,8 +134,73 @@ p {
 ::-webkit-scrollbar-thumb {
     background: #cbcdd1;
 }
-
+.form-group {
+    .p-dropdown{
+        width: 100%;
+    }
+}
+.p-submenu-header{
+    display: none;
+}
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #b3b7c0;
+}
+.gmd-table{
+    .p-datatable-header{
+        button{
+            padding: 0.55rem 1.25rem;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        background-color: white !important;
+        border: 0px solid transparent !important;
+        .pi-search{
+            top: 20px !important;
+            font-size: 14px ;
+            font-size: 900;
+        }
+        .p-inputtext{
+         padding:0.55rem 0.75rem;
+         padding-left: 2.5rem !important;
+         &::placeholder{
+            font-size: 14px;
+            font-weight: 400;
+         }
+        }
+    }
+    th{
+        background-color: #fafafa !important;
+        border-top: 0px solid transparent !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        padding: 4px 1rem !important;
+        &.p-sortable-column[aria-sort="none"]{
+            .p-icon-wrapper{
+                svg{
+                    width: 12px !important;
+                    opacity: .6;
+                }
+            }
+        }
+        font-size: 14px;
+        font-weight: 500 !important;
+        .p-icon-wrapper{
+            svg{
+                width: 12px !important;
+            }
+        }
+    }
+    
+}
+
+.gmd-card {
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 22px;
 }

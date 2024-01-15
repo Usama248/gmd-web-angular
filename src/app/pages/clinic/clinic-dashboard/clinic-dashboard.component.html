@@ -1,8 +1,8 @@
 <div class="">
   <h1 class="main-heading">Clinic Dashboard</h1>
-  <div class="row">
-    <div class="col-sm-6 col-lg-4 mb-3">
-      <div class="dashboard-card">
+  <div class="row dashbard-grid">
+    <div class="counter">
+      <div class="dashboard-card gmd-card">
         <div class="d-flex">
           <div class="col-auto">
             <div class="dashboard-svg">
@@ -24,8 +24,8 @@
       </div>
     </div>
 
-    <div class="col-sm-6 col-lg-4 mb-3">
-      <div class="dashboard-card">
+    <div class="counter">
+      <div class="dashboard-card gmd-card">
         <div class="d-flex">
           <div class="col-auto">
             <div class="dashboard-svg completed">
@@ -46,8 +46,8 @@
       </div>
     </div>
 
-    <div class="col-sm-6 col-lg-4 mb-3">
-      <div class="dashboard-card">
+    <div class="counter">
+      <div class="dashboard-card gmd-card">
         <div class="d-flex">
           <div class="col-auto">
             <div class="dashboard-svg pending">
@@ -67,35 +67,68 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-6 mb-3">
-      <div class="physian-request dashboard-card p-4">
-        <div class="gmd-card w-100">
+    <div class="recent-physician">
+      <div class="gmd-card p-3 w-100">
+        <div class="gmd-card-header">
+          <h3 class="text-left font-18 font-weight-500">Recent Physician Requests
+          </h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table gmd-table custom-table">
+            <thead>
+              <tr>
+                <th class="p-l-20">Name</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="dashboardData?.clinicianDetail?.cliniciansList; else loadingTemplate">
+                <tr *ngFor="let clinician of dashboardData?.clinicianDetail?.cliniciansList">
+                  <td>
+                    {{clinician.clinicianName}}
+                  </td>
+                  <td>{{clinician.createdDate | date: 'MM/dd/yyyy'}}</td>
+                  <td>
+                    <p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(clinician.status)"
+                      [class]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(clinician.status)"></p-tag>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+      <div class="recent-document">
+        <div class="gmd-card p-3 w-100">
           <div class="gmd-card-header">
-            <h3 class="text-left font-18 font-weight-500">Recent Physician Requests
+            <h3 class="text-left font-18 font-weight-500">Recent Documents
             </h3>
           </div>
           <div class="table-responsive">
             <table class="table gmd-table custom-table">
               <thead>
                 <tr>
-                  <th class="p-l-20">Name</th>
+                  <th class="p-l-20">Document Name</th>
+                  <th>Assigned To</th>
                   <th>Date</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngIf="dashboardData?.clinicianDetail?.cliniciansList; else loadingTemplate">
-                  <tr *ngFor="let clinician of dashboardData?.clinicianDetail?.cliniciansList">
+                <ng-container *ngIf="dashboardData?.documentsDetail?.documentList; else loadingTemplate">
+                  <tr *ngFor="let doc of dashboardData?.documentsDetail?.documentList">
                     <td>
-                      {{clinician.clinicianName}}
+                      {{doc.fileName}}
                     </td>
-                    <td>{{clinician.createdDate | date: 'MM/dd/yyyy'}}</td>
                     <td>
-                      <p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(clinician.status)"
-                        [class]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(clinician.status)"></p-tag>
+                      {{doc.clinicianName}}
+                    </td>
+                    <td>{{doc.createdDate | date: 'MM/dd/yyyy'}}</td>
+                    <td>
+                      <p-tag [value]="CLINICIAN_DODUMENTS_ENUM_NAMES$.get(doc.status)"
+                        [class]="CLINICIAN_DODUMENTS_ENUM_COLORS$.get(doc.status)"></p-tag>
                     </td>
                   </tr>
                 </ng-container>
@@ -103,51 +136,11 @@
             </table>
           </div>
         </div>
-        </div>
       </div>
-      <div class="col-lg-6">
-        <div class="recent-docuement dashboard-card p-4">
-          <div class="gmd-card w-100">
-            <div class="gmd-card-header">
-              <h3 class="text-left font-18 font-weight-500">Recent Documents
-              </h3>
-            </div>
-            <div class="table-responsive">
-              <table class="table gmd-table custom-table">
-                <thead>
-                  <tr>
-                    <th class="p-l-20">Document Name</th>
-                    <th>Assigned To</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ng-container *ngIf="dashboardData?.documentsDetail?.documentList; else loadingTemplate">
-                    <tr *ngFor="let doc of dashboardData?.documentsDetail?.documentList">
-                      <td>
-                        {{doc.fileName}}
-                      </td>
-                      <td>
-                        {{doc.clinicianName}}
-                      </td>
-                      <td>{{doc.createdDate | date: 'MM/dd/yyyy'}}</td>
-                      <td>
-                        <p-tag [value]="CLINICIAN_DODUMENTS_ENUM_NAMES$.get(doc.status)"
-                          [class]="CLINICIAN_DODUMENTS_ENUM_COLORS$.get(doc.status)"></p-tag>
-                      </td>
-                    </tr>
-                  </ng-container>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+  </div>
 
-      <ng-template #loadingTemplate>
-        <tr>
-          <td class="text-center" colspan="3">Record not found</td>
-        </tr>
-      </ng-template>
-    </div>
+  <ng-template #loadingTemplate>
+    <tr>
+      <td class="text-center" colspan="3">Record not found</td>
+    </tr>
+  </ng-template>

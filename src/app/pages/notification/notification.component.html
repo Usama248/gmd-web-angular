@@ -9,13 +9,11 @@
 
   <div class="card-body p-0" id="notificationTab">
     <div>
-      <div class="d-flex justify-content-between flex-wrap align-items-start">
+      <div class="d-flex justify-content-between flex-wrap align-items-baseline">
         <div class="ml-3">
           <h4 class="notification_heading mt-0 font-22">Notifications</h4>
           <p class="text-muted">Check your all Notifications and read it</p>
         </div>
-
-
         <div class="readall">
           <i class="pi pi-check font-12 mr-2"></i> <a>Mark all as Read</a>
         </div>
@@ -50,7 +48,11 @@
               </div>
 
               <div class="d-flex align-items-center">
-                <span class="text-nowrap"> about 7 days ago</span>
+                <div class="d-flex align-items-center">
+                  <span class="text-nowrap"> about 14 days ago</span>
+                      <i class="pi big-dot pi-circle-fill mx-2 font-12"></i>
+                  
+              </div>
                 <p-button  icon="pi pi-ellipsis-v" [rounded]="true" [text]="true" severity="secondary " (click)="menu.toggle($event)"></p-button>
               </div>
 
