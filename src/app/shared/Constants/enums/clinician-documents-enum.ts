@@ -1,5 +1,4 @@
 export enum ClinicianDocumentsEnum {
-    All = 0,
     Submitted = 1,
     Reviewed = 2,
     Complete = 3,
@@ -11,7 +10,6 @@ export enum ClinicianDocumentsEnum {
 }
 export const ClinicianDocumentsEnumNames =new Map<number,string>(
     [
-        [ClinicianDocumentsEnum.All,'All'],
         [ClinicianDocumentsEnum.Submitted,'Submitted'],
         [ClinicianDocumentsEnum.Reviewed,'Reviewed'],
         [ClinicianDocumentsEnum.Complete,'Complete'],
@@ -25,7 +23,6 @@ export const ClinicianDocumentsEnumNames =new Map<number,string>(
 
 export const ClinicianDocumentsEnumTagColors = new Map<number,string>(
     [
-        [ClinicianDocumentsEnum.All,'p-tag-primary'],
         [ClinicianDocumentsEnum.Submitted,'p-tag-warning'],
         [ClinicianDocumentsEnum.Reviewed,'p-tag-success'],
         [ClinicianDocumentsEnum.Complete,'p-tag-success'],

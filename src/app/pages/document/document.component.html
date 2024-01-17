@@ -1,1 +1,354 @@
-document grids works.
+<div class="card-common-bg p-4 h-100">
+  <div class="gmd-card-header d-flex justify-content-between	align-items-center	">
+    <h4 class="sub-heading">Documents
+    </h4>
+    <ng-container *ngIf="activeTab == 'activeDocument'">
+      <p-button class="gmd-primary-btn" (click)="showDialog()" label="Request Chart View" [rounded]="true">
+      </p-button>
+    </ng-container>
+  </div>
+  <div class="gmd-card-body">
+    <div class="card profile-tab-card">
+      <p-tabView (onChange)="showActiveDocumnetTab($event)">
+        <p-tabPanel  header="Active" (onChange)="showActiveDocuments()">
+          <ng-container *ngIf="activeDocument">
+            <p-table #dt1 [value]="activeDocument" dataKey="id"
+            [rows]="10"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+            [globalFilterFields]="['physicianName', 'createdDate', 'description','status', 'documentType','isResubmit']"
+            [tableStyle]="{ 'min-width': '50rem' }">
+              <ng-template pTemplate="caption">
+                <div class="d-flex">
+                  <button pButton label="Clear" (click)="clear(dt1)" class="p-button-outlined" icon="pi pi-filter-slash"
+                    ></button>
+                  <span class="p-input-icon-left" style="margin-left: auto;">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains',dt1)"
+                      placeholder="Search" />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="id">#
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter type="numeric" field="id" display="menu" style="margin-left: auto;"></p-columnFilter>
+                  </th>
+                  <th pSortableColumn="physicianName">Physician Name 
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter type="text" field="physicianName" display="menu" style="margin-left: auto;"></p-columnFilter>
+                  </th>
+                  <th pSortableColumn="description">Description
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter type="text" field="description" display="menu" style="margin-left: auto;"></p-columnFilter>
+                  </th>
+                  <th pSortableColumn="status">
+                    Signature Status
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter field="statusEnum" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" style="margin-left: auto;">
+                      <ng-template pTemplate="header">
+                          <div class="px-3 pt-3 pb-0">
+                              <span class="font-bold">Status Picker</span>
+                          </div>
+                      </ng-template>
+                      <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                          <p-multiSelect [ngModel]="value" [options]="statusList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
+                              <ng-template let-option pTemplate="item">
+                                  <div class="inline-block vertical-align-middle">
+                                      <span class="ml-1 mt-1">{{option.label}}</span>
+                                  </div>
+                              </ng-template>
+                          </p-multiSelect>
+                      </ng-template>
+                  </p-columnFilter>                    
+                </th>
+                  <th pSortableColumn="documentType">
+                    Document Type
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter field="documentTypeEnum" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" style="margin-left: auto;">
+                      <ng-template pTemplate="header">
+                          <div class="px-3 pt-3 pb-0">
+                              <span class="font-bold">Type Picker</span>
+                          </div>
+                      </ng-template>
+                      <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                          <p-multiSelect [ngModel]="value" [options]="documentTypeList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
+                              <ng-template let-option pTemplate="item">
+                                  <div class="inline-block vertical-align-middle">
+                                      <span class="ml-1 mt-1">{{option.label}}</span>
+                                  </div>
+                              </ng-template>
+                          </p-multiSelect>
+                      </ng-template>
+                  </p-columnFilter>                        
+                </th>
+                  <th pSortableColumn="hasApprovedProtocolDocumentStatus">
+                    User Approval Status
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter field="userDocumentStatus" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" style="margin-left: auto;">
+                      <ng-template pTemplate="header">
+                          <div class="px-3 pt-3 pb-0">
+                              <span class="font-bold">Type Picker</span>
+                          </div>
+                      </ng-template>
+                      <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                          <p-multiSelect [ngModel]="value" [options]="userDocumentTypeList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
+                              <ng-template let-option pTemplate="item">
+                                  <div class="inline-block vertical-align-middle">
+                                      <span class="ml-1 mt-1">{{option.label}}</span>
+                                  </div>
+                              </ng-template>
+                          </p-multiSelect>
+                      </ng-template>
+                  </p-columnFilter>                   
+                </th>
+                <th>
+                    Service
+                </th>
+                  <th pSortableColumn="Action">Action<p-sortIcon field="code"></p-sortIcon></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-active as activeDocument let-rowIndex="rowIndex">
+                <tr>
+                  <td>{{ rowIndex + 1 }}</td>
+                  <td>{{ active.physicianName }}</td>
+                  <td>
+                    <div>
+                      <span class="gmd-badge-lg">{{ active.description }}</span>
+                    </div>
+                  </td>
+                  <td>
+                      <p-tag [value]="CLINICIAN_DOCUMENT_ENUM_NAMES$.get(active.status)"
+                      [class]="CLINICIAN_DOCUMENTS_ENUM_TAG_COLORS$.get(active.status)"></p-tag>
+                  </td>
+                  <td>
+                    <p-tag 
+                    [value]="DOCUMENT_TYPE_ENUM_DESCRIPTION$.get(active.documentType)" 
+                    class="p-tag-primary">
+                  </p-tag>
+                  </td>
+                <td>
+                  <p-tag 
+                  [value]="USER_DOCUMENT_STATUS_ENUM_DESCRIPTION$.get(active.hasApprovedProtocolDocumentStatus)" 
+                  class="p-tag-primary">
+                </p-tag>
+                </td>
+                  <td>
+                    
+                  </td>
+                  <td>
+                    <div class="flex gap-2">
+                      <p-button label="success" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
+                      severity="success" label="Action" iconPos="right" icon="pi-angle-down pi"></p-button>                      
+                  </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </ng-container>
+        </p-tabPanel>
+        <p-tabPanel  header="Completed">
+          <ng-container *ngIf="completedDocument">
+            <p-table #dt2 [value]="completedDocument" [rows]="10"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['physicianName', 'createdDate', 'description','status', 'documentType','isResubmit']" 
+            [tableStyle]="{ 'min-width': '75rem' }">
+              <ng-template pTemplate="caption">
+                <div class="d-flex">
+                  <button pButton label="Clear" (click)="clear(dt2)" class="p-button-outlined" icon="pi pi-filter-slash"
+                    ></button>
+                  <span class="p-input-icon-left" style="margin-left: auto;">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains',dt2)"
+                      placeholder="Search" />
+                  </span>
+                </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="id">#<p-sortIcon field="code"></p-sortIcon></th>
+                  <th pSortableColumn="physicianName">Physician Name 
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter type="text" field="physicianName" display="menu" style="margin-left: auto;"></p-columnFilter>
+                  </th>
+                  <th pSortableColumn="description">Description
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter type="text" field="description" display="menu" style="margin-left: auto;"></p-columnFilter>
+                  </th>
+                  <th pSortableColumn="status">Signature Status
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter field="statusEnum" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" style="margin-left: auto;">
+                      <ng-template pTemplate="header">
+                          <div class="px-3 pt-3 pb-0">
+                              <span class="font-bold">Status Picker</span>
+                          </div>
+                      </ng-template>
+                      <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                          <p-multiSelect [ngModel]="value" [options]="statusList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
+                              <ng-template let-option pTemplate="item">
+                                  <div class="inline-block vertical-align-middle">
+                                      <span class="ml-1 mt-1">{{option.label}}</span>
+                                  </div>
+                              </ng-template>
+                          </p-multiSelect>
+                      </ng-template>
+                  </p-columnFilter>                    
+                </th>
+                  <th pSortableColumn="documentType">
+                    Document Type
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter field="documentTypeEnum" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" style="margin-left: auto;">
+                      <ng-template pTemplate="header">
+                          <div class="px-3 pt-3 pb-0">
+                              <span class="font-bold">Type Picker</span>
+                          </div>
+                      </ng-template>
+                      <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                          <p-multiSelect [ngModel]="value" [options]="documentTypeList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
+                              <ng-template let-option pTemplate="item">
+                                  <div class="inline-block vertical-align-middle">
+                                      <span class="ml-1 mt-1">{{option.label}}</span>
+                                  </div>
+                              </ng-template>
+                          </p-multiSelect>
+                      </ng-template>  
+                  </p-columnFilter>                     
+                </th>
+                  <th pSortableColumn="hasApprovedProtocolDocumentStatus">
+                    User Approval Status
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter field="userDocumentStatus" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" style="margin-left: auto;">
+                      <ng-template pTemplate="header">
+                          <div class="px-3 pt-3 pb-0">
+                              <span class="font-bold">Type Picker</span>
+                          </div>
+                      </ng-template>
+                      <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                          <p-multiSelect [ngModel]="value" [options]="userDocumentTypeList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
+                              <ng-template let-option pTemplate="item">
+                                  <div class="inline-block vertical-align-middle">
+                                      <span class="ml-1 mt-1">{{option.label}}</span>
+                                  </div>
+                              </ng-template>
+                          </p-multiSelect>
+                      </ng-template>
+                  </p-columnFilter>                             
+                </th>
+                <th>
+                  Service
+                </th>
+                  <th pSortableColumn="isArchived">Is Archived
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter type="boolean" field="isArchived" display="menu" style="margin-left: auto;"></p-columnFilter>
+                  </th>
+                  <th pSortableColumn="Action">Action
+                    <p-sortIcon field="code"></p-sortIcon>
+                    <p-columnFilter type="text" field="PhysicianName" display="menu" style="margin-left: auto;"></p-columnFilter>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-complete as completedDocument let-rowIndex="rowIndex">
+                <tr>
+                  <td>{{ rowIndex + 1 }}</td>
+                  <td>{{ complete.physicianName }}</td>
+                  <td>
+                    <div>
+                      <span class="gmd-badge-lg">{{ complete.description }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <p-tag [value]="CLINICIAN_DOCUMENT_ENUM_NAMES$.get(complete.status)"
+                    [class]="CLINICIAN_DOCUMENTS_ENUM_TAG_COLORS$.get(complete.status)"></p-tag>
+                  </td>
+                  <td>
+                    <p-tag 
+                    [value]="DOCUMENT_TYPE_ENUM_DESCRIPTION$.get(complete.documentType)" 
+                    class="p-tag-primary">
+                  </p-tag>
+                   <p-tag *ngIf="complete.generalDocumentType" [value]="complete.generalDocumentType" class="p-tag-success"></p-tag>
+                  </td>
+                  <td>
+                    <p-tag 
+                    [value]="USER_DOCUMENT_STATUS_ENUM_DESCRIPTION$.get(complete.hasApprovedProtocolDocumentStatus)" 
+                    class="p-tag-primary">
+                  </p-tag>
+                  </td>
+                  <td>
+                    <span *ngIf="complete.service" class="badge badge-info purple_badge common_badge">{{complete.service}}</span>
+                  </td>
+                  <td>
+                    <span *ngIf="complete.service" class="badge badge-info purple_badge common_badge">Archived</span>
+                  </td>
+                  <td>
+                    <div class="flex gap-2">
+                      <p-button label="success" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
+                      severity="success" label="Action" iconPos="right" icon="pi-angle-down pi"></p-button> 
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </ng-container>
+        </p-tabPanel>
+      </p-tabView>
+    </div>  
+  </div>
+</div>
+
+<p-dialog header="Conversation Form" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }"
+  [draggable]="false" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+  <ng-template pTemplate="header">
+    <div class="inline-flex align-items-center justify-content-center gap-2">
+      <h5>Conversation Form</h5>
+    </div>
+  </ng-template>
+  <p class="m-0">
+    Please describe what this communication is related to so that we may route it appropriately?
+  </p>
+  <div>
+    <div class="planPageQuestion flex flex-column gap-1 align-items-base" id="addOnQuestion">
+      <div class="flex align-items-center py-2 px-3  gmd-badge-lg">
+        <!-- <p-radioButton name="pizza" value="Cheesee" [(ngModel)]="ingredient" inputId="ingredient3"></p-radioButton> -->
+        <label for="ingredient3" class="ml-2 fs-3">Protocol or Document Related</label>
+      </div>
+      <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
+        <!-- <p-radioButton name="pizza" value="Cheeseee" [(ngModel)]="ingredient" inputId="ingredient2"></p-radioButton> -->
+        <label for="ingredient2" class="ml-2 fs-3">Clinical Questions</label>
+      </div>
+      <div class="flex align-items-center py-2 px-3 gmd-badge-lg">
+        <!-- <p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient" inputId="ingredient1"></p-radioButton> -->
+        <label for="ingredient1" class="ml-2 fs-3">Other</label>
+      </div>
+    </div>
+    <div class="form-group mt-3">
+      <label class="gmd-label" for="">Title</label>
+      <input type="text" pInputText class="w-100">
+    </div>
+    <div class="form-group mt-3">
+      <label class="gmd-label" for="">Physician</label>
+      <p-dropdown class="w-100" [options]="cities" optionLabel="name" [showClear]="true"
+        placeholder="Select a City"></p-dropdown>
+    </div>
+    <div class="form-group mt-3">
+      <label class="gmd-label" for="">Physician Role</label>
+      <div class="flex gap-2 flex-wrap">
+        <span class="gmd-badge-lg">Regional Director</span>
+        <span class="gmd-badge-lg">Core Compliance Director</span>
+        <span class="gmd-badge-lg">Clinical Education Director</span>
+        <span class="gmd-badge-lg">Collaborating Physician</span>
+        <span class="gmd-badge-lg">Medical Director</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mt-3">
+    <label class="gmd-label" for=""> Message</label>
+    <textarea rows="5" cols="30" class="w-100" pInputTextarea></textarea>
+
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button class="dialog-secondary-btn" [outlined]=true label="Close" styleClass="p-button-text"></p-button>
+    <p-button class="dialog-primary-btn" label="Save Changes" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>

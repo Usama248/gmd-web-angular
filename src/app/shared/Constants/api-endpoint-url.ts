@@ -29,3 +29,8 @@ export const CONVERSATION_ENDPOINTS = {
    GetRoomCredentials: API_URL +  "/api/Room/GetRoomCredentials",
    GetParticipantMessages: API_URL +  "/api/Conversation/GetParticipantMessages",
 }
+
+export const CLINIC_DOCUMENT_ENDPOINTS = {
+    GetClinicChartReviewDocuments:  API_URL + "/api/ClinicDocument/GetClinicChartReviewDocuments",
+    GetClinicOnBoardDocuments:  API_URL + "/api/ClinicDocument/GetClinicOnBoardDocuments"
+}
