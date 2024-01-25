@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { authGuard } from './route-guards/auth.guard';
 import { isClinicGuard } from './route-guards/is-clinic.guard';
-import { isClinicOwnerGuard } from './route-guards/is-clinic-owner.guard';
 import { userStateGuard } from './route-guards/user-state.guard';
-export const APP_ROUTES: Routes = [
+import { isClinicOwnerGuard } from './route-guards/is-clinic-owner.guard';
+
+export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   {
     path: 'login',
@@ -43,9 +43,3 @@ export const APP_ROUTES: Routes = [
     redirectTo: 'page-not-found',
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(APP_ROUTES)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

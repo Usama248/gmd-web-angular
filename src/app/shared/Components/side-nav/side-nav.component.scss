@@ -42,6 +42,8 @@
           &.active {
             background: #83c6e74c;
             border-color: $primary-color !important;
+            font-weight: 600;
+            color: $primary-color !important;
           }
 
           .rotateArrow {

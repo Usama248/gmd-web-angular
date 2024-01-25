@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { ConversationModel } from "src/app/models/conversation/conversation-model";
+import { ConversationModel } from "../../app/models/conversation/conversation-model";
 import { ConversationActions } from "../actions/conversation-actions";
 
 export interface ConversationState {

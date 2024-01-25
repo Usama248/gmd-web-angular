@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -7,7 +7,7 @@ import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-notification',
   standalone: true,
-  imports: [CommonModule,MenuModule,ButtonModule],
+  imports: [MenuModule, ButtonModule],
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
 })

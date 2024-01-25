@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-payment-due',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './payment-due.component.html',
   styleUrls: ['./payment-due.component.scss']
 })

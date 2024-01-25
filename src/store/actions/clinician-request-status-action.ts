@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { IClinicianRequestStatus } from "src/index-db/interfaces/clinician-request-status.interface";
+import { IClinicianRequestStatus } from "../../index-db/interfaces/clinician-request-status.interface";
 
 export enum ClinicianRequestStatusActionTypes {
      LOAD_REQUEST = '[Clinician Request Status] Load Request',

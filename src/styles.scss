@@ -177,16 +177,16 @@ p {
         &.p-sortable-column[aria-sort="none"]{
             .p-icon-wrapper{
                 svg{
-                    width: 12px !important;
-                    opacity: .6;
+                    width: 14px !important;
+                    opacity: .8;
                 }
             }
         }
         font-size: 14px;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         .p-icon-wrapper{
             svg{
-                width: 12px !important;
+                width: 14px !important;
             }
         }
     }

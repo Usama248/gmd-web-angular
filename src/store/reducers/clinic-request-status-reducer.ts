@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store"
 import { ClinicianRequestStatusActions } from "../actions/clinician-request-status-action"
-import { IClinicianRequestStatus } from "src/index-db/interfaces/clinician-request-status.interface"
+import { IClinicianRequestStatus } from "../../index-db/interfaces/clinician-request-status.interface"
 
 export interface ClinicianRequestStatusState {
     clinicianRequestStatusData: IClinicianRequestStatus[],

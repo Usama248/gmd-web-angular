@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import * as signalR from "@microsoft/signalr"
-import { AuthService } from 'src/app/services/auth-service/auth.service';
-import { environment } from 'src/environments/environment';
+import { AuthService } from '../../..//app/services/auth-service/auth.service';
+import { environment } from '../../../environments/environment';
 import { ToastService } from './toast.service';
-import { RootReducerState } from 'src/store/reducers';
+import { RootReducerState } from '../../../store/reducers';
 import { Store } from '@ngrx/store';
-import { NotificationActions } from 'src/store/actions/notification-action';
+import { NotificationActions } from '../../../store/actions/notification-action';
 
 @Injectable()
 export class SignalrNotificationService {

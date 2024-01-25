@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormControl } from '@angular/forms';
 import { MessageModule } from 'primeng/message';
 @Component({
   selector: 'app-error-messages',
   standalone: true,
-  imports: [CommonModule, MessageModule],
+  imports: [MessageModule],
   templateUrl: './error-messages.component.html',
   styleUrls: ['./error-messages.component.scss']
 })

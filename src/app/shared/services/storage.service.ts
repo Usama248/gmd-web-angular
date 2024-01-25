@@ -19,4 +19,12 @@ export class StorageService {
   public set accessToken(token: string | any) {
     this.storage.setItem('AccessToken', token);
   }
+
+  public set userAuthStateToken(userStateToken: string) {
+    this.storage.setItem('UserAuthStateToken', userStateToken);
+  }
+  
+  public get userAuthStateToken() {
+    return  this.storage.getItem('UserAuthStateToken') ?? '';
+  }
 }

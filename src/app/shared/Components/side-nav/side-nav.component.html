@@ -3,8 +3,7 @@
   <nav class="main-menu mb-2">
     <input type="hidden" id="isResourceShow" value="True">
     <ul class="sidebar-ul mt-0">
-      <ng-container *ngFor="let item of navitem;let i = index ">
-
+      @for (item of navitem; track item; let i = $index) {
         <li class="menu-item pointer position-relative"
           [ngClass]="showsub == i || hasMatchingRoute(item.subnav) ? 'show':''">
           <a class="menu-link open-submenu pointer" (click)="showSubmenu(i)" [routerLink]="item.route"
@@ -12,31 +11,29 @@
             <span class="d-flex justify-content-between align-items-center w-100">
               <span class="d-flex justify-content-start align-items-center gap-3">
                 <span class="svg-container " [ngClass]="item.icon">
-
                 </span>
                 <span class="menu-text pl-2">{{item.name}}</span>
               </span>
-              <ng-container *ngIf="item.subnav.length > 0">
+              @if (item.subnav.length > 0) {
                 <i class="pi pi-angle-right  rotateArrow"></i>
-              </ng-container>
+              }
             </span>
           </a>
-          <ng-container *ngIf="item.subnav.length > 0">
+          @if (item.subnav.length > 0) {
             <ul class="submenu " id="clinicDocu_4">
-              <li class="menu-item" aria-haspopup="true" *ngFor="let sub of item.subnav">
-                <a [routerLink]="sub.route" class="menu-link d-flex gap-3" routerLinkActive="active">
-                  <span [class]="sub.icon">
-
-                  </span>
-                  <span class="menu-text">{{sub.name}}</span>
-                </a>
-              </li>
-
+              @for (sub of item.subnav; track sub) {
+                <li class="menu-item" aria-haspopup="true">
+                  <a [routerLink]="sub.route" class="menu-link d-flex gap-3" routerLinkActive="active">
+                    <span [class]="sub.icon">
+                    </span>
+                    <span class="menu-text">{{sub.name}}</span>
+                  </a>
+                </li>
+              }
             </ul>
-          </ng-container>
+          }
         </li>
-
-      </ng-container>
+      }
 
 
 
@@ -90,51 +87,51 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="14" width="8" fill="#314f84" viewBox="0 0 256 512">
                       <path
                         d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z" />
-                    </svg>
-                  </span>
-                </a>
+                      </svg>
+                    </span>
+                  </a>
 
+                </div>
               </div>
+
+
             </div>
-
-
           </div>
         </div>
       </div>
-    </div>
-  </nav>
-  <div class="sidebar-footer">
-    <div class="profile-main-sidebar d-flex align-items-end">
-      <div class="exp-specialist-wrapper w-100 mt-2">
-        <h6 class="fs-1 mt-0 mb-2 font-12">Contact Your Client Experience Specialist now</h6>
-        <div class="imgDetailWrapper mb-2 d-flex align-items-center">
-          <div class="img">
-            <img src="https://uat-portal.guardian-md.com/img/support-image.jpg" class="rounded-circle">
+    </nav>
+    <div class="sidebar-footer">
+      <div class="profile-main-sidebar d-flex align-items-end">
+        <div class="exp-specialist-wrapper w-100 mt-2">
+          <h6 class="fs-1 mt-0 mb-2 font-12">Contact Your Client Experience Specialist now</h6>
+          <div class="imgDetailWrapper mb-2 d-flex align-items-center">
+            <div class="img">
+              <img src="https://uat-portal.guardian-md.com/img/support-image.jpg" class="rounded-circle">
+            </div>
+            <div class="detail mt-2 pl-2">
+              <h6 class="name ellipsis-one fs-2 m-0 font-12">Contact Support</h6>
+              <p class="info fs-1 m-0 text-muted ellipsis-one font-11">877-340-1697</p>
+              <p class="info1 m-0 fs-1 profile-sidebar-emails text-muted text-break font-12"
+              href="mailto:info@guardianmedicaldirection.com">info&#64;guardianmedicaldirection.com</p>
+            </div>
           </div>
-          <div class="detail mt-2 pl-2">
-            <h6 class="name ellipsis-one fs-2 m-0 font-12">Contact Support</h6>
-            <p class="info fs-1 m-0 text-muted ellipsis-one font-11">877-340-1697</p>
-            <p class="info1 m-0 fs-1 profile-sidebar-emails text-muted text-break font-12"
-              href="mailto:info@guardianmedicaldirection.com">info@guardianmedicaldirection.com</p>
-          </div>
+
+          <p-button [rounded]="true" class="gmd-primary-btn w-100" severity="success" (onClick)="FreshworksWidgetOpen();"
+            title="Contact your client experience specialist now"><span>Having trouble?</span>
+          </p-button>
+
         </div>
-
-        <p-button [rounded]="true" class="gmd-primary-btn w-100" severity="success" (onClick)="FreshworksWidgetOpen();"
-          title="Contact your client experience specialist now"><span>Having trouble?</span>
-        </p-button>
-
       </div>
-    </div>
-    <div class="gmd-resource-icon d-inline-flex align-items-center cursor-pointer my-2" id="resoursePopupButton"
-      (click)="togglePopup()">
-      <span id="resDoc" class="pr-2">
+      <div class="gmd-resource-icon d-inline-flex align-items-center cursor-pointer my-2" id="resoursePopupButton"
+        (click)="togglePopup()">
+        <span id="resDoc" class="pr-2">
         <i class="pi pi-window-maximize
         "></i>
-      </span>
-      <span class="resource-btn menu-text d-line ellipsis-one">
-        Resources
-      </span>
+        </span>
+        <span class="resource-btn menu-text d-line ellipsis-one">
+          Resources
+        </span>
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>

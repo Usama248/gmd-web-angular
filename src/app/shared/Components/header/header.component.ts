@@ -25,16 +25,20 @@ export class HeaderComponent implements OnInit {
   loginUserData: UserProfileModel | undefined;
   constructor(private sidebarService: SidebarService, private authRepository: AuthRepository, private notificationRepo: NotificationRepository) { }
   notificationDropdown: boolean = false;
-  isClinic: boolean = false;
-  items: MenuItem[] | undefined;
-  noti: MenuItem[] | undefined;
   Profileicon: boolean = false;
   totalNotifications = "0";
-  activeIcon: boolean = false
-
-  messages: Message[] = [];
+  alertNoteMessages: Message[] = [];
   ngOnInit(): void {
     console.log("header initialized");
+    this.getNotificationCount();
+    this.alertNoteMessages = [
+      { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
+    ];
+    this.authRepository.getLoginUserData().subscribe(res => {
+      this.loginUserData = res;
+    })
+  }
+  getNotificationCount() {
     this.notificationRepo.getUserNotificationsCount().subscribe({
       next: res => {
         if (res > 100) {
@@ -43,21 +47,15 @@ export class HeaderComponent implements OnInit {
           this.totalNotifications = res.toString();
         }
       }, error: err => {
+        console.log(err);
       }
-    })
-    this.messages = [
-      { severity: 'warn', detail: 'ATTENTION: You have not registered any clinical users (Standard or Advanced users) under this account.' },
-    ];
-    this.authRepository.getLoginUserData().subscribe(res => {
-      this.isClinic = res?.isClinic;
-      this.loginUserData = res;
     })
   }
   showNotificationDropdown(e: Event) {
     e.stopPropagation();
     this.notificationDropdown = !this.notificationDropdown
   }
-  logout() {
+  logout(): void {
     this.authRepository.logout();
   }
   stopPropogate(e: Event) {
@@ -72,18 +70,17 @@ export class HeaderComponent implements OnInit {
     e.stopPropagation();
     this.Profileicon = !this.Profileicon
   }
-  toggleSidenav() {
+  toggleSidenav():void {
     this.showsideNav = !this.showsideNav
     this.sidebarService.showNav(this.showsideNav)
   }
-  getLatesttNotifications() {
-    this.notificationRepo.getLatestNotifications().subscribe({
-      next: res => {
+  // getLatesttNotifications() {
+  //   this.notificationRepo.getLatestNotifications().subscribe({
+  //     next: res => {
 
-      },
-      error: err => {
-      }
-    })
-  }
- 
+  //     },
+  //     error: err => {
+  //     }
+  //   })
+  // }
 }

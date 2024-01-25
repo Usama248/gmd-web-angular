@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ConversationModel } from "src/app/models/conversation/conversation-model";
+import { ConversationModel } from "../../app/models/conversation/conversation-model";
 
 export enum ConversationActionsEnum {
     LOAD_CONVERSATION =  '[Conversation] Load Request',

@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { RootReducerState, getUserInfo, getUserLoaded, getUserLoading } from "src/store/reducers";
+import { RootReducerState, getUserInfo, getUserLoaded, getUserLoading } from "../../../store/reducers";
 import { AuthService } from "./auth.service";
 import { Observable, combineLatest, take } from "rxjs";
-import { loadUserDataFailure, loadUserDataRequest, loadUserDataSuccess, logout } from "src/store/actions/user-actions";
-import { UserProfileModel } from "src/app/models/user/user-profile.model";
+import { loadUserDataFailure, loadUserDataRequest, loadUserDataSuccess, logout } from "../../../store/actions/user-actions";
+import { UserProfileModel } from "../../models/user/user-profile.model";
+
 
 @Injectable({ providedIn: 'root' })
 

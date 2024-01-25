@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NotificationRepository } from 'src/app/services/notificaition-service/notification-repository';
 import { NotificationModel } from 'src/app/models/notification/notification-model';
 import { NotificationTypeIcons } from '../../constants/enums/notification-type-enum';
@@ -10,7 +10,7 @@ import { TimeAgoPipe } from "../../pipes/time-ago.pipe";
     standalone: true,
     templateUrl: './latest-notification.component.html',
     styleUrls: ['./latest-notification.component.scss'],
-    imports: [CommonModule, TimeAgoPipe],
+    imports: [TimeAgoPipe],
     
 })
 export class LatestNotificationComponent implements OnInit {

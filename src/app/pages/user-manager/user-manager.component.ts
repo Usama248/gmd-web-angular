@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-user-manager',
   standalone: true,
-  imports: [
-    CommonModule],
+  imports: [],
   templateUrl: './user-manager.component.html',
   styleUrls: ['./user-manager.component.scss']
 })

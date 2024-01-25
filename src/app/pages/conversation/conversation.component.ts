@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  DatePipe, NgIf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -9,15 +9,16 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FormsModule } from '@angular/forms';
 import { TabViewModule } from 'primeng/tabview';
 import { AddConversationComponent } from './add-conversation/add-conversation.component';
-import { ConversationRepository } from 'src/app/services/conversation/conversation-repository';
-import { ConversationModel } from 'src/app/models/conversation/conversation-model';
-import { ConversationTypeEnumColor, ConversationTypeEnumNames } from 'src/app/shared/constants/enums/conversation-type-enum';
+import { ConversationModel } from '../../../app/models/conversation/conversation-model';
+import { ConversationTypeEnumColor, ConversationTypeEnumNames } from '../../..//app/shared/constants/enums/conversation-type-enum';
 import { TagModule } from 'primeng/tag';
-import { ConversationService } from 'src/app/services/conversation/conversation.service';
+import { ConversationService } from '../../../app/services/conversation/conversation.service';
 import { UtcToLocalPipe } from "../../shared/pipes/utc-to-local.pipe";
 import { ConversationChatComponent } from "./conversation-chat/conversation-chat.component";
-import { AuthRepository } from 'src/app/services/auth-service/auth.repository';
-import { UserProfileModel } from 'src/app/models/user/user-profile.model';
+import { AuthRepository } from '../../../app/services/auth-service/auth.repository';
+import { UserProfileModel } from '../../../app/models/user/user-profile.model';
+import { GridNoDataFoundSvgTemplateComponent } from '../../../app/shared/components/grid-no-data-found-svg-template/grid-no-data-found-svg-template.component';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
     selector: 'app-conversation',
@@ -25,21 +26,22 @@ import { UserProfileModel } from 'src/app/models/user/user-profile.model';
     templateUrl: './conversation.component.html',
     styleUrls: ['./conversation.component.scss'],
     imports: [
-        NgIf,
-        TableModule,
-        InputTextareaModule,
-        ButtonModule,
-        DialogModule,
-        InputTextModule,
-        DropdownModule,
-        FormsModule,
-        TabViewModule,
-        AddConversationComponent,
-        DatePipe,
-        TagModule,
-        UtcToLocalPipe,
-        ConversationChatComponent
-    ]
+    TableModule,
+    InputTextareaModule,
+    ButtonModule,
+    DialogModule,
+    InputTextModule,
+    DropdownModule,
+    FormsModule,
+    TabViewModule,
+    AddConversationComponent,
+    DatePipe,
+    TagModule,
+    UtcToLocalPipe,
+    ConversationChatComponent,
+    GridNoDataFoundSvgTemplateComponent,
+    SkeletonModule
+]
 })
 export class ConversationComponent implements OnInit {
   conversations: ConversationModel[] = [];
@@ -50,6 +52,7 @@ export class ConversationComponent implements OnInit {
   showChat = false;
   conversationToJoin:  any;
   loginUserInfo!: UserProfileModel;
+  IsLoading = false;
 
   constructor(private conversationService: ConversationService, private authRepo: AuthRepository) {
     this.authRepo.getLoginUserData().subscribe(res => {
@@ -75,19 +78,21 @@ export class ConversationComponent implements OnInit {
     }
   }
   showPastConversations() {
+    this.IsLoading = true;
+    this.showPast = true;
     this.conversationService.getAllConversataionsForClinic(true, this.authRepo.loginUserId).subscribe({
-      next: res => {
+      next: (res : any) => {
         this.pastConversations = res.data.videoCalls;
-        this.showPast = true;
-      }, error: err => {
+        this.IsLoading = false;
+      }, error: (err: any) => {
       }
     })
   }
   showActiveConversations() {
+    this.showPast = false;
     this.conversationService.getAllConversataionsForClinic(false, this.authRepo.loginUserId).subscribe({
       next: res => {
         this.conversations = res.data.videoCalls;
-        this.showPast = false;
       }, error: err => {
       }
     })

@@ -1,5 +1,5 @@
-import { ClinicianRequestStatusEnum } from "src/app/shared/constants/enums/clinician-request-status-enum";
-import { PhysicianAssignTypeEnum } from "src/app/shared/constants/enums/physician-assignment-type-enum";
+import { ClinicianRequestStatusEnum } from "../../app/shared/constants/enums/clinician-request-status-enum";
+import { PhysicianAssignTypeEnum } from "../..//app/shared/constants/enums/physician-assignment-type-enum";
 
 export interface IClinicianRequestStatus {
     id: number;

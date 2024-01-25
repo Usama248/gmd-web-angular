@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ClinicService } from 'src/app/services/clinic-service/clinic.service';
@@ -7,11 +7,12 @@ import { ClinicDashboardModel } from 'src/app/models/clinic/clinic-dashboard-mod
 import { TagModule } from 'primeng/tag';
 import { ClinicianDocumentsEnumNames, ClinicianDocumentsEnumTagColors } from 'src/app/shared/constants/enums/clinician-documents-enum';
 import { ClinicianRequestStatusNames, ClinicianRequestStatusTagColors } from 'src/app/shared/constants/enums/clinician-request-status-enum';
+import { GridNoDataFoundSvgTemplateComponent } from 'src/app/shared/components/grid-no-data-found-svg-template/grid-no-data-found-svg-template.component';
 
 @Component({
   selector: 'app-clinic-dashboard',
   standalone: true,
-  imports: [NgIf, NgFor, DatePipe, CardModule, TableModule, TagModule],
+  imports: [DatePipe, CardModule, TableModule, TagModule, GridNoDataFoundSvgTemplateComponent],
   templateUrl: './clinic-dashboard.component.html',
   styleUrls: ['./clinic-dashboard.component.scss']
 })

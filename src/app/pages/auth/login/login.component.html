@@ -1,61 +1,61 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="gmdLogin" id="loginForm">
-    <div class="gmdLogin-heading">
-        <h2 class="sign-in-heading m-b-10">Log in to Gaudian MD</h2>
-        <p>Enter your credentials to get access</p>
+  <div class="gmdLogin-heading">
+    <h2 class="sign-in-heading m-b-10">Log in to Gaudian MD</h2>
+    <p>Enter your credentials to get access</p>
+  </div>
+  <div class="form-group">
+    <label class="mb-1" for="username"><span class="steric-required text-danger">*</span>Username</label>
+    <div class="position-relative">
+      <input class="gmd-form-input" formControlName="username" type="text" class="w-100" id="username"
+        autocomplete="off" placeholder="Email address" pInputText>
+        <span class="input-group-span">
+          <span>
+            <i class="pi pi-user"></i>
+          </span>
+        </span>
+        <app-error-messages [control]="getControl('username')" displayName="Username"></app-error-messages>
+      </div>
+      <span class="text-danger pl-0 ml-0" asp-validation-for="@Model.Input.email"></span>
     </div>
-    <div class="form-group">
-        <label class="mb-1" for="username"><span class="steric-required text-danger">*</span>Username</label>
-        <div class="position-relative">
-            <input class="gmd-form-input" formControlName="username" type="text" class="w-100" id="username"
-                autocomplete="off" placeholder="Email address" pInputText>
-            <span class="input-group-span">
-                <span>
-                    <i class="pi pi-user"></i>
-                </span>
-            </span>
-            <app-error-messages [control]="getControl('username')" displayName="Username"></app-error-messages>
-        </div>
-        <span class="text-danger pl-0 ml-0" asp-validation-for="@Model.Input.email"></span>
-    </div>
 
 
     <div class="form-group">
-        <div class="d-flex justify-content-between flex-wrap">
-            <label for="password" class="mb-1"><span class="steric-required text-danger">*</span>Password</label>
-            <a [routerLink]="['/login/forgot-password']" class="text-muted text-hover-primary font-14">Forgot
-                Your
-                Password?</a>
-        </div>
-        <div class="position-relative login-password-box">
-            <input type="password" formControlName="password" class="w-100" id="password" placeholder="Password"
-                pInputText #passwordInput>
-            <span class="input-group-span">
-                <span>
-                    <i class="pi pi-lock"></i>
-                </span>
+      <div class="d-flex justify-content-between flex-wrap">
+        <label for="password" class="mb-1"><span class="steric-required text-danger">*</span>Password</label>
+        <a [routerLink]="['/login/forgot-password']" class="text-muted text-hover-primary font-14">Forgot
+          Your
+        Password?</a>
+      </div>
+      <div class="position-relative login-password-box">
+        <input type="password" formControlName="password" class="w-100" id="password" placeholder="Password"
+          pInputText #passwordInput>
+          <span class="input-group-span">
+            <span>
+              <i class="pi pi-lock"></i>
             </span>
-            <span #closeEyeSpan class="input-group-span eyePassword" (click)="passwordShowHide(passwordInput)">
-                <ng-container *ngIf="!isPasswordShow">
-                    <span>
-                        <i class="pi pi-eye-slash"></i>
-                    </span>
-                </ng-container>
-                <ng-container *ngIf="isPasswordShow">
-                    <span>
-                        <i class="pi pi-eye"></i>
-                    </span>
-                </ng-container>
+          </span>
+          <span #closeEyeSpan class="input-group-span eyePassword" (click)="passwordShowHide(passwordInput)">
+            @if (!isPasswordShow) {
+              <span>
+                <i class="pi pi-eye-slash"></i>
+              </span>
+            }
+            @if (isPasswordShow) {
+              <span>
+                <i class="pi pi-eye"></i>
+              </span>
+            }
 
-            </span>
+          </span>
 
-            <app-error-messages [control]="getControl('password')" displayName="Password"></app-error-messages>
+          <app-error-messages [control]="getControl('password')" displayName="Password"></app-error-messages>
         </div>
         <span class="text-danger pl-0 ml-0" asp-validation-for="@Model.Input.password"></span>
-    </div>
+      </div>
 
-    <div class="d-flex align-items-center justify-content-between login-footer">
+      <div class="d-flex align-items-center justify-content-between login-footer">
         <button appDisableDuringSubmit type="submit" pButton pRipple label="Sign In"
-            class="btn btn-rounded mt-3 text-white"></button>
-    </div>
+        class="btn btn-rounded mt-3 text-white"></button>
+      </div>
 
-</form>
+    </form>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
@@ -10,7 +10,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 @Component({
   selector: 'app-add-conversation',
   standalone: true,
-  imports: [CommonModule,ButtonModule,FormsModule,DialogModule, InputTextModule, InputTextareaModule, DropdownModule, RadioButtonModule, ReactiveFormsModule],
+  imports: [ButtonModule, FormsModule, DialogModule, InputTextModule, InputTextareaModule, DropdownModule, RadioButtonModule, ReactiveFormsModule],
   templateUrl: './add-conversation.component.html',
   styleUrls: ['./add-conversation.component.scss']
 })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgIf } from '@angular/common';
+
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
@@ -11,13 +11,14 @@ import { Router, RouterModule } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
 import { ErrorMessagesComponent } from "../../../shared/components/error-messages/error-messages.component";
 import { DisableDuringSubmitDirective } from 'src/app/shared/directives/disable-during-submit.directive';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [RouterModule, DisableDuringSubmitDirective, NgIf, ButtonModule, InputTextModule, CardModule, ReactiveFormsModule, ErrorMessagesComponent]
+  imports: [RouterModule, DisableDuringSubmitDirective, ButtonModule, InputTextModule, CardModule, ReactiveFormsModule, ErrorMessagesComponent]
 })
 export class LoginComponent implements OnInit {
   fieldTextType = false;
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
         next: res => {
           if (res.status == 1) {
             this.storageService.accessToken = res.data.accessToken;
+            this.storageService.userAuthStateToken = environment.userStateToken;
             this.toastService.showSuccess(res.message)
             this.router.navigate(['/clinic/dashboard']);
           } else {

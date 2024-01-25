@@ -1,42 +1,58 @@
-<small *ngIf="hasErrorWhenDirty('min')" class="p-error">
+@if (hasErrorWhenDirty('min')) {
+  <small class="p-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span>
     {{ displayName }} must be minimum {{ getErrorProperty('min','min') }}
-</small>
-<small *ngIf="hasErrorWhenDirty('max')" class="p-error">
+  </small>
+}
+@if (hasErrorWhenDirty('max')) {
+  <small class="p-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span> {{ displayName }} must be maximum {{ getErrorProperty('max','max') }}
-</small>
-<small *ngIf="hasErrorWhenDirty('required')" class="p-error input-error">
+  </small>
+}
+@if (hasErrorWhenDirty('required')) {
+  <small class="p-error input-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span>
     {{ displayName }} is required
-</small>
-<small *ngIf="hasErrorWhenDirty('email')" class="p-error">
+  </small>
+}
+@if (hasErrorWhenDirty('email')) {
+  <small class="p-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span> {{ displayName }} must be a valid email
-</small>
-<small *ngIf="hasErrorWhenDirty('minlength')" class="p-error">
+  </small>
+}
+@if (hasErrorWhenDirty('minlength')) {
+  <small class="p-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span>{{ displayName }} must be minimum {{getErrorProperty('minlength', 'requiredLength') }} characters
-</small>
-<small *ngIf="hasErrorWhenDirty('maxlength')" class="p-error">
+  </small>
+}
+@if (hasErrorWhenDirty('maxlength')) {
+  <small class="p-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span> {{ displayName }} must be maximum {{ getErrorProperty('maxlength', 'requiredLength') }} characters
-</small>
-<small *ngIf="hasErrorWhenDirty('pattern')" class="p-error">
+  </small>
+}
+@if (hasErrorWhenDirty('pattern')) {
+  <small class="p-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span> {{ displayName }} must follow the pattern {{ getErrorProperty('pattern', 'requiredPattern') }}
-</small>
-<small *ngIf="hasErrorWhenDirty('null')" class="p-error">
+  </small>
+}
+@if (hasErrorWhenDirty('null')) {
+  <small class="p-error">
     <span class="mr-1">
-        <i class="pi pi-info-circle" style="font-size: .8rem"></i>
+      <i class="pi pi-info-circle" style="font-size: .8rem"></i>
     </span>{{ displayName }} must have a value
-</small>
+  </small>
+}

@@ -10,7 +10,9 @@
     </div>
     <div class="panel-content">
       <div class="content-body portal-main-content">
-        <app-loader *ngIf="isLoading"></app-loader>
+        @if (isLoading) {
+          <app-loader></app-loader>
+        }
         <div class="top-alert d-md-none mb-3">
           <div class="card">
             <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>

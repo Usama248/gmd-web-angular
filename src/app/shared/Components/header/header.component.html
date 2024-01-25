@@ -10,7 +10,7 @@
       </p-button>
       <div class="top-alert d-none d-md-block">
         <div class="card">
-          <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+          <p-messages [(value)]="alertNoteMessages" [enableService]="false" [closable]="false"></p-messages>
         </div>
       </div>
     </div>
@@ -24,8 +24,10 @@
         <div class="notification " (click)="stopPropogate($event)" [ngClass]="notificationDropdown?'show':''">
           <h4 class="notification-title font-18 p-2 mb-0">Notification</h4>
           <div class="flex flex-column">
-           <app-latest-notification *ngIf="notificationDropdown"></app-latest-notification>
-          
+            @if (notificationDropdown) {
+              <app-latest-notification></app-latest-notification>
+            }
+
             <div class="text-center">
               <a routerLink="/clinic/notification" class="fs-3 p-2 d-block"> View all</a>
             </div>
@@ -39,21 +41,26 @@
 
         <div class="d-flex align-items-center user-detail">
           <div class="userImage">
-            <img src="../../../../assets/images/user.webp" width="40" class="rounded-circle" />
+            @if (this.loginUserData?.imageString) {
+              <img [src]="this.loginUserData?.imageString" width="40" class="rounded-circle" />
+            } @else {
+              <img src="../../../../assets/images/user.webp" width="40" class="rounded-circle" >
+            }
           </div>
-         <div class="d-flex align-items-center">
-          <div class="userTopName">
-            <span class="font-14 d-block">{{this.loginUserData?.userName}}</span>
-            <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
-          </div>
-        
-          <span class="{{Profileicon?'profileIcon profileArrow':'profileIcon'}}"><i class="pi pi-angle-right pl-2"
-              style="color: #708090"></i>
+          <div class="d-flex align-items-center">
+            <div class="userTopName">
+              <span class="font-14 d-block">{{this.loginUserData?.userName}}</span>
+              <span class="font-11 text-muted">{{this.loginUserData?.organizationName}}</span>
+            </div>
+
+            <span class="{{Profileicon?'profileIcon profileArrow':'profileIcon'}}"><i class="pi pi-angle-right pl-2"
+            style="color: #708090"></i>
           </span>
-         </div>
         </div>
-        
-        <div class="logout-dropdown show" *ngIf="Profileicon" >
+      </div>
+
+      @if (Profileicon) {
+        <div class="logout-dropdown show" >
           <div class="logout-dropdown-header ">
             <div class="media-body ">
               <h6 class="mt-0 mb-0 font-18" title="Ahad clinic">{{loginUserData?.userName}}</h6>
@@ -61,11 +68,11 @@
             </div>
           </div>
           <hr>
-      
-          <a class="d-flex align-items-center gap-2" routerLink="/clinic/profile-main" ><i class="pi pi-user"></i> Profile</a>
-          <a class=" d-flex align-items-center gap-2" routerLink="/clinic/billing" ><i class="pi pi-file"></i> Billing Details</a>
-          <a class=" d-flex align-items-center gap-2" (click)="logout()"><i class="pi pi-sign-out"></i> Sign Out</a>
-        </div>
+            <a class="d-flex align-items-center gap-2" routerLink="/clinic/profile-main" ><i class="pi pi-user"></i> Profile</a>
+            <a class=" d-flex align-items-center gap-2" routerLink="/clinic/billing" ><i class="pi pi-file"></i> Billing Details</a>
+            <a class=" d-flex align-items-center gap-2" (click)="logout()"><i class="pi pi-sign-out"></i> Sign Out</a>
+          </div>
+        }
 
 
 

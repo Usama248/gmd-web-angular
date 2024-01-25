@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -7,7 +7,7 @@ import { TableModule } from 'primeng/table';
 @Component({
   selector: 'app-billing-dashboard',
   standalone: true,
-  imports: [CommonModule, CardModule,ButtonModule,TableModule],
+  imports: [CardModule, ButtonModule, TableModule],
   templateUrl: './billing-dashboard.component.html',
   styleUrls: ['./billing-dashboard.component.scss']
 })

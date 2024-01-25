@@ -13,101 +13,110 @@
       <ng-template pTemplate="caption">
         <div class="d-flex">
           <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
-            (click)="clear(dt2)"></button>
+          (click)="clear(dt2)"></button>
           <span class="p-input-icon-left" style="margin-left: auto;">
             <i class="pi pi-search"></i>
             <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')"
               placeholder="Search Physician" />
-          </span>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th pSortableColumn="clinicianName">
-            <div class="d-flex justify-content-between align-items-center">
-              Physician Name
-              <p-sortIcon field="clinicianName"></p-sortIcon>
-              <p-columnFilter type="text" field="clinicianName" display="menu" style="margin-left: auto;"></p-columnFilter>
-            </div>
-          </th>
-          <th pSortableColumn="createdDate">
-            <div class="d-flex justify-content-between align-items-center">
-              Created Date
-              <p-sortIcon field="createdDate"></p-sortIcon>
-              <p-columnFilter type="date" field="createdDate" display="menu" style="margin-left: auto;"></p-columnFilter>
-            </div>
-          </th>
-          <th pSortableColumn="csRoles">
-            <div class="d-flex justify-content-between align-items-center">
-              Assigned Roles
-              <p-sortIcon field="csRoles"></p-sortIcon>
-              <p-columnFilter type="text" field="csRoles" display="menu" style="margin-left: auto;"></p-columnFilter>
-            </div>
-          </th>
-          <th pSortableColumn="physicianAssignmentType">
-            <div class="d-flex justify-content-between align-items-center">
-              Assignment Type
-              <p-sortIcon field="physicianAssignmentType"></p-sortIcon>
-              <p-columnFilter type="text" field="physicianAssignmentType" display="menu" style="margin-left: auto;"></p-columnFilter>
-            </div>
-          </th>
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="clinicianName">
+              <div class="d-flex justify-content-between align-items-center">
+                Physician Name
+                <p-sortIcon field="clinicianName"></p-sortIcon>
+                <p-columnFilter type="text" field="clinicianName" display="menu" style="margin-left: auto;"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="createdDate">
+              <div class="d-flex justify-content-between align-items-center">
+                Created Date
+                <p-sortIcon field="createdDate"></p-sortIcon>
+                <p-columnFilter type="date" field="createdDate" display="menu" style="margin-left: auto;"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="csRoles">
+              <div class="d-flex justify-content-between align-items-center">
+                Assigned Roles
+                <p-sortIcon field="csRoles"></p-sortIcon>
+                <p-columnFilter type="text" field="csRoles" display="menu" style="margin-left: auto;"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="physicianAssignmentType">
+              <div class="d-flex justify-content-between align-items-center">
+                Assignment Type
+                <p-sortIcon field="physicianAssignmentType"></p-sortIcon>
+                <p-columnFilter type="text" field="physicianAssignmentType" display="menu" style="margin-left: auto;"></p-columnFilter>
+              </div>
+            </th>
 
-          <th pSortableColumn="status" style="min-width: 14rem">
-            <div class="d-flex justify-content-between align-items-center">
-              Status
+            <th pSortableColumn="status" style="min-width: 14rem">
+              <div class="d-flex justify-content-between align-items-center">
+                Status
                 <p-sortIcon field="status"></p-sortIcon>
                 <p-columnFilter field="statusEnum" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false" style="margin-left: auto;">
-                    <ng-template pTemplate="header">
-                        <div class="px-3 pt-3 pb-0">
-                            <span class="font-bold">Status Picker</span>
+                  <ng-template pTemplate="header">
+                    <div class="px-3 pt-3 pb-0">
+                      <span class="font-bold">Status Picker</span>
+                    </div>
+                  </ng-template>
+                  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                    <p-multiSelect [ngModel]="value" [options]="statusList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
+                      <ng-template let-option pTemplate="item">
+                        <div class="inline-block vertical-align-middle">
+                          <span class="ml-1 mt-1">{{option.label}}</span>
                         </div>
-                    </ng-template>
-                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                        <p-multiSelect [ngModel]="value" [options]="statusList" placeholder="Any" (onChange)="filter($event.value)" optionLabel="label">
-                            <ng-template let-option pTemplate="item">
-                                <div class="inline-block vertical-align-middle">
-                                    <span class="ml-1 mt-1">{{option.label}}</span>
-                                </div>
-                            </ng-template>
-                        </p-multiSelect>
-                    </ng-template>
+                      </ng-template>
+                    </p-multiSelect>
+                  </ng-template>
                 </p-columnFilter>
-            </div>
-        </th>
-          <!-- <th pSortableColumn="status">Status <p-sortIcon field="code"></p-sortIcon></th> -->
-          <th>Action</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-physicianRequest>
-        <tr>
-          <td>{{ physicianRequest.clinicianName }}</td>
-          <td>
-            {{ physicianRequest.createdDate | date: 'MM/dd/yyyy' }}
-
-          </td>
-          <td>
-            <ng-container *ngIf="physicianRequest?.csRoles?.length > 0">
-              <div *ngFor="let role of getRoles(physicianRequest.csRoles, ',')" class="mb-1">
-                <p-tag [value]="role" class="p-tag-secondary"></p-tag>
               </div>
-            </ng-container>
-          </td>
-          <td>
-            <div class="">
-              <p-tag [value]="PHYSICIAN_ASSIGN_TYPE_NAMES$.get(physicianRequest.physicianAssignmentType)"
+            </th>
+            <!-- <th pSortableColumn="status">Status <p-sortIcon field="code"></p-sortIcon></th> -->
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-physicianRequest>
+          <tr>
+            <td>{{ physicianRequest.clinicianName }}</td>
+            <td>
+              {{ physicianRequest.createdDate | date: 'MM/dd/yyyy' }}
+
+            </td>
+            <td>
+              @if (physicianRequest?.csRoles?.length > 0) {
+                @for (role of getRoles(physicianRequest.csRoles, ','); track role) {
+                  <div class="mb-1">
+                    <p-tag [value]="role" class="p-tag-secondary"></p-tag>
+                  </div>
+                }
+              }
+            </td>
+            <td>
+              <div class="">
+                <p-tag [value]="PHYSICIAN_ASSIGN_TYPE_NAMES$.get(physicianRequest.physicianAssignmentType)"
                 [class]="PHYSICIA_ASSIGN_TYPE_TAG_COLORS$.get(physicianRequest.physicianAssignmentType)"></p-tag>
-            </div>
-          </td>
-          <td><p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(physicianRequest.status)"
-              [class]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(physicianRequest.status)"></p-tag>
-          <td>
-            <p-button label="success" (click)="menu.toggle($event)" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
+              </div>
+            </td>
+            <td><p-tag [value]="CLINICIAN_REQUEST_STATUS_ENUM_NAMES$.get(physicianRequest.status)"
+            [class]="CLINICIAN_REQUEST_STATUS_ENUM_COLORS$.get(physicianRequest.status)"></p-tag>
+            <td>
+              <p-button label="success" (click)="menu.toggle($event)" class="datatable-actionBtn" [rounded]="true" [outlined]="true"
               severity="success" label="Action" iconPos="right" icon="pi-angle-down pi"></p-button></td>
-        </tr>
+            </tr>
 
-      </ng-template>
-    </p-table>
-  </div>
-</div>
+          </ng-template>
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td colspan="6">
+                <app-grid-no-data-found-svg-template></app-grid-no-data-found-svg-template>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
 
-<p-menu #menu [model]="items" [popup]="true"></p-menu>
+    <p-menu #menu [model]="items" [popup]="true"></p-menu>

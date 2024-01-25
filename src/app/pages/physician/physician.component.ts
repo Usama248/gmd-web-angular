@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { DatePipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { SortEvent } from 'primeng/api';
@@ -12,11 +12,12 @@ import { ClinicianRequestStatusRepository } from 'src/app/services/clinician-req
 import { IClinicianRequestStatus } from 'src/index-db/interfaces/clinician-request-status.interface';
 import { MenuModule } from 'primeng/menu';
 import { InputTextModule } from 'primeng/inputtext';
+import { GridNoDataFoundSvgTemplateComponent } from 'src/app/shared/components/grid-no-data-found-svg-template/grid-no-data-found-svg-template.component';
 
 @Component({
   selector: 'app-physician',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe, FormsModule, InputTextModule,TableModule, ButtonModule,MenuModule, TagModule, MultiSelectModule],
+  imports: [DatePipe, FormsModule, InputTextModule, TableModule, ButtonModule, MenuModule, TagModule, MultiSelectModule, GridNoDataFoundSvgTemplateComponent],
   templateUrl: './physician.component.html',
   styleUrls: ['./physician.component.scss']
 })

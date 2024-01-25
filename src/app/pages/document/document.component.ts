@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Table, TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -21,7 +21,6 @@ import { UserDocumentStatusEnum, UserDocumentStatusEnumDescriptions } from 'src/
   selector: 'app-document',
   standalone: true,
   imports: [
-    CommonModule,
     TableModule,
     InputTextareaModule,
     ButtonModule,
@@ -33,7 +32,7 @@ import { UserDocumentStatusEnum, UserDocumentStatusEnumDescriptions } from 'src/
     TagModule,
     MultiSelectModule,
     FormsModule
-  ],
+],
   templateUrl: './document.component.html',
   styleUrls: ['./document.component.scss']
 })

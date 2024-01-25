@@ -20,6 +20,7 @@
                         a {
                             color: $primary-color;
                             border-color: $primary-color;
+                            font-weight: 600;
                         }
                     }
                 }
@@ -95,14 +96,14 @@
 
 // Primeng grid css
 .p-datatable .p-datatable-thead>tr>th {
-    padding: 10px 18px;
+    padding: 6px 18px;
     font-weight: 600;
     font-size: 14px;
     font-family: $primary-font;
 }
 
 .p-datatable .p-datatable-tbody>tr>td {
-    padding: 10px 18px !important;
+    padding: 6px 18px !important;
     font-size: 14px;
     border: 0;
     border-bottom: 1px solid #f0f0f0;
@@ -157,6 +158,7 @@
     .p-tag {
         background-color: #c9c9c95e;
         color: rgb(0 0 0 / 60%);
+        white-space: nowrap;
     }
 }
 
@@ -164,7 +166,7 @@
     .p-tag {
         background-color: rgba(131, 198, 231, 0.2980392157);
         color: $primary-color;
-
+        white-space: nowrap;
     }
 }
 
@@ -180,6 +182,7 @@
     .p-tag {
         background-color: #ffd8d8;
         color: #D32F2F;
+        white-space: nowrap;
     }
 }
 
@@ -187,12 +190,14 @@
     .p-tag {
         background-color: #ffeadc;
         color: #f97316;
+        white-space: nowrap;
     }
 }
 .p-tag-info {
     .p-tag {
         background-color: #36c1ff54;
         color: #168bbf;
+        white-space: nowrap;
     }
 }
 

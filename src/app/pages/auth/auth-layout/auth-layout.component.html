@@ -4,7 +4,9 @@
         <div class="login-back-design">
             <div class="top-design"></div>
         </div>
-        <app-loader *ngIf="isLoading"></app-loader>
+        @if (isLoading) {
+            <app-loader></app-loader>
+        }
         <div class="main-wrapper">
             <div class="sign-in-form">
                 <img class="login-logo my-4" alt="Gmd" ngSrc="../../../../assets/images/GMD-blue.png" width="240"
