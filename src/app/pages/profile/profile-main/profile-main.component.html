@@ -23,81 +23,89 @@
                 </div>
               </div>
               <div class="col-lg-9">
-                <form>
+                <form [formGroup]="userProfileForm">
                   <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="gmd-form-group">
-                        <label class="gmd-form-label" for="">First Name</label>
-                        <input class="gmd-form-input" placeholder="First Name" type="text"
-                          pInputText />
-                        </div>
+                      <div class="col-md-6 pr-1">
+                          <div class="gmd-form-group">
+                              <label class="gmd-form-label" for="">First Name</label>
+                              <input class="gmd-form-input" placeholder="First Name" type="text"
+                                  pInputText formControlName="firstName" />
+                          </div>
                       </div>
 
                       <div class="col-md-6 pl-1">
-                        <div class="gmd-form-group">
-                          <label class="gmd-form-label" for="">Last Name</label>
-                          <input class="gmd-form-input" placeholder="Last Name" type="text"
-                            pInputText />
-                          </div>
-                        </div>
-
-                        <div class="col-md-12">
                           <div class="gmd-form-group">
-                            <label class="gmd-form-label" for="">Lab Alert Secret Key</label>
-                            <div class="d-flex">
-                              <input
-                                class="gmd-form-input border-top-right-0 border-bottom-right-0"
-                                placeholder="Lab Alert Secret Key" type="text" pInputText />
-                                <button type="button" class="profileGenerateBtn rounded-0" (click)="generateLabAlertSecretKey()">Generate Key</button>
-                              </div>
-                            </div>
+                              <label class="gmd-form-label" for="">Last Name</label>
+                              <input class="gmd-form-input" placeholder="Last Name" type="text"
+                                  pInputText   formControlName="lastName"/>
                           </div>
+                      </div>
 
-                          <div class="col-md-12">
-                            <div class="gmd-form-group">
+                      <div class="col-md-12">
+                          <div class="gmd-form-group">
+                              <label class="gmd-form-label" for="">Lab Alert Secret Key</label>
+                              <div class="d-flex">
+                                  <input
+                                      class="gmd-form-input border-top-right-0 border-bottom-right-0"
+                                      placeholder="Lab Alert Secret Key" type="text" pInputText
+                                      formControlName="labAlertSecertKey"
+                                      />
+                                  <button class="profileGenerateBtn rounded-0" (click)="generateLabAlertSecretKey()">Generate Key</button>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12">
+                          <div class="gmd-form-group">
                               <label class="gmd-form-label" for="">Equi life API Key</label>
-                              <input class="gmd-form-input" placeholder="Equi life API Key"
-                                type="text" pInputText />
-                              </div>
-                            </div>
+                              <input class="gmd-form-input" 
+                                      placeholder="Equi life API Key"
+                                      formControlName="equilifeAPIKey"
+                                  type="text" pInputText />
+                          </div>
+                      </div>
 
-                            <div class="col-md-12">
-                              <div class="gmd-form-group">
-                                <label class="gmd-form-label" for="">Lab Code</label>
-                                <input class="gmd-form-input" placeholder="Lab Code" type="text"
+                      <div class="col-md-12">
+                          <div class="gmd-form-group">
+                              <label class="gmd-form-label" for="">Lab Code</label>
+                              <input class="gmd-form-input" placeholder="Lab Code" type="text"
+                                      formControlName="labCode"
                                   pInputText />
-                                </div>
-                              </div>
+                          </div>
+                      </div>
 
-                              <div class="col-md-12">
-                                <div class="gmd-form-group">
-                                  <label class="gmd-form-label" for="">Email</label>
-                                  <input class="gmd-form-input" placeholder="Email" type="text"
-                                    pInputText />
-                                  </div>
-                                </div>
+                      <div class="col-md-12">
+                          <div class="gmd-form-group">
+                              <label class="gmd-form-label" for="">Email</label>
+                              <input class="gmd-form-input" placeholder="Email" type="text"
+                                      formControlName="email"
+                                  pInputText />
+                          </div>
+                      </div>
 
-                                <div class="col-md-12">
-                                  <div class="gmd-form-group">
-                                    <label class="gmd-form-label" for="">Mobile Number</label>
-                                    <input appPhoneMask class="gmd-form-input" placeholder="Mobile Number" type="text"
-                                      pInputText />
-                                    </div>
-                                  </div>
+                      <div class="col-md-12">
+                          <div class="gmd-form-group">
+                              <label class="gmd-form-label" for="">Mobile Number</label>
 
-                                  <div class="col-md-12">
-                                    <div class="gmd-form-group">
-                                      <label class="gmd-form-label" for="">User name</label>
-                                      <input class="gmd-form-input" placeholder="User name" type="text"
-                                        pInputText />
-                                      </div>
-                                    </div>
+                                  <p-inputMask formControlName="mobileNumber" mask="999-999-999"></p-inputMask>
 
-                                    <div class="col-md-12 text-right">
-                                      <p-button label="Save Changes" class="gmd-primary-btn"></p-button>
-                                    </div>
-                                  </div>
-                                </form>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12">
+                          <div class="gmd-form-group">
+                              <label class="gmd-form-label" for="">User name</label>
+                              <input class="gmd-form-input" placeholder="User name" type="text"
+                                      formControlName="userName"
+                                  pInputText />
+                          </div>
+                      </div>
+
+                      <div class="col-md-12 text-right">
+                          <p-button label="Save Changes" class="gmd-primary-btn"></p-button>
+                      </div>
+                  </div>
+              </form>
                               </div>
                             </div>
                           </div>

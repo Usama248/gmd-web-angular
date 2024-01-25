@@ -28,9 +28,19 @@ export const CONVERSATION_ENDPOINTS = {
    GetAllConversationsForClinic : API_URL +  "/api/VideoCall/GetAllVideoCall",
    GetRoomCredentials: API_URL +  "/api/Room/GetRoomCredentials",
    GetParticipantMessages: API_URL +  "/api/Conversation/GetParticipantMessages",
+   ClinicianRequestStatus: API_URL + "/api/ClinicianRequestStatus/GetAllApprovedHelpDeskClinician",
+   GetPhysicianRolesById: API_URL + "/api/Clinician/GetPhysicianRolesById",
+   PostVideoCall: API_URL + "/api/VideoCall/PostVideoCall",
+   GetUserDetails: API_URL + "/api/Auth/GetUserDetails"
+
+
 }
 
 export const CLINIC_DOCUMENT_ENDPOINTS = {
     GetClinicChartReviewDocuments:  API_URL + "/api/ClinicDocument/GetClinicChartReviewDocuments",
-    GetClinicOnBoardDocuments:  API_URL + "/api/ClinicDocument/GetClinicOnBoardDocuments"
+    GetClinicOnBoardDocuments:  API_URL + "/api/ClinicDocument/GetClinicOnBoardDocuments",
+}
+
+export const USER_PROFILE_ENDPOINTS = {
+    GetUserDetails: API_URL + "/api/Auth/GetUserDetails"
 }

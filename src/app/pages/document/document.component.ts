@@ -74,7 +74,7 @@ export class DocumentComponent {
     this.showActiveDocuments();
     console.log(this.userDocumentTypeList);
   }
-  activeTab: string = 'activeConversation'
+  activeTab: string = 'activeDocument'
   visible: boolean = false
 
   products: any = [

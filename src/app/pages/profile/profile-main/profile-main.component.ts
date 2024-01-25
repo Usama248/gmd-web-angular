@@ -7,13 +7,16 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { PhoneMaskDirective } from 'src/app/shared/directives/phone-mask.directive';
 import { FileSizeCheckDirective } from 'src/app/shared/directives/file-size-check.directive';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule,Validators } from '@angular/forms';
 import { AuthRepository } from 'src/app/services/auth-service/auth.repository';
+import { UserProfileModel } from 'src/app/models/user/user-profile.model';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+
 
 @Component({
   selector: 'app-profile-main',
   standalone: true,
-  imports: [ReactiveFormsModule, TabViewModule, InputTextModule, ButtonModule, InputMaskModule, PhoneMaskDirective, FileSizeCheckDirective],
+  imports: [ReactiveFormsModule, TabViewModule, InputTextModule, ButtonModule, InputMaskModule, PhoneMaskDirective, FileSizeCheckDirective,FormsModule],
   templateUrl: './profile-main.component.html',
   styleUrls: ['./profile-main.component.scss']
 })
@@ -27,9 +30,48 @@ export class ProfileMainComponent implements OnInit {
     email: new FormControl(''),
     labkey: new FormControl(''),
   });
-  constructor(private toastService: ToastService, private authRepo: AuthRepository) {}
+  constructor(private toastService: ToastService, private authRepo: AuthRepository,
+    private authService: AuthService,
+    private formBuilder: FormBuilder) {}
+  loginUserInfo!: UserProfileModel;
+  userProfileForm: FormGroup = new FormGroup({
+   firstName: new FormControl(''),
+   lastName: new FormControl(''),
+   labAlertSecertKey: new FormControl(''),
+   equilifeAPIKey:new FormControl(''),
+   labCode:new FormControl(''),
+   email:new FormControl(''),
+   mobileNumber:new FormControl(''),
+   userName:new FormControl('')
+  });
   ngOnInit(): void {
     this.authRepo.getLoginUserData();
+    this.authService.getProfile().subscribe(res=>{
+      if(res?.data)
+      {
+        this.loginUserInfo = res?.data;
+        this.userProfileForm.setValue({
+          firstName: this.loginUserInfo.firstName,
+          lastName: this.loginUserInfo.lastName,
+          labAlertSecertKey:this.loginUserInfo.clinicLabAlertSecretKey,
+          equilifeAPIKey:'',
+          labCode:'',
+          email:this.loginUserInfo.email,
+          mobileNumber:this.loginUserInfo.mobileNumber,
+          userName:this.loginUserInfo.userName
+        })
+      }
+    });
+    this.userProfileForm = this.formBuilder.group({
+      firstName:['',[Validators.required]],
+      lastName:['',[Validators.required]],
+      labAlertSecertKey:[''],
+      equilifeAPIKey:[''],
+      labCode:[''],
+      email:['',[Validators.required]],
+      mobileNumber:[''],
+      userName:['',[Validators.required]]
+    });
   }
   onFileSelected(event: any): void {
     const file = event.target.files[0];
@@ -71,5 +113,6 @@ export class ProfileMainComponent implements OnInit {
       key += characters.charAt(randomIndex);
     }
     this.uKey = key;
+    this.userProfileForm.controls['labAlertSecertKey'].setValue(this.uKey)
   }
 }

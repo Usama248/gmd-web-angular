@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -19,6 +19,10 @@ import { AuthRepository } from '../../../app/services/auth-service/auth.reposito
 import { UserProfileModel } from '../../../app/models/user/user-profile.model';
 import { GridNoDataFoundSvgTemplateComponent } from '../../../app/shared/components/grid-no-data-found-svg-template/grid-no-data-found-svg-template.component';
 import { SkeletonModule } from 'primeng/skeleton';
+import { CreateConversationRequestModel } from 'src/app/models/conversation/create-conversation-request-model';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+
 
 @Component({
     selector: 'app-conversation',
@@ -54,11 +58,18 @@ export class ConversationComponent implements OnInit {
   loginUserInfo!: UserProfileModel;
   IsLoading = false;
 
-  constructor(private conversationService: ConversationService, private authRepo: AuthRepository) {
+  constructor(private conversationService: ConversationService, 
+    private authRepo: AuthRepository,
+    private authService: AuthService,
+    private formValidationService: FormValidationService
+     ) {
     this.authRepo.getLoginUserData().subscribe(res => {
       this.loginUserInfo = res;
     })
    }
+
+   @ViewChild('addconversation') addconversation!: AddConversationComponent;
+
   ngOnInit(): void {
     this.showActiveConversations();
   }
@@ -66,6 +77,20 @@ export class ConversationComponent implements OnInit {
   visible = false;
   conversationTab(a: string) {
     this.activeTab = a
+  }
+
+  newConversation : CreateConversationRequestModel = {
+    title:"",
+    description:"",
+    primaryPhysician:0,
+    conversationRouteType:0,
+    selectedClinicId:0,
+    clinicId:0,
+    useroffset:"",
+    usertimezone:"",
+    userId:"",
+    conversationType:2,
+    numericUserId:0
   }
   AddNewConversation() {
     this.visible = !this.visible;
@@ -106,6 +131,33 @@ export class ConversationComponent implements OnInit {
   }
   CloseChatDialog() {
     this.showChat = false;
+  }
+
+  submitForm(){
+    if(this.addconversation.conversationForm.valid)
+    {
+      this.newConversation.description = this.addconversation.conversationForm.get("message")?.value;
+      this.newConversation.title = this.addconversation.conversationForm.get("title")?.value;
+      this.newConversation.primaryPhysician = this.addconversation.conversationForm.get("physician")?.value;
+      this.newConversation.conversationRouteType = this.addconversation.conversationForm.get("conversationRouteType")?.value;
+      this.newConversation.selectedClinicId =  this.authService.getUserData?.clinic_id;
+      this.newConversation.clinicId =  this.authService.getUserData?.clinic_id;
+      this.newConversation.usertimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      this.newConversation.useroffset = new Date().getTimezoneOffset().toString();
+      this.newConversation.userId = this.authService.getUserData?.user_id;
+      this.newConversation.numericUserId = this.authService.getUserData?.user_numeric_id;
+      this.conversationService.postSaveRoomCall(this.newConversation).subscribe(res =>{
+        if(res?.data)
+        {
+          this.Close();
+          this.showActiveConversations();
+        }
+      });
+    }
+    else{
+      this.formValidationService.markFieldsAsDirty(this.addconversation.conversationForm);
+
+    }
   }
 }
 

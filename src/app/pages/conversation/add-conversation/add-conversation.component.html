@@ -1,4 +1,4 @@
-<form>
+<form  [formGroup]="conversationForm">
     <ng-template pTemplate="header">
         <div class="inline-flex align-items-center justify-content-center gap-2">
             <h5>Conversation Form</h5>
@@ -10,45 +10,44 @@
     <div>
         <div class="planPageQuestion flex flex-column gap-1 align-items-base" id="addOnQuestion">
             <div class="flex align-items-center  gmd-badge-lg">
-                <p-radioButton name="pizza" value="Cheesee" [(ngModel)]="ingredient"
-                    inputId="ingredient3"></p-radioButton>
+                <p-radioButton name="conversationRouteType"   value="1"
+                    inputId="ingredient3" formControlName="conversationRouteType"></p-radioButton>
                 <label for="ingredient3" class="ml-2 fs-3 ">Protocol or Document Related</label>
             </div>
             <div class="flex align-items-center  gmd-badge-lg">
-                <p-radioButton name="pizza" value="Cheeseee" [(ngModel)]="ingredient"
-                    inputId="ingredient2"></p-radioButton>
+                <p-radioButton name="conversationRouteType"   value="2"
+                    inputId="ingredient2" formControlName="conversationRouteType"></p-radioButton>
                 <label for="ingredient2" class="ml-2 fs-3 ">Clinical Questions</label>
             </div>
             <div class="flex align-items-center  gmd-badge-lg">
-                <p-radioButton name="pizza" value="Cheese" [(ngModel)]="ingredient"
-                    inputId="ingredient1"></p-radioButton>
+                <p-radioButton name="conversationRouteType" value="3" 
+                    inputId="ingredient1" formControlName="conversationRouteType"></p-radioButton>
                 <label for="ingredient1" class="ml-2 fs-3 ">Other</label>
             </div>
         </div>
         <div class="form-group mt-3">
             <label class="gmd-label" for="">Title</label>
-            <input type="text" pInputText class="w-100">
+            <input type="text" pInputText class="w-100" formControlName="title">
+            <app-error-messages [control]="getControl('title')" displayName="title"></app-error-messages>
         </div>
         <div class="form-group mt-3">
             <label class="gmd-label" for="">Physician</label>
             <div>
-                <p-dropdown class="w-100" [options]="cities" optionLabel="name" [showClear]="true"
-                    placeholder="Select a City"></p-dropdown>
+                <p-dropdown class="w-100" formControlName="physician" optionValue="value"  optionLabel="name" [options]="physicians" optionLabel="name" [showClear]="true"
+                    placeholder="Select a City" (onChange)="getPhysicianRolesById()">
+                </p-dropdown>
+                <app-error-messages [control]="getControl('physician')" displayName="Primary Physician"></app-error-messages>
             </div>
         </div>
-        <div class="form-group mt-3">
+        <div class="form-group mt-3" *ngIf="physicianRoles.length > 0">
             <label class="gmd-label" for="">Physician Role</label>
             <div class="physician-role">
-                <span class="gmd-badge-lg">Regional Director</span>
-                <span class="gmd-badge-lg">Core Compliance Director</span>
-                <span class="gmd-badge-lg">Clinical Education Director</span>
-                <span class="gmd-badge-lg">Collaborating Physician</span>
-                <span class="gmd-badge-lg">Medical Director</span>
+                <span class="gmd-badge-lg" *ngFor="let roles of physicianRoles">{{roles.name}}</span> 
             </div>
         </div>
     </div>
     <div class="form-group mt-3">
-        <label class="gmd-label" for=""> Message</label>
-        <textarea rows="5" cols="30" class="w-100" pInputTextarea></textarea>
+        <label class="gmd-label" for="">Message</label>
+        <textarea rows="5" cols="30" class="w-100" pInputTextarea formControlName="message"></textarea>
     </div>
 </form>

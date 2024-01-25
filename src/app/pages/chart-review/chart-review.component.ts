@@ -15,6 +15,8 @@ import { ClinicDocumentRequestDTO } from 'src/app/models/document/clinic-documen
 import { ClinicianDocumentsEnum, ClinicianDocumentsEnumNames, ClinicianDocumentsEnumTagColors } from 'src/app/shared/constants/enums/clinician-documents-enum';
 import { DocumentTypeEnum, DocumentTypeEnumDescriptions } from 'src/app/shared/constants/enums/chart-document-type-enum';
 import { MultiSelectModule } from 'primeng/multiselect';
+import {UtcToLocalPipe} from 'src/app/shared/pipes/utc-to-local.pipe';
+
 
 
 @Component({
@@ -32,7 +34,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     FormsModule,
     TabViewModule,
     TagModule,
-    MultiSelectModule
+    MultiSelectModule,
+    UtcToLocalPipe
   ],
   templateUrl: './chart-review.component.html',
   styleUrls: ['./chart-review.component.scss']

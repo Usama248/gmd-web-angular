@@ -231,7 +231,7 @@
                           class="p-tag-primary">
                         </p-tag>
                       </td>
-                      <td>{{ complete.createdDate | date: 'MM/dd/yyyy' }}</td>
+                      <td>{{ complete.createdDate | utcToLocal }}</td>
                       <td>
                         @if (complete.isArchived) {
                           <span class="badge badge-info purple_badge common_badge">Archived</span>

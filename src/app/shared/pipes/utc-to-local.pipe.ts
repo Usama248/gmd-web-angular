@@ -8,12 +8,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class UtcToLocalPipe implements PipeTransform {
   constructor() {}
 
-  transform(utcTime: string | null): Date | null {
+  transform(utcTime: string | null): string | null {
     if (utcTime) {
       const userTimeZone = navigator.language;
       let d = utcTime;
-      return new Date(d)
+      let format = 'MMM dd yyyy hh:mm a';
+      let x = new DatePipe(userTimeZone).transform(d,format+ " UTC");
+      return new DatePipe(userTimeZone).transform(x,format);
     }
-    return new Date();
+    return "";
   }
 }

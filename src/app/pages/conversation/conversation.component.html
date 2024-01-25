@@ -151,11 +151,13 @@
 
 <p-dialog header="Conversation Form" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }"
   [draggable]="false" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
-  <app-add-conversation></app-add-conversation>
+@if(visible){
+  <app-add-conversation #addconversation></app-add-conversation>
+}
   <ng-template pTemplate="footer">
     <p-button class="dialog-secondary-btn" [outlined]=true label="Close" styleClass="p-button-text"
     (onClick)="Close()"></p-button>
-    <p-button class="dialog-primary-btn" label="Save Changes" styleClass="p-button-text"></p-button>
+    <p-button class="dialog-primary-btn" label="Save Changes" styleClass="p-button-text" type="button" (onClick)="submitForm()"></p-button>
   </ng-template>
 </p-dialog>
 

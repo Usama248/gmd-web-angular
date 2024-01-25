@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CONVERSATION_ENDPOINTS } from 'src/app/shared/constants/api-endpoint-url';
 import { ApiHandler } from 'src/app/shared/services/api-handler.service';
+import { CreateConversationRequestModel } from 'src/app/models/conversation/create-conversation-request-model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,21 @@ export class ConversationService extends ApiHandler {
     const params = new HttpParams()
       .set('UserId', userId)
     return this.getByParameteres(CONVERSATION_ENDPOINTS.GetParticipantMessages + "/" +roomKey, params)
+  }
+
+  
+  getPhyscians(){
+    return this.get(CONVERSATION_ENDPOINTS.ClinicianRequestStatus)
+  }
+
+  getPhysicianRolesById(id:number,clinicId:number){
+    const params = new HttpParams()
+          .set('id',id)
+          .set('clinicId',clinicId)
+    return this.getByParameteres(CONVERSATION_ENDPOINTS.GetPhysicianRolesById,params)
+  }
+
+  postSaveRoomCall(data:CreateConversationRequestModel){
+    return this.post(CONVERSATION_ENDPOINTS.PostVideoCall,data)
   }
 }
