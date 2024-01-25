@@ -7,7 +7,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { ToastService } from 'src/app/shared/services/toast.service';
 import { PhoneMaskDirective } from 'src/app/shared/directives/phone-mask.directive';
 import { FileSizeCheckDirective } from 'src/app/shared/directives/file-size-check.directive';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthRepository } from 'src/app/services/auth-service/auth.repository';
 
 @Component({
@@ -20,10 +20,12 @@ import { AuthRepository } from 'src/app/services/auth-service/auth.repository';
 export class ProfileMainComponent implements OnInit {
   imageUrl: string | ArrayBuffer | null = "../../../../assets/images/user.webp";
   imageError!: string;
+  uKey: string = "werwer";
   profileForm: FormGroup = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
+    labkey: new FormControl(''),
   });
   constructor(private toastService: ToastService, private authRepo: AuthRepository) {}
   ngOnInit(): void {
@@ -59,13 +61,15 @@ export class ProfileMainComponent implements OnInit {
   handleUploadProfileError(message: string): void {
     this.imageError = message;
   }
-  generateLabAlertSecretKey(): string {
-    const keyLength = 16;
-    let randomNumber = '';
+  generateLabAlertSecretKey() {
+    const keyLength = 24;
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let key = '';
+  
     for (let i = 0; i < keyLength; i++) {
-      const digit = Math.floor(Math.random() * 10);
-      randomNumber += digit.toString();
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      key += characters.charAt(randomIndex);
     }
-    return randomNumber;
+    this.uKey = key;
   }
 }
